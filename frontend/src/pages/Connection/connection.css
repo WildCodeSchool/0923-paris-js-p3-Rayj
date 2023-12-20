@@ -1,4 +1,4 @@
-body {
+.connection {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -29,7 +29,7 @@ body {
 }
 
 .btn-connection {
-  margin-left: 6rem;
+  margin-left: 4rem;
   padding-top: 10px;
   font-size: 20px;
   color: #000000;
@@ -38,8 +38,8 @@ body {
   border: none;
 }
 
-hr {
-  margin-left: 6rem;
+.ligne-btn-connection {
+  margin-left: 4.1rem;
   border-top: 3px solid #000000;
   overflow: visible;
   text-align: center;
@@ -47,7 +47,7 @@ hr {
 }
 
 .ray {
-  margin-left: 3rem;
+  margin-left: -0.1rem;
   width: 15rem;
   height: 15rem;
 }

@@ -5,7 +5,7 @@ import UnityTeamRAYJ from "../../assets/logo/UnityTeamRAYJ.png";
 
 function Connection() {
   return (
-    <>
+    <div className="connection">
       <img className="logo" src={logogouv} alt="logo de la société" />
 
       <div className="login-box">
@@ -31,7 +31,7 @@ function Connection() {
           <button className="btn-connection" type="button">
             Connexion
           </button>
-          <hr />
+          <hr className="ligne-btn-connection" />
         </div>
       </div>
 
@@ -45,7 +45,7 @@ function Connection() {
       </div>
 
       <img className="ray" src={UnityTeamRAYJ} alt="logo société" />
-    </>
+    </div>
   );
 }
 
