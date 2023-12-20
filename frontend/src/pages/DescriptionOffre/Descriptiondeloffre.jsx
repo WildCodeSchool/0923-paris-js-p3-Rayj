@@ -1,8 +1,8 @@
-import Popup from "../components/Popup";
+import Popup from "../../components/Popup";
 
-import OfferDescription from "../components/OfferDescription";
+import OfferDescription from "../../components/OfferDescription";
 
-import "../styles/descriptiondeloffre.css";
+import "./descriptiondeloffre.css";
 
 function Descriptiondeloffre() {
   return (
