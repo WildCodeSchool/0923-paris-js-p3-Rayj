@@ -10,6 +10,7 @@ import Following from "./pages/Following/Following";
 import Post from "./pages/Posts/Post";
 import Profil from "./pages/Profil/Profil";
 import Validation from "./pages/Validation/Validation";
+import Connection from "./pages/Connection/Connection";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/validation",
         element: <Validation />,
+      },
+      {
+        path: "/connection",
+        element: <Connection />,
       },
     ],
   },
