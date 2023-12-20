@@ -16,38 +16,34 @@
   justify-content: center;
 }
 
-h1 {
+.titleh1 {
   font-size: xx-large;
 }
 
-h3 {
+.titleh2 {
   font-size: x-large;
 }
 
-h4 {
+.titleh3 {
   font-size: large;
 }
 
-th {
+.competence {
   font-size: small;
 }
 
-td {
-  font-size: small;
-}
-
-th,
-td {
+.competence,
+.skillssh {
   border: 1px solid grey;
 }
 
-.softskills {
+.softskillsrm {
   border-collapse: collapse;
   width: 20%;
   height: 20%;
 }
 
-.hardskills {
+.hardskillsrm {
   border-collapse: collapse;
   width: 20%;
   height: 20%;
@@ -68,20 +64,12 @@ td {
   align-items: center;
   justify-content: space-around;
   margin-bottom: 0.5rem;
-}
-
-h5 {
-  margin: 1px;
+  font-size: small;
 }
 
 @media screen and (max-width: 375px) {
   .descriptionoffre {
     margin: 1rem;
-  }
-
-  ul {
-    margin: 1rem;
-    padding: 1rem;
   }
 
   .ligne-separation1,

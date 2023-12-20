@@ -29,42 +29,42 @@ function OfferDescription() {
     <>
       <Header />
       <section className="offer">
-        <h1>{offer2.titre}</h1>
+        <h1 className="titleh1">{offer2.titre}</h1>
 
         <hr className="ligne-separation1" />
 
         <div className="descriptionoffre">
-          <h3>Description de l'offre</h3>
-          <p>{offer1.description}</p>
+          <h2 className="titleh2">Description de l'offre</h2>
+          <p className="offerdescription">{offer1.description}</p>
 
           <hr className="ligne-separation" />
-          <h4>Compétences</h4>
+          <h3 className="titleh3">Compétences</h3>
           <div className="shskills">
-            <table className="softskills">
+            <table className="softskillsrm">
               <thead>
                 <tr>
-                  <th>Softskills</th>
+                  <th className="competence">Softskills</th>
                 </tr>
               </thead>
               <tbody>
                 {offer3.softskills.map((skill) => (
                   <tr key={skill.softskills}>
-                    <td>{skill}</td>
+                    <td className="skillssh">{skill}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
 
-            <table className="hardskills">
+            <table className="hardskillsrm">
               <thead>
                 <tr>
-                  <th>Hardskills</th>
+                  <th className="competence">Hardskills</th>
                 </tr>
               </thead>
               <tbody>
                 {offer2.hardskills.map((skill) => (
                   <tr key={skill.softskills}>
-                    <td>{skill}</td>
+                    <td className="skillssh">{skill}</td>
                   </tr>
                 ))}
               </tbody>
