@@ -1,0 +1,77 @@
+.inscribody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #eae0d5;
+}
+
+::placeholder {
+  color: #070707;
+}
+
+.formulaire-inscription {
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+}
+
+.logorf {
+  align-self: flex-start;
+  width: 10rem;
+  height: 10rem;
+}
+
+.prenom,
+.Nom,
+.email,
+.password,
+.matricule,
+.phonenumber {
+  color: #070707;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+}
+.embauche {
+  display: block;
+  font:
+    1rem "Fira Sans",
+    sans-serif;
+}
+
+.ligne-btn-inscription {
+  margin-left: 4rem;
+  border-top: 3px solid #000000;
+  overflow: visible;
+  text-align: center;
+  width: 6.3rem;
+}
+
+.pickerdate,
+.embauche {
+  margin: 0.4rem 0.4rem;
+  background-color: transparent;
+  border-radius: 2px;
+}
+.introduction {
+  background: #a59580;
+  color: #070707;
+}
+.validation {
+  background-color: #557cae;
+  border: none;
+  color: white;
+  padding: 10px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50px;
+  width: 90px;
+  margin-top: 1rem;
+}
+
+.rayinscrir {
+  width: 12rem;
+  height: 12rem;
+}
