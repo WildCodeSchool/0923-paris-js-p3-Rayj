@@ -11,6 +11,7 @@ import Post from "./pages/Posts/Post";
 import Profil from "./pages/Profil/Profil";
 import Validation from "./pages/Validation/Validation";
 import Connection from "./pages/Connection/Connection";
+import Inscription from "./pages/Inscription/inscription";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/connection",
         element: <Connection />,
+      },
+      {
+        path: "/inscription",
+        element: <Inscription />,
       },
     ],
   },

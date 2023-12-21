@@ -1,9 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./connection.css";
 import logogouv from "../../assets/logo/logogouv.png";
 import UnityTeamRAYJ from "../../assets/logo/UnityTeamRAYJ.png";
 
 function Connection() {
+  const navigate = useNavigate();
+
   return (
     <div className="connection">
       <img className="logo" src={logogouv} alt="logo de la société" />
@@ -28,7 +31,11 @@ function Connection() {
           />
         </div>
         <div>
-          <button className="btn-connection" type="button">
+          <button
+            className="btn-connection"
+            type="button"
+            onClick={() => navigate("/HomePage")}
+          >
             Connexion
           </button>
           <hr className="ligne-btn-connection" />
@@ -37,7 +44,11 @@ function Connection() {
 
       <div className="inscription-box">
         <h2 className="creationcompte">Pas encore De Compte ?</h2>
-        <button className="inscrire" type="submit">
+        <button
+          className="inscrire"
+          type="submit"
+          onClick={() => navigate("/inscription")}
+        >
           <p>
             <u>Je souhaite m'inscrire</u>
           </p>
