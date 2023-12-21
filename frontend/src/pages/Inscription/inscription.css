@@ -1,27 +1,3 @@
-.inscribody {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
-  background: #eae0d5;
-}
-
-::placeholder {
-  color: #070707;
-}
-
-.formulaire-inscription {
-  border: solid 1px black;
-  display: flex;
-  flex-direction: column;
-}
-
-.logorf {
-  align-self: flex-start;
-  width: 10rem;
-  height: 10rem;
-}
-
 .prenom,
 .Nom,
 .email,
@@ -33,11 +9,121 @@
   background-color: transparent;
   border: none;
 }
+
+::placeholder {
+  color: #070707;
+}
+.inscribody {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #eae0d5;
+}
+
+.logorf {
+  align-self: flex-start;
+  width: 10rem;
+  height: 10rem;
+}
+.formulaire-inscription {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.nomprenom {
+  display: flex;
+  justify-content: space-between;
+}
+.all {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.prenom {
+  width: 85%;
+  padding: 5px;
+  font-size: 20px;
+  color: #070707;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 3px solid black;
+  background: transparent;
+}
+.Nom {
+  width: 85%;
+  padding: 5px;
+  font-size: 20px;
+  color: #070707;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 3px solid black;
+  background: transparent;
+}
+
+.email {
+  width: 85%;
+  padding: 5px;
+  font-size: 20px;
+  color: #070707;
+  margin-bottom: 35px;
+  border: none;
+  border-bottom: 3px solid black;
+  background: transparent;
+}
+
+.password {
+  width: 85%;
+  padding: 5px;
+  font-size: 20px;
+  color: #070707;
+  margin-bottom: 35px;
+  border: none;
+  border-bottom: 3px solid black;
+  background: transparent;
+}
+
+.phonenumber {
+  width: 80%;
+  padding: 5px;
+  font-size: 20px;
+  color: #070707;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 3px solid black;
+  background: transparent;
+}
+
+.matricule {
+  width: 85%;
+  padding: 3px;
+  font-size: 20px;
+  color: #070707;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 3px solid black;
+  background: transparent;
+}
+
+.pickerdate {
+  width: 140px;
+  padding: 5px;
+  font-size: 20px;
+  color: #070707;
+  margin-bottom: 30px;
+  border: none;
+  background: transparent;
+}
 .embauche {
   display: block;
   font:
     1rem "Fira Sans",
     sans-serif;
+  border-bottom: 3px solid black;
 }
 
 .ligne-btn-inscription {
@@ -55,6 +141,7 @@
   border-radius: 2px;
 }
 .introduction {
+  margin-top: 3rem;
   background: #a59580;
   color: #070707;
 }
@@ -68,7 +155,7 @@
   margin: 4px 2px;
   border-radius: 50px;
   width: 90px;
-  margin-top: 1rem;
+  margin-top: 5rem;
 }
 
 .rayinscrir {
