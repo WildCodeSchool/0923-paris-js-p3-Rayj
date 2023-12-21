@@ -5,8 +5,7 @@ import logogouv from "../../assets/logo/logogouv.png";
 import UnityTeamRAYJ from "../../assets/logo/UnityTeamRAYJ.png";
 
 function Connection() {
-  const profil = useNavigate();
-  const inscription = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div className="connection">
@@ -35,7 +34,7 @@ function Connection() {
           <button
             className="btn-connection"
             type="button"
-            onClick={() => profil("/profil")}
+            onClick={() => navigate("/HomePage")}
           >
             Connexion
           </button>
@@ -48,7 +47,7 @@ function Connection() {
         <button
           className="inscrire"
           type="submit"
-          onClick={() => inscription("/inscription")}
+          onClick={() => navigate("/inscription")}
         >
           <p>
             <u>Je souhaite m'inscrire</u>
