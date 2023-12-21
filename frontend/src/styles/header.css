@@ -1,0 +1,18 @@
+.logo {
+  width: 8rem;
+  height: 8rem;
+  padding-left: 3%;
+}
+
+.logo2 {
+  width: 9rem;
+  height: 8rem;
+  padding-right: 3%;
+}
+
+.entete {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem;
+}
