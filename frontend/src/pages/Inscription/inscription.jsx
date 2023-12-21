@@ -11,11 +11,11 @@ function inscription() {
     <div className="inscribody">
       <img className="logorf" src={logogouv} alt="logo de la société" />
 
-      <from className="formulaire-inscription">
+      <from className="form-inscription">
         <div className="inscription-box">
           <div className="all">
             <input
-              className="prenom"
+              className="firstname"
               type="text"
               name="firstname"
               required
@@ -23,7 +23,7 @@ function inscription() {
             />
 
             <input
-              className="Nom"
+              className="lastname"
               type="text"
               name="Lastname"
               required
@@ -53,7 +53,7 @@ function inscription() {
               placeholder="numéro de téléphone"
             />
             <input
-              className="matricule"
+              className="seniority"
               type="number"
               name="matricule"
               placeholder="Votre Matricule"

@@ -1,8 +1,8 @@
-.prenom,
-.Nom,
+.firstname,
+.lastname,
 .email,
 .password,
-.matricule,
+.seniority,
 .phonenumber {
   color: #070707;
   text-decoration: none;
@@ -28,23 +28,19 @@
   width: 10rem;
   height: 10rem;
 }
-.formulaire-inscription {
+.form-inscription {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
 }
 
-.nomprenom {
-  display: flex;
-  justify-content: space-between;
-}
 .all {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.prenom {
+.firstname {
   width: 85%;
   padding: 5px;
   font-size: 20px;
@@ -54,7 +50,7 @@
   border-bottom: 3px solid black;
   background: transparent;
 }
-.Nom {
+.lastname {
   width: 85%;
   padding: 5px;
   font-size: 20px;
@@ -98,7 +94,7 @@
   background: transparent;
 }
 
-.matricule {
+.seniority {
   width: 85%;
   padding: 3px;
   font-size: 20px;
