@@ -1,11 +1,13 @@
 import Counter from "./components/Counter";
 import logo from "./assets/logo.svg";
-
+import Navbar from "./components/Footer/NavBar";
 import "./App.css";
+import Category from "./components/category/Category";
 
 function App() {
   return (
     <div className="App">
+      <Category />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React !</p>
@@ -35,6 +37,7 @@ function App() {
           </a>
         </p>
       </header>
+      <Navbar />
     </div>
   );
 }

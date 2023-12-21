@@ -1,0 +1,16 @@
+.home,
+.search,
+.profile,
+.following {
+  size: 50rem;
+}
+
+.mobile {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  border: black;
+  margin: 2rem;
+  background-color: #8d7b64;
+  padding: 16, 34, 16, 16;
+}
