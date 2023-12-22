@@ -1,11 +1,11 @@
 .offersannonces {
   border: 2px solid black;
-  width: 16rem;
   height: 45rem;
   border-radius: 10px;
   background-color: #ad9d8b;
   flex-direction: column;
-  width: 15rem;
+  width: 11rem;
+  margin-left: 8px;
 }
 .domaine,
 .jobs,
@@ -14,10 +14,13 @@
   border: none;
 }
 
-.choicejobs {
-  width: 13.7rem;
+.choicejobs,
+.departement,
+.lieux {
+  width: 9.7rem;
 }
 
 .descriptionoffers {
   padding: 0px 0px 10px 5px;
+  margin-left: 8px;
 }

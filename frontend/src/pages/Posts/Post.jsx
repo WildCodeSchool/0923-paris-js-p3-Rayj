@@ -11,7 +11,7 @@ function Post() {
         <fieldset className="domaine">
           <legend className="legenddomaine">Domaine</legend>
           <label htmlFor="domaine">
-            <select name="domaine" id="domaine">
+            <select className="departement" id="domaine">
               <option value="">Indiquez le domaine de l'annonce</option>
               <option value="rh">Ressources humaines</option>
               <option value="technique">Techniques</option>
@@ -41,7 +41,7 @@ function Post() {
         <fieldset className="city">
           <legend>Localisation</legend>
           <label htmlFor="ville">
-            <select name="ville" id="ville">
+            <select className="lieux" name="ville" id="ville">
               <option value="">Indiquez la ville ou ce situe l'offre</option>
               <option value="Paris">Paris</option>
               <option value="Val de Marne">Val de Marne</option>
@@ -57,8 +57,8 @@ function Post() {
           Annonce{" "}
           <textarea
             className="offersdescription"
-            rows="15"
-            cols="25"
+            rows="10"
+            cols="20"
             name="message"
             required
             placeholder="Détaillé l'annonce"
