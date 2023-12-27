@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import "../styles/buttoncandidate.css";
+import "./buttoncandidate.css";
 
 function ButtonCandidate() {
   return (

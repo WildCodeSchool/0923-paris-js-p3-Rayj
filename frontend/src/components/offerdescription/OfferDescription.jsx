@@ -1,6 +1,6 @@
-import ButtonCandidate from "./ButtonCandidate";
-import "../styles/offerdescription.css";
-import Header from "./Header";
+import ButtonCandidate from "../boutoncandidat/ButtonCandidate";
+import "./offerdescription.css";
+import Header from "../header/Header";
 
 const offer1 = {
   titre: "Developpeur Web",
@@ -11,7 +11,7 @@ const offer1 = {
 };
 
 const offer2 = {
-  titre: "Mangeur de moules",
+  titre: "Gouteur de moules",
   description: "Nous sommes à la recherche d’un(e) bouche gobeuse ......",
   softskills: ["Gourmand", "Curieux", "Epicurien"],
   hardskills: ["Riche", "Technicien", "Couteau Suisse"],

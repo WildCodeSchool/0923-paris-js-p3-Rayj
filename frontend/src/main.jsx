@@ -11,12 +11,17 @@ import Post from "./pages/Posts/Post";
 import Profil from "./pages/Profil/Profil";
 import Validation from "./pages/Validation/Validation";
 import Connection from "./pages/Connection/Connection";
+import DescriptionOffre from "./pages/DescriptionOffre/Descriptiondeloffre";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        path: "/",
+        element: <Connection />,
+      },
       {
         path: "/",
         element: <HomePage />,
@@ -41,9 +46,10 @@ const router = createBrowserRouter([
         path: "/validation",
         element: <Validation />,
       },
+
       {
-        path: "/connection",
-        element: <Connection />,
+        path: "description",
+        element: <DescriptionOffre />,
       },
     ],
   },
