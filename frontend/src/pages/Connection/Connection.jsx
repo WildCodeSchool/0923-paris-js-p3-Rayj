@@ -1,7 +1,7 @@
 import React from "react";
 import "./connection.css";
-import logogouv from "../../assets/logo/logogouv.png";
-import UnityTeamRAYJ from "../../assets/logo/UnityTeamRAYJ.png";
+import logogouv from "../../assets/images/logorf.png";
+import UnityTeamRAYJ from "../../assets/images/logorayj.png";
 
 function Connection() {
   return (

@@ -10,6 +10,6 @@
 
 .row {
   display: flex;
-  overflow: scroll;
+  overflow: auto;
   width: 100%;
 }
