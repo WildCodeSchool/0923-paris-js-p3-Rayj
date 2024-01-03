@@ -1,12 +1,23 @@
+.pageprofiljesaispas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .offersannonces {
-  border: 2px solid black;
-  height: 45rem;
+  margin-top: 3rem;
   border-radius: 10px;
   background-color: #ad9d8b;
+  width: 25rem;
+  height: 100%;
+
+  display: flex;
   flex-direction: column;
-  width: 11rem;
-  margin-left: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid red;
 }
+
 .domaine,
 .jobs,
 .city {

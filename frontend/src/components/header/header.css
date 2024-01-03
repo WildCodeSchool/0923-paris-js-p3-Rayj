@@ -1,18 +1,56 @@
-.logo {
-  width: 8rem;
-  height: 8rem;
-  padding-left: 3%;
-}
-
-.logo2 {
-  width: 9rem;
-  height: 8rem;
-  padding-right: 3%;
-}
-
 .entete {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  width: auto;
+  margin-top: 1rem;
+  height: 10rem;
+}
+
+.jesaispas {
+  display: flex;
   justify-content: space-between;
-  margin: 1rem;
+  width: 100%;
+}
+
+.logojesaispas {
+  width: 5rem;
+  height: 5rem;
+  margin-right: 2rem;
+}
+
+.pixname {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.photoprofil {
+  border-radius: 12px;
+  width: 5rem;
+  height: 5rem;
+}
+.profilname {
+  font-size: 13px;
+  margin: 5px 0 0 0;
+}
+.logo2 {
+  width: 4.3rem;
+  height: 4.3rem;
+  margin-left: 2rem;
+}
+
+button {
+  width: 1rem;
+  height: 1rem;
+}
+.butbutprofil {
+  background-color: #557cae;
+  border: none;
+  color: white;
+  padding: 15px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 3px;
+  border-radius: 50px;
+  width: 90px;
+  margin-top: 2.5rem;
 }

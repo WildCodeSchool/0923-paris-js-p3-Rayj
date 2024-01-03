@@ -4,9 +4,8 @@ import "./post.css";
 
 function Post() {
   return (
-    <>
+    <div className="pageprofiljesaispas">
       <Header />
-
       <div className="offersannonces">
         <fieldset className="domaine">
           <legend className="legenddomaine">Domaine</legend>
@@ -65,7 +64,7 @@ function Post() {
           />
         </label>
       </div>
-    </>
+    </div>
   );
 }
 
