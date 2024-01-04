@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Select from "react-select";
 import Header from "../../components/header/Header";
+// import recapopup from "../../components/popup/recapopup";
 import "./post.css";
 
 const softSkillsOptions = [
@@ -136,6 +137,9 @@ function Post() {
           <label htmlFor="2ans">2ans</label>
         </div>
       </div>
+      <button type="button" className="recapt">
+        Recapitulatif
+      </button>
     </div>
   );
 }

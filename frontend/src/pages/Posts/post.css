@@ -9,7 +9,7 @@
   border-radius: 10px;
   background-color: #ad9d8b;
   width: 25rem;
-  height: 150rem;
+  height: 54rem;
 
   display: flex;
   flex-direction: column;
@@ -60,4 +60,14 @@
 }
 .anciennete {
   margin-right: 0.5rem;
+}
+
+.recapt {
+  width: 7rem;
+  height: 2rem;
+  color: white;
+  background-color: #557cae;
+  border-radius: 1rem;
+  margin: 2.2rem 0 2.1rem 0;
+  font-size: 95%;
 }
