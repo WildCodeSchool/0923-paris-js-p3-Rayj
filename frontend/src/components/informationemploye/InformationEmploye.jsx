@@ -61,6 +61,7 @@ function InformationEmploye() {
               alt={`${employe.nom}`}
             />
             <div className="identity">
+              <p>Nom : {employe.nom}</p>
               <p>Prénom : {employe.prénom}</p>
               <p>Matricule : {employe.matricule}</p>
               <p>Profession : {employe.profession}</p>

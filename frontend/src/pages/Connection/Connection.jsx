@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./connection.css";
 import logogouv from "../../assets/images/logorf.png";
 import UnityTeamRAYJ from "../../assets/images/logorayj.png";
+import Popup from "../../components/popup/Popup";
 
 function Connection() {
+  const [popupVisible, setPopupVisible] = useState(true);
+
+  const closePopup = () => {
+    setPopupVisible(false);
+  };
   return (
     <div className="connection">
+      {popupVisible && <Popup onClose={closePopup} />}
+
       <img className="logo" src={logogouv} alt="logo de la société" />
 
       <div className="login-box">

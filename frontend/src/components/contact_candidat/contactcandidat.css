@@ -1,0 +1,59 @@
+.candidat-card {
+  background-color: white;
+  border: 2px solid #afb1b6;
+  border-radius: 1rem;
+  margin: 1rem;
+  padding-bottom: 1rem;
+}
+
+.candidat-info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.qualite {
+  background-color: #c9b59b;
+  display: flex;
+  justify-content: space-around;
+}
+
+.listingskills {
+  background-color: #c9b59b;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 10px;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul {
+  padding: 0;
+}
+
+.twobtn {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+.contact_btn {
+  width: 6rem;
+  height: 2.5rem;
+  color: white;
+  background-color: #3a00e5;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  font-size: 95%;
+}
+
+.no_contact_btn {
+  width: 6rem;
+  height: 2.5rem;
+  color: red;
+  background-color: white;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  font-size: 95%;
+}

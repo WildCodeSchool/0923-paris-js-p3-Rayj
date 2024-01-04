@@ -1,9 +1,19 @@
+import React from "react";
 import "./popup.css";
 
-function Popup() {
+function Popup({ onClose }) {
   return (
     <section className="up_pop">
       <div className="pop_up">
+        <button
+          type="button"
+          className="closebtn"
+          onClick={onClose}
+          onKeyDown={onClose}
+          aria-label="Close"
+        >
+          &times;
+        </button>
         <p>
           Chez RAYJ, nous sommes à la révolution des reconversions internes au
           sein des entreprises. Notre plateforme innovante est une solution
