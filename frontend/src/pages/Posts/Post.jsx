@@ -1,36 +1,37 @@
-// import Select from "react-select";
-// import { useState } from "react";
+import { useState } from "react";
+import Select from "react-select";
 import Header from "../../components/header/Header";
 import "./post.css";
 
-// const softSkillsOptions = [
-//   { value: "Humour", label: "Humour" },
-//   { value: "Autonomie", label: "Autonomie" },
-//   { value: "Réactivité", label: "Réactivité" },
-//   { value: "Adaptabilité", label: "Adaptabilité" },
-//   { value: "Flexibilité", label: "Flexibilité" },
-// ];
-// const hardSkillsOptions = [
-//   { value: "HTML", label: "HTML" },
-//   { value: "CSS", label: "CSS" },
-//   { value: "JavaScript", label: "JavaScript" },
-//   { value: "NodeJS", label: "NodeJS" },
-//   { value: "ReactJS", label: "ReactJS" },
-// ];
+const softSkillsOptions = [
+  { value: "Humour", label: "Humour" },
+  { value: "Autonomie", label: "Autonomie" },
+  { value: "Réactivité", label: "Réactivité" },
+  { value: "Adaptabilité", label: "Adaptabilité" },
+  { value: "Flexibilité", label: "Flexibilité" },
+];
+const hardSkillsOptions = [
+  { value: "HTML", label: "HTML" },
+  { value: "CSS", label: "CSS" },
+  { value: "JavaScript", label: "JavaScript" },
+  { value: "NodeJS", label: "NodeJS" },
+  { value: "ReactJS", label: "ReactJS" },
+];
 
-// const [softSkills, setSoftSkills] = useState([]);
-// const handleSelectSoftSkillChange = (selectedSoftSkillOptions) => {
-//   setSoftSkills(selectedSoftSkillOptions);
-// };
-// const [hardSkills, sethardSkills] = useState([]);
-// const handleSelectHardSkillChange = (selectedHardSkillOptions) => {
-//   sethardSkills(selectedHardSkillOptions);
-// };
 function Post() {
+  const [softSkills, setSoftSkills] = useState([]);
+  const handleSelectSoftSkillChange = (selectedSoftSkillOptions) => {
+    setSoftSkills(selectedSoftSkillOptions);
+  };
+  const [hardSkills, sethardSkills] = useState([]);
+  const handleSelectHardSkillChange = (selectedHardSkillOptions) => {
+    sethardSkills(selectedHardSkillOptions);
+  };
   return (
     <div className="pageprofiljesaispas">
       <Header />
       <div className="offersannonces">
+        <h1 className="creationannonce">Creation de l'annonce</h1>
         <fieldset className="domaine">
           <legend className="legenddomaine">Domaine</legend>
           <label htmlFor="domaine">
@@ -88,43 +89,50 @@ function Post() {
             />
           </label>
         </fieldset>
-        <h1 className="comptetout">Compétences et Outils</h1>
-        {/* <div>
-        <Select
-          className="skill_options"
-          options={softSkillsOptions}
-          value={softSkills}
-          onChange={handleSelectSoftSkillChange}
-          isMulti
-          placeholder="Sélectionnez vos compétences..."
-        />
-        <p className="skill_block_heading">Hard Skills</p>
-        <Select
-          className="skill_options"
-          options={hardSkillsOptions}
-          value={hardSkills}
-          onChange={handleSelectHardSkillChange}
-          isMulti
-          placeholder="Sélectionnez vos compétences..."
-        />
-        </div> */}
-
-        <h2> Formation</h2>
+        <h2 className="comptetout">Compétences et Outils</h2>
         <div>
-          <input type="checkbox" id="oui" name="oui" />
-          <label htmlFor="oui">oui</label>
+          <p className="skill_block_heading">Soft Skill</p>
+          <Select
+            className="skill_options"
+            options={softSkillsOptions}
+            value={softSkills}
+            onChange={handleSelectSoftSkillChange}
+            isMulti
+            placeholder="Sélectionnez vos compétences..."
+          />
+          <p className="skill_block_heading">Hard Skills</p>
+          <Select
+            className="skill_options"
+            options={hardSkillsOptions}
+            value={hardSkills}
+            onChange={handleSelectHardSkillChange}
+            isMulti
+            placeholder="Sélectionnez vos compétences..."
+          />
+        </div>
 
-          <input type="checkbox" id="non" name="non" />
+        <h2 className="formation"> Formation</h2>
+        <div>
+          <input type="radio" id="oui" name="formation" />
+          <label className="affirmatif" htmlFor="oui">
+            oui
+          </label>
+
+          <input type="radio" id="non" name="formation" />
           <label htmlFor="non">Non</label>
         </div>
 
-        <h2>Ancienneté demandé</h2>
+        <h2 className="demandeanciennete">Ancienneté demandé</h2>
         <div className="anciennetechoix">
-          <input type="checkbox" id="6mois" name="6mois" />
-          <label htmlFor="6mois">6mois</label>
-          <input type="checkbox" id="1ans" name="1ans" />
-          <label htmlFor="1ans">1ans</label>
-          <input type="checkbox" id="2ans" name="2ans" />
+          <input className="6-mois" type="radio" id="6mois" name="seniority" />
+          <label className="anciennnete" htmlFor="6mois">
+            6mois
+          </label>
+          <input type="radio" id="1ans" name="seniority" />
+          <label className="anciennete" htmlFor="1ans">
+            1ans
+          </label>
+          <input type="radio" id="2ans" name="seniority" />
           <label htmlFor="2ans">2ans</label>
         </div>
       </div>

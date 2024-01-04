@@ -62,12 +62,20 @@
 }
 
 .inscrire {
+  width: 16rem;
+  margin-left: 2.2rem;
+  padding-top: 10px;
+  font-size: 20px;
+  color: #000000;
   text-decoration: none;
   background-color: transparent;
   border: none;
-  font-size: 20px;
 }
 
-p {
-  margin-bottom: 1px;
+.ligne-inscription {
+  margin-left: 4.1rem;
+  border-top: 3px solid #000000;
+  overflow: visible;
+  text-align: center;
+  width: 12.3rem;
 }

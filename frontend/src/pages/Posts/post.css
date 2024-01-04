@@ -5,11 +5,11 @@
 }
 
 .offersannonces {
-  margin-top: 3rem;
+  margin-top: 10rem;
   border-radius: 10px;
   background-color: #ad9d8b;
   width: 25rem;
-  height: 100%;
+  height: 150rem;
 
   display: flex;
   flex-direction: column;
@@ -37,7 +37,10 @@
   margin-left: 8px;
 }
 
-.comptetout {
+.comptetout,
+.creationannonce,
+.formation,
+.demandeanciennete {
   font-size: 1.3rem;
 }
 
@@ -45,4 +48,16 @@
   display: flex;
   justify-content: space-between;
   width: 60%;
+}
+
+.skill_options {
+  width: 88%;
+  background-color: #58524b;
+}
+
+.affirmatif {
+  margin-right: 2.5rem;
+}
+.anciennete {
+  margin-right: 0.5rem;
 }

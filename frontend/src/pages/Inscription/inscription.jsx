@@ -80,14 +80,15 @@ function inscription() {
           </div>
         </div>
       </from>
-
-      <button
-        className="validation"
-        type="button"
-        onClick={() => validation("/profil")}
-      >
-        Valider
-      </button>
+      <div>
+        <button
+          className="validation"
+          type="button"
+          onClick={() => validation("/profil")}
+        >
+          Valider
+        </button>
+      </div>
       <div>
         <img className="rayinscrir" src={UnityTeamRAYJ} alt="logo société" />
       </div>
