@@ -7,7 +7,6 @@ function Connection() {
   return (
     <div className="connection">
       <img className="logo" src={logogouv} alt="logo de la société" />
-
       <div className="login-box">
         <div className="user-box">
           <input

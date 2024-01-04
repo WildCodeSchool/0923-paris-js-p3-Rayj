@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "../assets/images/logorayj.png";
-import rf from "../assets/images/logorf.png";
-import "../styles/header.css";
+import logo from "../../assets/images/logorayj.png";
+import rf from "../../assets/images/logorf.png";
+import "./header.css";
 
 function Header() {
   return (
