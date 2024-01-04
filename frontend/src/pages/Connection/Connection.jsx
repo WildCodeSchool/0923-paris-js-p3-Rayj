@@ -44,15 +44,16 @@ function Connection() {
 
       <div className="inscription-box">
         <h2 className="creationcompte">Pas encore De Compte ?</h2>
-        <button
-          className="inscrire"
-          type="submit"
-          onClick={() => navigate("/inscription")}
-        >
-          <p>
-            <u>Je souhaite m'inscrire</u>
-          </p>
-        </button>
+        <div>
+          <button
+            className="inscrire"
+            type="button"
+            onClick={() => navigate("/inscription")}
+          >
+            Je souhaite m'inscrire
+          </button>
+          <hr className="ligne-inscription" />
+        </div>
       </div>
 
       <img className="ray" src={UnityTeamRAYJ} alt="logo société" />

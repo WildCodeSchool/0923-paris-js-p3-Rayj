@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useNavigate } from "react-router-dom";
 import logogouv from "../../assets/logo/logogouv.png";
 import UnityTeamRAYJ from "../../assets/logo/UnityTeamRAYJ.png";
@@ -80,14 +81,15 @@ function inscription() {
           </div>
         </div>
       </from>
-
-      <button
-        className="validation"
-        type="button"
-        onClick={() => validation("/profil")}
-      >
-        Valider
-      </button>
+      <div>
+        <button
+          className="validation"
+          type="button"
+          onClick={() => validation("/profil")}
+        >
+          Valider
+        </button>
+      </div>
       <div>
         <img className="rayinscrir" src={UnityTeamRAYJ} alt="logo société" />
       </div>
