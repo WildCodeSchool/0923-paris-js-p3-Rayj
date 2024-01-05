@@ -8,7 +8,7 @@ function ListeSkills({ titre, skills }) {
       <ul className="listskill">
         {skills.map((skill) => (
           <li className="hophop" key={skill}>
-            {skill.skill}
+            {skill}
           </li>
         ))}
       </ul>

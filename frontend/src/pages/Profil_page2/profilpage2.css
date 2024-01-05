@@ -1,0 +1,30 @@
+.principalpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardchoice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ad9d8b;
+  width: 80%;
+  height: 27rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.cardchoice > div {
+  text-align: center;
+}
+.btnvalidate {
+  width: 6rem;
+  height: 2.5rem;
+  color: white;
+  background-color: #557cae;
+  border-radius: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  font-size: 95%;
+}

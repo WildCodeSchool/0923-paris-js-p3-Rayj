@@ -7,6 +7,7 @@ import ListeSkills from "../listskills/ListeSkills";
 
 const employes = [
   {
+    id: 1,
     image: user1,
     nom: "Dupont",
     prénom: "Jean",
@@ -15,6 +16,7 @@ const employes = [
     anciennete: "5 ans",
   },
   {
+    id: 2,
     image: user2,
     nom: "Martin",
     prénom: "Lucas",
@@ -23,6 +25,7 @@ const employes = [
     anciennete: "3 ans",
   },
   {
+    id: 3,
     image: user3,
     nom: "Durand",
     prénom: "Marie",
@@ -38,43 +41,39 @@ const hardSkills = ["Anglais", "HTML/CSS", "React", "JavaScript"];
 function ContactCandidat() {
   const [employeList] = useState(employes);
   return (
-    <>
-      {employeList.map((employe) => (
-        <section className="candidat-card" key={employe.matricule}>
-          <div className="candidat-info">
-            <div className="candinfo">
-              <h3>CANDIDAT</h3>
-              <ul>
-                <li>Nom : {employe.nom}</li>
-                <li>Prénom : {employe.prénom}</li>
-                <li>Matricule : {employe.matricule}</li>
-                <li>Profession : {employe.profession}</li>
-                <li>Ancienneté : {employe.anciennete}</li>
-              </ul>
-            </div>
-            <div>
-              <img
-                alt="candidat_name"
-                className="candidate_photo"
-                src={employe.image}
-              />
-            </div>
-          </div>
-          <div className="twobtn">
-            <button className="no_contact_btn" type="button">
-              Refuser
-            </button>
-            <button className="contact_btn" type="button">
-              Contacter
-            </button>
-          </div>
-          <div className="listingskills">
-            <ListeSkills titre="Softskills" skills={softSkills} />
-            <ListeSkills titre="Hardskills" skills={hardSkills} />
-          </div>
-        </section>
-      ))}
-    </>
+    <section className="candidat-card">
+      <div className="candidat-info">
+        <div className="candinfo">
+          <h3>CANDIDAT</h3>
+          <ul>
+            <li>Nom : {employeList[1].nom}</li>
+            <li>Prénom : {employeList[1].prénom}</li>
+            <li>Matricule : {employeList[1].matricule}</li>
+            <li>Profession : {employeList[1].profession}</li>
+            <li>Ancienneté : {employeList[1].anciennete}</li>
+          </ul>
+        </div>
+        <div>
+          <img
+            alt="candidat_name"
+            className="candidate_photo"
+            src={employeList[1].image}
+          />
+        </div>
+      </div>
+      <div className="twobtn">
+        <button className="no_contact_btn" type="button">
+          Refuser
+        </button>
+        <button className="contact_btn" type="button">
+          Contacter
+        </button>
+      </div>
+      <div className="listingskills">
+        <ListeSkills titre="Softskills" skills={softSkills} />
+        <ListeSkills titre="Hardskills" skills={hardSkills} />
+      </div>
+    </section>
   );
 }
 

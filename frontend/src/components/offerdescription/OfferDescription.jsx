@@ -52,7 +52,7 @@ function OfferDescription() {
               <tbody>
                 {jobList[0].softskills.map((skill) => (
                   <tr key={skill}>
-                    <td className="skillssh">{skill.skill}</td>
+                    <td className="skillssh">{skill}</td>
                   </tr>
                 ))}
               </tbody>
