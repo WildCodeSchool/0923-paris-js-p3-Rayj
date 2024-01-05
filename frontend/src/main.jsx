@@ -9,9 +9,13 @@ import Following from "./pages/Following/Following";
 import Post from "./pages/Posts/Post";
 import Profil from "./pages/Profil/Profil";
 import Validation from "./pages/Validation/Validation";
+
+import ProfilModif from "./pages/ProfilModif/ProfilModif";
+
 import Connection from "./pages/Connection/Connection";
 import OfferDescription from "./components/offerdescription/OfferDescription";
 import Inscription from "./pages/Inscription/inscription";
+
 
 const router = createBrowserRouter([
   {
@@ -47,12 +51,17 @@ const router = createBrowserRouter([
         element: <Validation />,
       },
       {
+
+        path: "/profilmodif",
+        element: <ProfilModif />,
+
         path: "/OfferDescription/:offer",
         element: <OfferDescription />,
       },
       {
         path: "/inscription",
         element: <Inscription />,
+
       },
     ],
   },
