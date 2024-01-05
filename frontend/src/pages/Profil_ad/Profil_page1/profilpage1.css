@@ -1,0 +1,15 @@
+.photoprofilad {
+  width: 5rem;
+  height: 6rem;
+}
+
+.bloc_card {
+  display: block;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  overflow: auto;
+  width: 100%;
+}

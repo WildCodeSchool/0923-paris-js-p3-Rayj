@@ -1,6 +1,5 @@
 import React from "react";
 import "./informationemploye.css";
-
 import user1 from "../../assets/images/rara.png";
 import user2 from "../../assets/images/richard.png";
 import user3 from "../../assets/images/yaya.png";

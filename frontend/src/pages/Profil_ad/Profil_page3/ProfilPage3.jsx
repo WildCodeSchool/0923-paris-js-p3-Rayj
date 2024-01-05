@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../../components/header/Header";
-import user4 from "../../assets/images/yaya.png";
-import ButtonProfilAd from "../../components/boutonprofilad/ButtonProfilAd";
-import ContactCandidat from "../../components/contact_candidat/ContactCandidat";
+import Header from "../../../components/header/Header";
+import user4 from "../../../assets/images/yaya.png";
+import ButtonProfilAd from "../../../components/boutonprofilad/ButtonProfilAd";
+import ContactCandidat from "../../../components/contact_candidat/ContactCandidat";
 
 function ProfilPage3() {
   return (

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import Header from "../../components/header/Header";
-import user4 from "../../assets/images/yaya.png";
-import ButtonProfilAd from "../../components/boutonprofilad/ButtonProfilAd";
+import Header from "../../../components/header/Header";
+import user4 from "../../../assets/images/yaya.png";
+import ButtonProfilAd from "../../../components/boutonprofilad/ButtonProfilAd";
 import "./profilpage2.css";
 
 const SecteursActivites = [
