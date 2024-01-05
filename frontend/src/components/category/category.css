@@ -2,6 +2,7 @@
 .technique,
 .security {
   width: auto;
+  margin-bottom: 1rem;
 }
 .categorie {
   display: flex;

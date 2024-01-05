@@ -1,8 +1,7 @@
 import React from "react";
-
 import { useNavigate } from "react-router-dom";
-import logogouv from "../../assets/logo/logogouv.png";
-import UnityTeamRAYJ from "../../assets/logo/UnityTeamRAYJ.png";
+import logorf from "../../assets/images/logorf.png";
+import logorayj from "../../assets/images/logorayj.png";
 import "./inscription.css";
 
 function inscription() {
@@ -10,7 +9,7 @@ function inscription() {
 
   return (
     <div className="inscribody">
-      <img className="logorf" src={logogouv} alt="logo de la société" />
+      <img className="logorf" src={logorf} alt="logo de la société" />
 
       <from className="form-inscription">
         <div className="inscription-box">
@@ -91,7 +90,7 @@ function inscription() {
         </button>
       </div>
       <div>
-        <img className="rayinscrir" src={UnityTeamRAYJ} alt="logo société" />
+        <img className="rayinscrir" src={logorayj} alt="logo société" />
       </div>
     </div>
   );

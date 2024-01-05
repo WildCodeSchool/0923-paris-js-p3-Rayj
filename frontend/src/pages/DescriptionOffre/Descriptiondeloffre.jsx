@@ -1,6 +1,6 @@
-import Popup from "../../components/Popup";
+import Popup from "../../components/popup/Popup";
 
-import OfferDescription from "../../components/OfferDescription";
+import OfferDescription from "../../components/offerdescription/OfferDescription";
 
 import "./descriptiondeloffre.css";
 

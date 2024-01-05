@@ -1,16 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./connection.css";
-import logogouv from "../../assets/logo/logogouv.png";
-import UnityTeamRAYJ from "../../assets/logo/UnityTeamRAYJ.png";
+import logorf from "../../assets/images/logorf.png";
+import logorayj from "../../assets/images/logorayj.png";
 
 function Connection() {
   const navigate = useNavigate();
 
   return (
     <div className="connection">
-      <img className="logo" src={logogouv} alt="logo de la société" />
-
+      <img className="logo" src={logorf} alt="logo de la société" />
       <div className="login-box">
         <div className="user-box">
           <input
@@ -56,7 +55,7 @@ function Connection() {
         </div>
       </div>
 
-      <img className="ray" src={UnityTeamRAYJ} alt="logo société" />
+      <img className="ray" src={logorayj} alt="logo société" />
     </div>
   );
 }
