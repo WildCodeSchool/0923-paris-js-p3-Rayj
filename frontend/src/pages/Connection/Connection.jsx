@@ -1,12 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./connection.css";
-import logogouv from "../../assets/logo/logogouv.png";
-import UnityTeamRAYJ from "../../assets/logo/UnityTeamRAYJ.png";
+import logorf from "../../assets/images/logorf.png";
+import logorayj from "../../assets/images/logorayj.png";
 
 function Connection() {
+  const navigate = useNavigate();
+
   return (
     <div className="connection">
-      <img className="logo" src={logogouv} alt="logo de la société" />
+      <img className="logo" src={logorf} alt="logo de la société" />
       <div className="login-box">
         <div className="user-box">
           <input
@@ -27,7 +30,11 @@ function Connection() {
           />
         </div>
         <div>
-          <button className="btn-connection" type="button">
+          <button
+            className="btn-connection"
+            type="button"
+            onClick={() => navigate("/HomePage")}
+          >
             Connexion
           </button>
           <hr className="ligne-btn-connection" />
@@ -36,14 +43,19 @@ function Connection() {
 
       <div className="inscription-box">
         <h2 className="creationcompte">Pas encore De Compte ?</h2>
-        <button className="inscrire" type="submit">
-          <p>
-            <u>Je souhaite m'inscrire</u>
-          </p>
-        </button>
+        <div>
+          <button
+            className="inscrire"
+            type="button"
+            onClick={() => navigate("/inscription")}
+          >
+            Je souhaite m'inscrire
+          </button>
+          <hr className="ligne-inscription" />
+        </div>
       </div>
 
-      <img className="ray" src={UnityTeamRAYJ} alt="logo société" />
+      <img className="ray" src={logorayj} alt="logo société" />
     </div>
   );
 }

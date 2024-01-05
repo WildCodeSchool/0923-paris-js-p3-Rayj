@@ -3,12 +3,6 @@
   max-width: 430px;
   max-height: 932px;
 }
-.entete {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  max-width: 300px;
-}
 .catfilter {
   width: 400px;
 }

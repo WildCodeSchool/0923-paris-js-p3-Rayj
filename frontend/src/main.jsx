@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { AnnonceProvider } from "./context/AnnonceContext";
-
 import App from "./App";
 import HomePage from "./pages/HomePage/HomePage";
 import Candidate from "./pages/Candidate/Candidate";
@@ -12,6 +11,7 @@ import Profil from "./pages/Profil/Profil";
 import Validation from "./pages/Validation/Validation";
 import Connection from "./pages/Connection/Connection";
 import OfferDescription from "./components/offerdescription/OfferDescription";
+import Inscription from "./pages/Inscription/inscription";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "/OfferDescription/:offer",
         element: <OfferDescription />,
+      },
+      {
+        path: "/inscription",
+        element: <Inscription />,
       },
     ],
   },

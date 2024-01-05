@@ -102,10 +102,21 @@ button.text {
   position: absolute !important;
   top: 17px !important;
   left: 154px !important;
+  background-image: url("../../assets/cards/favorie.svg");
+  background-size: 2rem;
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  background-color: white;
 }
 .fav.jaune {
-  background-color: yellow;
   position: absolute !important;
   top: 17px !important;
   left: 154px !important;
+  background-image: url("../../assets/cards/favoriejaune.png");
+  background-size: 2rem;
+  border: none;
+  height: 2rem;
+  width: 2rem;
+  background-color: #fff;
 }
