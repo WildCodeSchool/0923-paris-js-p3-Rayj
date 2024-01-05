@@ -1,5 +1,3 @@
-// import react from "react";
-import Arrow from "../../assets/images/Arrow.svg";
 import "./recapopup.css";
 
 function Recapitulatif() {
@@ -7,9 +5,6 @@ function Recapitulatif() {
     <section className="fenetrepopup">
       <h1>Recapitulatif</h1>
       <div>
-        <button type="button" className="button-retour">
-          <img className="quitter" alt="" src={Arrow} />
-        </button>
         <h2>titre et voir</h2>
         <hr />
       </div>

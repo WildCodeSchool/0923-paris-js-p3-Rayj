@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import rf from "../../assets/images/logorf.png";
 import rara from "../../assets/images/rara.png";
 import logorayj from "../../assets/images/logorayj.png";
@@ -6,6 +7,7 @@ import Arrow from "../../assets/images/Arrow.svg";
 import "./header.css";
 
 function Header() {
+  const versprofil = useNavigate();
   return (
     <section className="entete">
       <div className="jesaispas">
@@ -20,7 +22,11 @@ function Header() {
         <button type="button" className="button-precedent">
           <img className="flecheprec" alt="" src={Arrow} />
         </button>
-        <button type="button" className="butbutprofil">
+        <button
+          type="button"
+          className="butbutprofil"
+          onClick={() => versprofil("/profil")}
+        >
           Profil
         </button>
       </div>

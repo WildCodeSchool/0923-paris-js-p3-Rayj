@@ -28,10 +28,19 @@ function inscription() {
       if (response.ok) {
         console.info("Form submitted successfully");
       } else {
-        console.error("Failed to submit the form");
+        console.error("Merci de remplir tous les champs du formulaire");
       }
     },
-    [firstName, lastName]
+    [
+      firstName,
+      lastName,
+      email,
+      password,
+      phoneNumber,
+      seniority,
+      pickerdate,
+      introduction,
+    ]
   );
 
   const validation = useNavigate();
@@ -126,7 +135,7 @@ function inscription() {
           <button
             className="validation"
             type="submit"
-            onClick={() => validation("/profil")}
+            onClick={() => validation("/")}
           >
             Valider
           </button>
