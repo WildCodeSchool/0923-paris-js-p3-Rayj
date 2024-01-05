@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   background-color: #eae0d5;
 }
 
@@ -52,6 +53,3 @@ code {
   }
 }
 
-button {
-  font-size: calc(10px + 2vmin);
-}
