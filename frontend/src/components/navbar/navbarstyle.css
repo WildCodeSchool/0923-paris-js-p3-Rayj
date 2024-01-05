@@ -2,7 +2,16 @@
 .search,
 .profile,
 .following {
-  size: 50rem;
+  height: 4rem;
+  width: 4rem;
+}
+.home button,
+.search button,
+.profile button,
+.following button {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 1rem;
 }
 
 .mobile {
@@ -10,7 +19,6 @@
   flex-wrap: nowrap;
   justify-content: space-around;
   border: black;
-  margin: 2rem;
   background-color: #8d7b64;
-  padding: 16, 34, 16, 16;
+  width: 430px;
 }

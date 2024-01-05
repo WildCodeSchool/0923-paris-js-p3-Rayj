@@ -6,13 +6,21 @@ import Search from "../../assets/NavBar/Discovery.svg";
 const categories = [
   {
     id: 1,
-    name: "Category 1",
+    name: "Ressources Humaines",
     subCategories: [{ id: 11, name: "SubCategory 1" }],
   },
   {
     id: 2,
-    name: "Category 2",
+    name: "Sécurité",
     subCategories: [{ id: 21, name: "SubCategory 2" }],
+  },
+  {
+    id: 3,
+    name: "Technique",
+    subCategories: [
+      { id: 31, name: "SubCateggory 3" },
+      { id: 32, name: "SubCategory 4" },
+    ],
   },
 ];
 
@@ -37,7 +45,6 @@ function NavBarSearch() {
 
   const handleCategoryChange = useCallback(
     (e) => {
-      // console.log(e.target.value)
       const selectedCategorys = categories.filter(
         (category) => category.id === +e.target.value
       );
