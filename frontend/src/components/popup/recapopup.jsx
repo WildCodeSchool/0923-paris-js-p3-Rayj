@@ -1,11 +1,12 @@
 import "./recapopup.css";
 
-function Recapitulatif() {
+function Recapitulatif({ titi }) {
+  console.info("titi", titi);
   return (
     <section className="fenetrepopup">
       <h1>Recapitulatif</h1>
       <div>
-        <h2>titre et voir</h2>
+        <h2> {titi} </h2>
         <hr />
       </div>
       <div className="windowrecap">

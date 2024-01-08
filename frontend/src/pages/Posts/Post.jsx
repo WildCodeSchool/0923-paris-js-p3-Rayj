@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import Select from "react-select";
-import ReactModal from "react-modal";
+import { Modal } from "react-responsive-modal";
 import Header from "../../components/header/Header";
 import RecaPopup from "../../components/popup/recapopup";
 import "./post.css";
@@ -197,7 +197,7 @@ function Post() {
             onSubmit={handleoffre}
             type="radio"
             id="2ans"
-            name="seniority"
+            name="seniority
             value={seniority}
           /> */}
           <label htmlFor="2ans">2ans</label>
@@ -205,14 +205,9 @@ function Post() {
       </div>
       <button type="button" className="recapt" onClick={onOpenModalRecap}>
         Recapitulatif
-        <ReactModal
-          // classNames={"backgroundModal"}
-          open={recap}
-          onClose={onCloseRecap}
-          center
-        >
-          <RecaPopup />
-        </ReactModal>
+        <Modal open={recap} onClose={onCloseRecap} center>
+          <RecaPopup titi={hardSkills} />
+        </Modal>
       </button>
     </div>
   );
