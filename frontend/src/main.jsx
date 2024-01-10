@@ -51,10 +51,10 @@ const router = createBrowserRouter([
         element: <Validation />,
       },
       {
-
         path: "/profilmodif",
         element: <ProfilModif />,
-
+      },
+      {
         path: "/OfferDescription/:offer",
         element: <OfferDescription />,
       },
