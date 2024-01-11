@@ -1,26 +1,24 @@
 import Header from "../../../components/header/Header";
 import InformationEmploye from "../../../components/informationemploye/InformationEmploye";
 import "./profilpage1.css";
-// import user4 from "../../../assets/images/yaya.png";
-// import ButtonProfilAd from "../../../components/boutonprofilad/ButtonProfilAd";
 
 function ProfilPage1() {
   return (
-    <>
+    <section className="affichagepageprofil1">
       <Header />
 
-      {/* <ButtonProfilAd /> */}
-
-      <h1>Candidatures :</h1>
       <section className="bloc_card">
-        <div className="row">
+        <div>
+          <h2 className="htwopageprofil1">Candidatures :</h2>
+        </div>
+        <div className="rowrow">
           <InformationEmploye />
         </div>
-        <div className="row">
+        <div className="rowrow">
           <InformationEmploye />
         </div>
       </section>
-    </>
+    </section>
   );
 }
 

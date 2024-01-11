@@ -263,12 +263,13 @@ CREATE TABLE `users` (
   `id_Users` int NOT NULL AUTO_INCREMENT,
   `Lastname` varchar(45) NOT NULL,
   `Firstname` varchar(45) NOT NULL,
-  `Martricule` varchar(85) NOT NULL,
+  `Matricule` varchar(85) NOT NULL,
   `Password` varchar(255) NOT NULL,
   `Email` varchar(80) NOT NULL,
-  `Phone` int NOT NULL,
+  `Phone` VARCHAR(10) NOT NULL,
   `Seniority` datetime NOT NULL,
   `Admin` tinyint NOT NULL,
+  `Introduction` TEXT,
   PRIMARY KEY (`id_Users`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;

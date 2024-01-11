@@ -1,25 +1,18 @@
 import React from "react";
 import Header from "../../../components/header/Header";
-import user4 from "../../../assets/images/yaya.png";
-import ButtonProfilAd from "../../../components/boutonprofilad/ButtonProfilAd";
 import ContactCandidat from "../../../components/contact_candidat/ContactCandidat";
+import "./profilpage3.css";
 
 function ProfilPage3() {
   return (
-    <>
-      <Header />
-      <div className="admin_profil">
-        <img
-          className="photoprofilad
-        "
-          src={user4}
-          alt="dirigeant"
-        />
-        <p>Le Patron</p>
+    <section className="principalpageaffich">
+      <div>
+        <Header />
       </div>
-      <ButtonProfilAd />
-      <ContactCandidat />
-    </>
+      <div className="layoutcontactcandidat">
+        <ContactCandidat />
+      </div>
+    </section>
   );
 }
 

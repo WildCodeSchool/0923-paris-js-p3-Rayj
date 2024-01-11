@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import Header from "../../../components/header/Header";
-import user4 from "../../../assets/images/yaya.png";
-import ButtonProfilAd from "../../../components/boutonprofilad/ButtonProfilAd";
+
 import "./profilpage2.css";
 
 const SecteursActivites = [
@@ -39,20 +38,9 @@ function ProfilPage2() {
     setCandidat(selectedCandidats);
   };
   return (
-    <>
+    <section className="highpage">
       <Header />
       <section className="principalpage">
-        <div className="admin_profil">
-          <img
-            className="photoprofilad
-        "
-            src={user4}
-            alt="dirigeant"
-          />
-          <p>Le Patron</p>
-        </div>
-        <ButtonProfilAd />
-
         <section className="cardchoice">
           <div>
             <h3>Domaines d'activités</h3>
@@ -85,7 +73,7 @@ function ProfilPage2() {
           </button>
         </section>
       </section>
-    </>
+    </section>
   );
 }
 

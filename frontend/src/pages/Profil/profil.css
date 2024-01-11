@@ -116,12 +116,12 @@ input::placeholder {
   transform: rotate(45deg);
 }
 
-/* Boilerplate stuff */
+/* Boilerplate stuff 
 *,
 *:before,
 *:after {
   box-sizing: border-box;
-}
+}*/
 
 .heading {
   font-size: 18px;

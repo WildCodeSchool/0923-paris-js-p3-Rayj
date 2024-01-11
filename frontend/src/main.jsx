@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { AnnonceProvider } from "./context/AnnonceContext";
+import { AuthProvider } from "./context/AuthContext";
+
 import App from "./App";
 import HomePage from "./pages/HomePage/HomePage";
 import Candidate from "./pages/Candidate/Candidate";
@@ -10,6 +12,8 @@ import Post from "./pages/Posts/Post";
 import Profil from "./pages/Profil/Profil";
 import ProfilPage2 from "./pages/Profil_ad/Profil_page2/ProfilPage2";
 import ProfilPage3 from "./pages/Profil_ad/Profil_page3/ProfilPage3";
+import Descriptiondeloffre from "./pages/DescriptionOffre/Descriptiondeloffre";
+
 import Validation from "./pages/Validation/Validation";
 import ProfilModif from "./pages/ProfilModif/ProfilModif";
 import Connection from "./pages/Connection/Connection";
@@ -75,6 +79,10 @@ const router = createBrowserRouter([
         element: <OfferDescription />,
       },
       {
+        path: "/descriptionoffre",
+        element: <Descriptiondeloffre />,
+      },
+      {
         path: "/inscription",
         element: <Inscription />,
       },
@@ -86,8 +94,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <AnnonceProvider>
-      <RouterProvider router={router} />
-    </AnnonceProvider>
+    <AuthProvider>
+      <AnnonceProvider>
+        <RouterProvider router={router} />
+      </AnnonceProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

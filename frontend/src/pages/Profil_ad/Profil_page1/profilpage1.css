@@ -6,10 +6,22 @@
 .bloc_card {
   display: block;
   width: 100%;
+  margin-top: 10rem;
 }
 
-.row {
+.rowrow {
   display: flex;
   overflow: auto;
   width: 100%;
+}
+
+.affichagepageprofil1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.htwopageprofil1 {
+  text-align: left;
+  padding-left: 1rem;
 }
