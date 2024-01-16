@@ -10,7 +10,6 @@ const hardSkills = ["Anglais", "HTML/CSS", "React", "JavaScript"];
 
 function ContactCandidat({ users }) {
   const { id } = useParams();
-  console.info("User ID:", id);
   const userId = parseInt(id, 10);
   const filteredUsers = users.filter((u) => u.id === userId);
   const user = filteredUsers.length > 0 ? filteredUsers[0] : null;
