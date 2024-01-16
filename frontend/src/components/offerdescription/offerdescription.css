@@ -67,9 +67,13 @@
   font-size: small;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 425px) {
   .descriptionoffre {
     margin: 1rem;
+  }
+
+  .descriptionoffre p {
+    font-size: medium;
   }
 
   .ligne-separation1,
