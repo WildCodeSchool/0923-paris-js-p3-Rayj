@@ -1,4 +1,3 @@
-// const argon = require("argon2");
 const jwt = require("jsonwebtoken");
 const userModel = require("../models/users.model");
 const { comparePassword } = require("../middlewares/auth");

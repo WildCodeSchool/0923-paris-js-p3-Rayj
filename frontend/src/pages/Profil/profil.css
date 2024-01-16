@@ -115,14 +115,6 @@ input::placeholder {
   transform-origin: bottom left;
   transform: rotate(45deg);
 }
-
-/* Boilerplate stuff 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}*/
-
 .heading {
   font-size: 18px;
   margin-bottom: 1.5rem;

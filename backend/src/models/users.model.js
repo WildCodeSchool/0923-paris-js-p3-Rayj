@@ -11,10 +11,11 @@ const insert = (user) => {
     Seniority,
     Admin,
     Introduction,
+    Picture,
   } = user;
 
   return db.query(
-    "INSERT INTO users (Lastname, Firstname, Matricule, Password, Email, Phone, Seniority, Admin, Introduction) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    "INSERT INTO users (Lastname, Firstname, Matricule, Password, Email, Phone, Seniority, Admin, Introduction, Picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
     [
       Lastname,
       Firstname,
@@ -25,6 +26,7 @@ const insert = (user) => {
       Seniority,
       Admin,
       Introduction,
+      Picture,
     ]
   );
 };
