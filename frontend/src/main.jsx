@@ -73,7 +73,6 @@ const router = createBrowserRouter([
         path: "/validation",
         element: <Validation />,
       },
-
       {
         path: "/profilmodif",
         element: <ProfilModif />,
