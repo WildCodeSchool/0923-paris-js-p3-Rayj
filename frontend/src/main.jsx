@@ -12,6 +12,7 @@ import Validation from "./pages/Validation/Validation";
 import Connection from "./pages/Connection/Connection";
 import OfferDescription from "./components/offerdescription/OfferDescription";
 import Inscription from "./pages/Inscription/inscription";
+import { AuthProvider } from "./context/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -41,13 +42,19 @@ const router = createBrowserRouter([
       {
         path: "/profil",
         element: <Profil />,
+        loader: () => {
+          return fetch(`${import.meta.env.VITE_BACKEND_URL}/api/users/:id`, {
+            method: "GET",
+            credentials: "include",
+          });
+        },
       },
       {
         path: "/validation",
         element: <Validation />,
       },
       {
-        path: "/OfferDescription/:offer",
+        path: "/OfferDescription/:idOffers",
         element: <OfferDescription />,
       },
       {
@@ -57,13 +64,14 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <AnnonceProvider>
-      <RouterProvider router={router} />
-    </AnnonceProvider>
+    <AuthProvider>
+      <AnnonceProvider>
+        <RouterProvider router={router} />
+      </AnnonceProvider>
+    </AuthProvider>
   </React.StrictMode>
 );
