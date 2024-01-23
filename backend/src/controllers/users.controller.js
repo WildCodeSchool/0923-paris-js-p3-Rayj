@@ -25,7 +25,7 @@ const login = async (req, res, next) => {
     if (!user) res.sendStatus(422);
     else if (comparePassword(user.Password, Password)) {
       const token = jwt.sign(
-        { id: user.id_User, admin: user.Admin },
+        { id: user.id_Users, admin: user.Admin },
         process.env.APP_Secret,
         { expiresIn: "30d" }
       );
@@ -63,11 +63,14 @@ const getById = async (req, res, next) => {
 };
 const putById = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const id = req.userId;
     const data = req.body;
-    const [user] = await userModel.updateById(id, data);
-    if (!user) res.sendStatus(422);
-    else res.status(200).json(user);
+    const [result] = await userModel.updateById(id, data);
+    if (result.affectedRows <= 0) res.sendStatus(422);
+    else {
+      const [[user]] = await userModel.findById(id);
+      res.status(200).json(user);
+    }
   } catch (error) {
     next(error);
   }

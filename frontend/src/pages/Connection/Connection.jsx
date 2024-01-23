@@ -1,11 +1,18 @@
-import React, { useRef, useContext } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import authContext from "../../context/AuthContext";
 import "./connection.css";
 import logorf from "../../assets/images/logorf.png";
 import logorayj from "../../assets/images/logorayj.png";
-import authContext from "../../context/AuthContext";
+import Popup from "../../components/popup/Popup";
 
 function Connection() {
+  const [popupVisible, setPopupVisible] = useState(true);
+
+  const closePopup = () => {
+    setPopupVisible(false);
+  };
+
   const navigate = useNavigate();
   const Email = useRef();
   const Password = useRef();
@@ -30,7 +37,8 @@ function Connection() {
       if (response.status === 200) {
         const user = await response.json();
         auth.setUser(user);
-        navigate("/homepage");
+        if (user.Admin === 1) navigate("/profil1");
+        else navigate("/homepage");
       } else {
         console.error("veuillez verifier votre saisie.");
       }
@@ -38,8 +46,11 @@ function Connection() {
       console.error(error);
     }
   };
+
   return (
     <div className="connection">
+      {popupVisible && <Popup onClose={closePopup} />}
+
       <img className="logo" src={logorf} alt="logo de la société" />
       <div className="login-box">
         <div className="user-box">

@@ -26,8 +26,8 @@ const isAuth = async (req, res, next) => {
   try {
     const token = req.cookies["auth-token"];
     const decoded = jwt.verify(token, process.env.APP_SECRET);
-    req.body.userId = decoded.id;
-    req.body.admin = decoded.admin;
+    req.userId = decoded.id;
+    req.admin = decoded.admin;
     next();
   } catch (error) {
     console.error(error);
@@ -35,7 +35,7 @@ const isAuth = async (req, res, next) => {
   }
 };
 const isAdmin = async (req, res, next) => {
-  if (req.body.admin) {
+  if (req.admin) {
     next();
   } else res.sendStatus(403);
 };
