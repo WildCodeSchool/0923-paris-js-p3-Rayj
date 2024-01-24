@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
+const argon = require("argon2");
 const userModel = require("../models/users.model");
-const { comparePassword } = require("../middlewares/auth");
+// const { comparePassword } = require("../middlewares/auth");
 
 const add = async (req, res, next) => {
   try {
@@ -21,7 +22,7 @@ const login = async (req, res, next) => {
     const { Email, Password } = req.body;
     const [[user]] = await userModel.findByEmail(Email);
     if (!user) res.sendStatus(422);
-    else if (comparePassword(user.Password, Password)) {
+    else if (await argon.verify(user.Password, Password)) {
       const token = jwt.sign(
         { id: user.id_Users, admin: user.Admin },
         process.env.APP_SECRET,
@@ -40,10 +41,19 @@ const login = async (req, res, next) => {
   }
 };
 
+const getAll = async (req, res, next) => {
+  try {
+    const [users] = await userModel.findAll();
+    res.status(200).json(users);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const getById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const [[user]] = await userModel.findById(id);
+    const [user] = await userModel.findById(id);
     if (!user) res.sendStatus(422);
     else res.status(200).json(user);
   } catch (error) {
@@ -54,5 +64,6 @@ const getById = async (req, res, next) => {
 module.exports = {
   add,
   login,
+  getAll,
   getById,
 };

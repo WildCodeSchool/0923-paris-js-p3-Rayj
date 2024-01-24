@@ -27,8 +27,12 @@ const comparePassword = async (hash, password) => {
 const isAuth = async (req, res, next) => {
   try {
     const token = req.cookies["auth-token"];
+
     const decoded = jwt.verify(token, process.env.APP_SECRET);
+
     req.body.userID = decoded.id;
+    req.body.admin = decoded.admin;
+
     next();
   } catch (error) {
     res.status(401).json(error.message);

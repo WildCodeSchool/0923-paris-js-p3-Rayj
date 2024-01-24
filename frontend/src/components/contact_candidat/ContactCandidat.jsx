@@ -1,36 +1,43 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+
+import { format } from "date-fns";
 
 import "./contactcandidat.css";
 
 import ListeSkills from "../listskills/ListeSkills";
 
-const softSkills = ["Autonomie", "Esprit d'équipe", "Rigueur", "Communication"];
-const hardSkills = ["Anglais", "HTML/CSS", "React", "JavaScript"];
+// const hardSkills = ["Anglais", "HTML/CSS", "React", "JavaScript"];
 
-function ContactCandidat({ users }) {
-  const { id } = useParams();
-  const userId = parseInt(id, 10);
-  const filteredUsers = users.filter((u) => u.id === userId);
-  const user = filteredUsers.length > 0 ? filteredUsers[0] : null;
+function ContactCandidat({ user, onCloseModal }) {
+  const softSkills = user.id_SoftSkills?.Name || [];
 
+  const hardSkills = ["Anglais", "HTML/CSS", "React", "JavaScript"];
   return (
     <section className="candidat-card">
       {user ? (
         <div className="candidat-info">
           <div className="candinfo">
             <h3>CANDIDAT</h3>
+            <button
+              type="button"
+              className="close-iconcontactcandidat"
+              onClick={onCloseModal}
+            >
+              &#x2715;
+            </button>
             <ul>
-              <li>Nom : {user.LastName}</li>
-              <li>Prénom : {user.FirstName}</li>
+              <li>Nom : {user.Lastname}</li>
+              <li>Prénom : {user.Firstname}</li>
               <li>Matricule : {user.Matricule}</li>
               <li>Profession : {user.Profession}</li>
-              <li>Ancienneté : {user.Seniority}</li>
+              <li>
+                Ancienneté : {format(new Date(user.Seniority), "dd/MM/yyyy")}{" "}
+              </li>
             </ul>
           </div>
           <div>
             <img
-              alt="candidat_name"
+              alt={user.Firstname}
               className="candidate_photo"
               src={user.image}
             />
@@ -40,16 +47,46 @@ function ContactCandidat({ users }) {
         <div>Candidat introuvable</div>
       )}
       <div className="twobtn">
-        <button className="no_contact_btn" type="button">
+        <button
+          className="no_contact_btn"
+          type="button"
+          onClick={() => {
+            const emailSubject = encodeURIComponent(
+              `Candidat - ${user.Firstname} ${user.Lastname}`
+            );
+            const emailBody = encodeURIComponent(
+              "Votre candidature n'a pas été retenue. Nous vous invitons à continuer votre recherche d'emploi que nous étudierons avec attention. "
+            );
+
+            const mailtoURL = `mailto:${user.email}?subject=${emailSubject}&body=${emailBody}`;
+
+            window.location.href = mailtoURL;
+          }}
+        >
           Refuser
         </button>
-        <button className="contact_btn" type="button">
+        <button
+          className="contact_btn"
+          type="button"
+          onClick={() => {
+            const emailSubject = encodeURIComponent(
+              `Candidat - ${user.Firstname} ${user.Lastname}`
+            );
+            const emailBody = encodeURIComponent(
+              "Votre candidature a été retenue. Je prendrai contact avec vous dans les meilleurs délais afin de fixer un entretien."
+            );
+
+            const mailtoURL = `mailto:${user.email}?subject=${emailSubject}&body=${emailBody}`;
+
+            window.location.href = mailtoURL;
+          }}
+        >
           Contacter
         </button>
       </div>
       <div className="listingskills">
-        <ListeSkills titre="Softskills" skills={softSkills} />
-        <ListeSkills titre="Hardskills" skills={hardSkills} />
+        <ListeSkills titre="Softskills :" skills={softSkills} />
+        <ListeSkills titre="Hardskills :" skills={hardSkills} />
       </div>
     </section>
   );

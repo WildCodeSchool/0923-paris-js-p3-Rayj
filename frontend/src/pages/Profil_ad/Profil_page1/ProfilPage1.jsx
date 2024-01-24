@@ -1,61 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import { Modal, Box } from "@mui/material";
 
 import Header from "../../../components/header/Header";
 import InformationEmploye from "../../../components/informationemploye/InformationEmploye";
+import ContactCandidat from "../../../components/contact_candidat/ContactCandidat";
 import "./profilpage1.css";
 
-import user1 from "../../../assets/images/rara.png";
-import user2 from "../../../assets/images/richard.png";
-import user3 from "../../../assets/images/yaya.png";
-
 function ProfilPage1() {
-  const [users] = useState([
-    {
-      id: 1,
-      image: user1,
-      LastName: "Dupont",
-      FirstName: "Jean",
-      Matricule: "001",
-      Profession: "Développeur",
-      Seniority: "5 ans",
-    },
-    {
-      id: 2,
-      image: user2,
-      LastName: "Martin",
-      FirstName: "Lucas",
-      Matricule: "002",
-      Profession: "Designer",
-      Seniority: "3 ans",
-    },
-    {
-      id: 3,
-      image: user3,
-      LastName: "Durand",
-      FirstName: "Marie",
-      Matricule: "003",
-      Profession: "Product Manager",
-      Seniority: "6 ans",
-    },
-    {
-      id: 4,
-      image: user1,
-      LastName: "Dupont",
-      FirstName: "Jean",
-      Matricule: "001",
-      Profession: "Développeur",
-      Seniority: "5 ans",
-    },
-    {
-      id: 5,
-      image: user2,
-      LastName: "Martin",
-      FirstName: "Lucas",
-      Matricule: "002",
-      Profession: "Designer",
-      Seniority: "3 ans",
-    },
-  ]);
+  const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
+
+  const [openModal, setOpenModal] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/users`,
+
+          {
+            method: "GET",
+          }
+        );
+
+        if (response.status === 200) {
+          const data = await response.json();
+          setUsers(data);
+        } else {
+          console.error("Erreur lors de la récupération des données ");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleopenModal = (user) => {
+    setSelectedUser(user);
+
+    setOpenModal(true);
+  };
+
+  const handlecloseModal = () => {
+    setSelectedUser(null);
+
+    setOpenModal(false);
+  };
 
   return (
     <section className="affichagepageprofil1">
@@ -66,10 +59,31 @@ function ProfilPage1() {
         </div>
         <div className="rowrow">
           {users.map((user) => (
-            <InformationEmploye key={user.id} user={user} />
+            <InformationEmploye
+              user={user}
+              key={user.id}
+              onOpenModal={handleopenModal}
+            />
           ))}
         </div>
       </section>
+
+      <Modal
+        className="modalcontactcandidat"
+        open={openModal}
+        onClose={handlecloseModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box>
+          {selectedUser && (
+            <ContactCandidat
+              user={selectedUser}
+              onCloseModal={handlecloseModal}
+            />
+          )}
+        </Box>
+      </Modal>
     </section>
   );
 }
