@@ -29,13 +29,6 @@ function OfferDescription() {
                   <th className="competence">Softskills</th>
                 </tr>
               </thead>
-              {/* <tbody>
-                {filterAnnonce.softskills.map((skill) => (
-                  <tr key={skill.softskills}>
-                    <td className="skillssh">{skill}</td>
-                  </tr>
-                ))}
-              </tbody>
             </table>
             <table className="hardskillsrm">
               <thead>
@@ -43,13 +36,6 @@ function OfferDescription() {
                   <th className="competence">Hardskills</th>
                 </tr>
               </thead>
-              <tbody>
-                {filterAnnonce.hardskills.map((skill) => (
-                  <tr key={skill.softskills}>
-                    <td className="skillssh">{skill}</td>
-                  </tr>
-                ))}
-              </tbody> */}
             </table>
           </div>
         </div>
