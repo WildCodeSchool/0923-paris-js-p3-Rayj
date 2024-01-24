@@ -55,7 +55,7 @@ function ContactCandidat({ user, onCloseModal }) {
               `Candidat - ${user.Firstname} ${user.Lastname}`
             );
             const emailBody = encodeURIComponent(
-              "Votre candidature n'a pas été retenue. Nous vous invitons à continuer votre recherche d'emploi que nous étudierons avec attention. "
+              "Votre candidature n'a pas été retenue. Nous vous invitons à continuer votre recherche d'emploi. "
             );
 
             const mailtoURL = `mailto:${user.email}?subject=${emailSubject}&body=${emailBody}`;
