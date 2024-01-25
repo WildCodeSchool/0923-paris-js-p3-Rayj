@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import Select from "react-select";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./profilmodif.css";
 import profilPic from "../../assets/Profil/profil_pic.jpg";
 import modifPen from "../../assets/Profil/modif_pen.svg";
@@ -22,66 +22,68 @@ const hardSkillsOptions = [
 ];
 
 function ProfilModif() {
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [image, setImage] = useState(null);
+  const redirect = useNavigate();
+  const Email = useRef();
+  const Password = useRef();
+  const Phone = useRef();
+  const Introduction = useRef();
+  const Picture = useRef();
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/users`,
+        {
+          method: "PUT",
+          credentials: "include",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            Password: Password.current.value,
+            Email: Email.current.value,
+            Phone: Phone.current.value,
+            Picture: Picture.current.value,
+            Introduction: Introduction.current.value,
+          }),
+        }
+      );
+      if (response.status === 200) {
+        const user = await response.json();
+        console.info(user);
+        redirect("/profil");
+      } else {
+        console.error("Mauvaise Donnée");
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  const handleSelectSoftSkillChange = (e) => {
+    softSkillsOptions(e.target.value);
   };
-
-  const handlePhoneNumberChange = (event) => {
-    setPhoneNumber(event.target.value);
+  const handleSelectHardSkillChange = (e) => {
+    hardSkillsOptions(e.target.value);
   };
-
-  const handleImageChange = (event) => {
-    const selectedImage = event.target.files[0];
-    setImage(selectedImage);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-  const [message, setMessage] = useState("");
-
-  const handleChange = (event) => {
-    setMessage(event.target.value);
-  };
-
-  const [softSkills, setSoftSkills] = useState([]);
-
-  const handleSelectSoftSkillChange = (selectedSoftSkillOptions) => {
-    setSoftSkills(selectedSoftSkillOptions);
-  };
-  const [hardSkills, sethardSkills] = useState([]);
-
-  const handleSelectHardSkillChange = (selectedHardSkillOptions) => {
-    sethardSkills(selectedHardSkillOptions);
-  };
-
   return (
     <div className="pg_modify">
       <div className="img_btn">
         <img className="profilpic" src={profilPic} alt="profilpic" />
-        <p className="user_name">Rudy Martin</p>
+        <p className="user_name">{}</p>
         <Link to="/profil" className="btn_profil">
           Profil
         </Link>
       </div>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form">
         <label>
           <p className="info"> Mot de passe</p>
           <input className="info_input" type="password" placeholder="*******" />
           <input
             className="info_input"
             type="password"
-            value={password}
-            onChange={handlePasswordChange}
+            ref={Password}
+            id="password"
+            required
             placeholder="Nouveau mot de passe"
           />
         </label>
@@ -95,9 +97,11 @@ function ProfilModif() {
           <input
             className="info_input"
             type="email"
-            value={email}
-            onChange={handleEmailChange}
-            placeholder="Nouveau Adress mail"
+            name="email"
+            id="email"
+            required
+            placeholder="E-mail"
+            ref={Email}
           />
         </label>
         <label>
@@ -110,9 +114,10 @@ function ProfilModif() {
           <input
             className="info_input"
             type="tel"
-            value={phoneNumber}
-            onChange={handlePhoneNumberChange}
+            id="phone"
+            required
             placeholder="Nouveau numéro"
+            ref={Phone}
           />
         </label>
         <label className="img_input">
@@ -120,8 +125,9 @@ function ProfilModif() {
           <img className="upload_icon" src={uploadIcon} alt="uploadIcon" />
           <input
             type="file"
-            value={image}
-            onChange={handleImageChange}
+            id="picture"
+            required
+            ref={Picture}
             accept="image/*"
             hidden
           />
@@ -137,7 +143,7 @@ function ProfilModif() {
         <Select
           className="skill_options"
           options={softSkillsOptions}
-          value={softSkills}
+          // value={softSkills}
           onChange={handleSelectSoftSkillChange}
           isMulti
           placeholder="Sélectionnez vos compétences..."
@@ -146,7 +152,7 @@ function ProfilModif() {
         <Select
           className="skill_options"
           options={hardSkillsOptions}
-          value={hardSkills}
+          // value={hardSkills}
           onChange={handleSelectHardSkillChange}
           isMulti
           placeholder="Sélectionnez vos compétences..."
@@ -158,15 +164,15 @@ function ProfilModif() {
           className="motivation_input_modif"
           rows="15"
           name="message"
-          value={message}
-          onChange={handleChange}
+          id="introduction"
+          ref={Introduction}
           required
           placeholder="Expliquez vos motivation..."
         />
       </div>
-      <Link to="/profil" className="btn_save">
+      <button type="button" onClick={handleSubmit}>
         SAUVEGARDER
-      </Link>
+      </button>
     </div>
   );
 }

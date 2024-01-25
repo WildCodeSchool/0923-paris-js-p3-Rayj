@@ -34,18 +34,19 @@ const insert = (user) => {
 const findById = (id) => {
   return db.query("SELECT * FROM users WHERE id_Users = ?", [id]);
 };
-
 const findByEmail = (email) => {
-  return db.query("SELECT * FROM users WHERE Email = ?", [email]);
+  return db.query("SELECT * FROM users WHERE Email =?", [email]);
 };
-
 const findAll = () => {
   return db.query("SELECT * FROM users");
 };
-
+const updateById = (id, data) => {
+  return db.query("UPDATE  users SET ? WHERE id_Users = ?", [data, id]);
+};
 module.exports = {
   insert,
   findById,
   findByEmail,
   findAll,
+  updateById,
 };

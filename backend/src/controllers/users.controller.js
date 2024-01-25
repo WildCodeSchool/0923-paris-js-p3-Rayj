@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
-const userModel = require("../models/users.model");
 const { comparePassword } = require("../middlewares/auth");
+
+const userModel = require("../models/users.model");
 
 const add = async (req, res, next) => {
   try {
@@ -20,11 +21,12 @@ const login = async (req, res, next) => {
   try {
     const { Email, Password } = req.body;
     const [[user]] = await userModel.findByEmail(Email);
+    console.info(user);
     if (!user) res.sendStatus(422);
     else if (comparePassword(user.Password, Password)) {
       const token = jwt.sign(
         { id: user.id_Users, admin: user.Admin },
-        process.env.APP_SECRET,
+        process.env.APP_Secret,
         { expiresIn: "30d" }
       );
       res.cookie("auth-token", token, {
@@ -40,19 +42,43 @@ const login = async (req, res, next) => {
   }
 };
 
+const getAll = async (req, res, next) => {
+  try {
+    const [users] = await userModel.findAll();
+    res.status(200).json(users);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const getById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const [[user]] = await userModel.findById(id);
+    const [user] = await userModel.findById(id);
     if (!user) res.sendStatus(422);
     else res.status(200).json(user);
   } catch (error) {
     next(error);
   }
 };
-
+const putById = async (req, res, next) => {
+  try {
+    const id = req.userId;
+    const data = req.body;
+    const [result] = await userModel.updateById(id, data);
+    if (result.affectedRows <= 0) res.sendStatus(422);
+    else {
+      const [[user]] = await userModel.findById(id);
+      res.status(200).json(user);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
 module.exports = {
   add,
   login,
+  getAll,
   getById,
+  putById,
 };

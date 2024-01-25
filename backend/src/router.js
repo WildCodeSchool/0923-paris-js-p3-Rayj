@@ -9,11 +9,11 @@ const router = express.Router();
 // Import routes here
 const itemRouter = require("./routes/items.route");
 const userRouter = require("./routes/users.route");
-
+const offerRouter = require("./routes/offers.route");
 // Apply routes
 router.use(itemRouter);
 router.use(userRouter);
-
+router.use(offerRouter);
 /* ************************************************************************* */
 
 module.exports = router;

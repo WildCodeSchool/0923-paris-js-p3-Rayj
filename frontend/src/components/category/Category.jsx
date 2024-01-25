@@ -5,8 +5,8 @@ import security from "../../assets/category/6.png";
 import "./category.css";
 
 function Category({ onFilterChange }) {
-  const handleClick = (domaine) => {
-    onFilterChange(domaine);
+  const handleClick = (Domaine) => {
+    onFilterChange(Domaine);
   };
   return (
     <>
