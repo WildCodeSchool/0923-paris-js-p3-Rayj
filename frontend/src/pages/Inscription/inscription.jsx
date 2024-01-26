@@ -12,8 +12,9 @@ function inscription() {
   const Password = useRef();
   const Phone = useRef();
   const Matricule = useRef();
-  const Introduction = useRef();
   const [seniority, setSeniority] = useState("");
+  const Introduction = useRef();
+  const Picture = useRef();
 
   const handleSubmit = async () => {
     try {
@@ -32,6 +33,7 @@ function inscription() {
             Seniority: seniority,
             Admin: false,
             Introduction: Introduction.current.value,
+            Picture: Picture.current.value,
           }),
         }
       );
@@ -116,7 +118,13 @@ function inscription() {
                 onChange={(e) => setSeniority(e.target.value)}
               />
             </label>
-
+            <input
+              className="foto"
+              type="url"
+              name="photo"
+              placeholder="Votre photo"
+              ref={Picture}
+            />
             <textarea
               className="introduction"
               rows="25"

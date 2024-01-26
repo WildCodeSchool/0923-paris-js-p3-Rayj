@@ -6,12 +6,10 @@ import "./contactcandidat.css";
 
 import ListeSkills from "../listskills/ListeSkills";
 
-// const hardSkills = ["Anglais", "HTML/CSS", "React", "JavaScript"];
-
 function ContactCandidat({ user, onCloseModal }) {
   const softSkills = user.id_SoftSkills?.Name || [];
 
-  const hardSkills = ["Anglais", "HTML/CSS", "React", "JavaScript"];
+  const hardSkills = [];
   return (
     <section className="candidat-card">
       {user ? (
@@ -39,7 +37,7 @@ function ContactCandidat({ user, onCloseModal }) {
             <img
               alt={user.Firstname}
               className="candidate_photo"
-              src={user.image}
+              src={user.Picture}
             />
           </div>
         </div>

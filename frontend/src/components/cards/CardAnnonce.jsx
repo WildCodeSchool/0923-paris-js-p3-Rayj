@@ -6,31 +6,31 @@ import ville from "../../assets/cards/ville.svg";
 function CardAnnonce({ poste }) {
   const navigate = useNavigate();
   const [favori, setFavori] = useState({});
-  const handleClick = (offer) => {
-    setFavori((prev) => ({ ...prev, [offer]: !prev[offer] }));
+  const handleClick = (offres) => {
+    setFavori((prev) => ({ ...prev, [offres]: !prev[offres] }));
   };
   return (
     <section className="overlap-group">
       <div className="card">
-        <div className="placeholder" key={poste}>
+        <div className="placeholder" key={poste.id_Offers}>
           <img className="rangee1" src={poste?.image} alt="service" />
           <button
             type="button"
-            onClick={() => handleClick(poste.offer)}
-            className={favori[poste.offer] ? "fav jaune" : "icon"}
+            onClick={() => handleClick(poste.offres)}
+            className={favori[poste.offre] ? "fav jaune" : "icon"}
           >
             .
           </button>
           <button
             type="button"
-            onClick={() => navigate(`/OfferDescription/${poste.offer}`)}
+            onClick={() => navigate(`/OfferDescription/${poste.id_Offers}`)}
             className="text"
           >
-            <h1>{poste?.titre}</h1>
+            <h1>{poste?.Post_title}</h1>
             <div className="location">
               <div className="txt">
                 <img className="iconlocal" src={ville} alt="ville" />
-                <p>{poste.ville}</p>
+                <p>{poste.Location}</p>
               </div>
             </div>
           </button>

@@ -7,4 +7,6 @@ const softskillsController = require("../controllers/softskills.controller");
 // router.post("/users/login", userController.login);
 router.get("/softskills", softskillsController.readSoftSkills);
 
+router.get("/softskills/:id", softskillsController.readSoftSkillsById);
+
 module.exports = router;
