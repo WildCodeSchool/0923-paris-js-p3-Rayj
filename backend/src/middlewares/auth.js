@@ -25,6 +25,7 @@ const comparePassword = async (hash, password) => {
 const isAuth = async (req, res, next) => {
   try {
     const token = req.cookies["auth-token"];
+
     const decoded = jwt.verify(token, process.env.APP_SECRET);
     req.userId = decoded.id;
     req.admin = decoded.admin;

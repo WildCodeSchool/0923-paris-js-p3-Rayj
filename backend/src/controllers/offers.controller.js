@@ -30,6 +30,7 @@ const getById = async (req, res, next) => {
     next(error);
   }
 };
+
 module.exports = {
   add,
   getAll,

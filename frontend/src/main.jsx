@@ -64,6 +64,9 @@ const router = createBrowserRouter([
         path: "/profil2",
         element: <ProfilPage2 />,
       },
+      // {
+      //       path="/profil1/:data" element={<ProfilPage1 />}
+      // }
       {
         path: "/profil3",
         element: <ProfilPage3 />,
