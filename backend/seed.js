@@ -33,56 +33,31 @@ const seed = async () => {
     // }
 
     // const hardskills = [
-    //   { Name: "HTML"},
-    //   { Name: "CSS"},
-    //   { Name: "JAVASCRIPT"},
-    //   { Name: "REACT"},
-    //   { Name: "OFFICE"},
-    //   { Name: "YPOLICE"},
-    //   { Name: "SELFDEFENCE"},
-    //   { Name: "SSIAP"}
+    //    {Name: "HTML",
+    //    Name: "CSS",
+    //    Name: "JAVASCRIPT",
+    //    Name: "REACT",
+    //    Name: "OFFICE",
+    //    Name: "YPOLICE"},
+    //    Name: "SELFDEFENCE",
+    //    Name: "SSIAP"}
     // ]
 
     // const softskills = [
-    //   { Name: "AUTONOMIE"},
-    //   { Name: "FLEXIBILITE"},
-    //   { Name: "RIGUEUR"},
-    //   { Name: "REACTIVITE"},
-    //   { Name: "POLYVALANCE"},
+    //   { Name: "AUTONOMIE",
+    //    Name: "FLEXIBILITE",
+    //    Name: "RIGUEUR",
+    //    Name: "REACTIVITE",
+    //    Name: "POLYVALANCE"},
     // ]
 
     // const categorie = [
-    //   { Name: "COMPTABILITE"},
-    //   { Name: "DEVELOPPEUR"},
-    //   { Name: "AGENT SECURITE",},
-    //   { Name: "REACTIVITE"},
-    //   { Name: "POLYVALANCE"},
+    //   {Name: "COMPTABILITE",
+    //    Name: "DEVELOPPEUR",
+    //    Name: "AGENT SECURITE",
+    //    Name: "REACTIVITE",
+    //    Name: "POLYVALANCE"},
     // ]
-
-    // const offers = [
-    //   {
-    //     Date_of_publication: "2024-03-03",
-    //     Post_title: "Developpeur",
-    //     Description: "teste seed1",
-    //     Training: false,
-    //     Level: "1ans",
-    //     Domaine: "",
-    //     Locaction:"Paris",
-    //     Logo: "picture",
-
-    //   },
-    //   {
-    //     Date_of_publication: "2024-03-03",
-    //     Post_title: "Developpeur",
-    //     Description: "teste seed1",
-    //     Training: false,
-    //     Level: "1ans",
-    //     Domaine: "",
-    //     Locaction:"Paris",
-    //     Logo: "picture",
-    //   }
-    // ]
-
     const users = [
       {
         Firstname: "Jean",
@@ -96,7 +71,60 @@ const seed = async () => {
         Picture: "x",
         Introduction: "test",
       },
+      {
+        Firstname: "Lu",
+        Lastname: "Cas",
+        Email: "Lc@example.com",
+        Matricule: "777",
+        Password: "lucas",
+        Phone: "0610101010",
+        Seniority: "2024-04-04",
+        Admin: 0,
+        Picture: "x",
+        Introduction: "test 2",
+      },
     ];
+
+    const offers = [
+      {
+        Date_of_publication: "2024-03-03",
+        Post_title: "Developpeur",
+        Description: "teste seed1",
+        Training: false,
+        Level: "1ans",
+        Domaine: "",
+        Locaction: "Paris",
+        Logo: "picture",
+      },
+      {
+        Date_of_publication: "2024-03-03",
+        Post_title: "Comptable",
+        Description: "teste seed2",
+        Training: true,
+        Level: "2ans",
+        Domaine: "",
+        Locaction: "Lille",
+        Logo: "picture",
+      },
+    ];
+
+    for (let i = 0; i < offers.length; i += 1) {
+      queries.push(
+        database.query(
+          "insert into offers (Date_of_publication,Post_title, Description,Training,Level,Domaine,Locaction,Logo, ) values (?,?,?,?,?,?,?,?)",
+          [
+            // Date_of_publication[i].Date_of_publication,
+            // Post_title[i].Post_title,
+            // Description[i].Description,
+            // Training[i].Training,
+            // Level[i].Level,
+            // Domaine[i].Domaine,
+            // Locaction[i].Locaction,
+            // Logo[i].Logo,
+          ]
+        )
+      );
+    }
 
     const hashingOptions = {
       type: argon.argon2id,
@@ -124,8 +152,9 @@ const seed = async () => {
           ]
         )
       );
-      /* ************************************************************************* */
     }
+    /* ************************************************************************* */
+
     // Wait for all the insertion queries to complete
     await Promise.all(queries);
 
