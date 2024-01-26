@@ -1,213 +1,365 @@
-import { useState, useCallback } from "react";
+/* eslint-disable no-unneeded-ternary */
+import { useState, useEffect } from "react";
 import Select from "react-select";
-import { Modal } from "react-responsive-modal";
+import { useNavigate } from "react-router-dom";
+import { RadioGroup, Radio } from "react-radio-group";
+// import { Modal } from "react-responsive-modal";
 import Header from "../../components/header/Header";
-import RecaPopup from "../../components/popup/recapopup";
+// import RecaPopup from "../../components/popup/recapopup";
 import "./post.css";
 
-const softSkillsOptions = [
-  { value: "Humour", label: "Humour" },
-  { value: "Autonomie", label: "Autonomie" },
-  { value: "Réactivité", label: "Réactivité" },
-  { value: "Adaptabilité", label: "Adaptabilité" },
-  { value: "Flexibilité", label: "Flexibilité" },
+const Domaine = [
+  { value: "Securite", label: "Securite" },
+  { value: "Technique", label: "Technique" },
+  { value: "Rh", label: "Rh" },
 ];
-const hardSkillsOptions = [
-  { value: "HTML", label: "HTML" },
-  { value: "CSS", label: "CSS" },
-  { value: "JavaScript", label: "JavaScript" },
-  { value: "NodeJS", label: "NodeJS" },
-  { value: "ReactJS", label: "ReactJS" },
+
+const City = [
+  { value: "Paris", label: "Paris" },
+  { value: "Espagne", label: "Espagne" },
 ];
 
 function Post() {
-  const [recap, setRecap] = useState(false);
-  const onOpenModalRecap = () => setRecap(true);
-  const onCloseRecap = () => setRecap(false);
+  // modal //
+  // const [recap, setRecap] = useState(false);
+  // const onOpenModalRecap = () => setRecap(true);
+  // const onCloseRecap = () => setRecap(false);
 
+  const navigate = useNavigate();
+
+  //   const Training = useRef();
+  const [training, setTraining] = useState("");
+
+  //   const Level = useRef();
+  const [level, setLevel] = useState("");
+  //   const selectDomaine = useRef();
+  const [selectDomaine, setSelectDomaine] = useState();
+  const [selectCity, setSelectCity] = useState();
   const [softSkills, setSoftSkills] = useState([]);
-  const handleSelectSoftSkillChange = (selectedSoftSkillOptions) => {
-    setSoftSkills(selectedSoftSkillOptions);
-  };
-  const [hardSkills, sethardSkills] = useState([]);
-  const handleSelectHardSkillChange = (selectedHardSkillOptions) => {
-    sethardSkills(selectedHardSkillOptions);
-  };
+  const [hardSkills, setHardSkills] = useState([]);
+  const [categories, setCategories] = useState("");
 
-  const handleoffre = useCallback(async (event) => {
-    event.preventDefault();
+  // const structureData = (tab) => {
+  //   const newTab = [];
+  //   for (let i = 0; i < tab.length; i += 1) {
+  //     const name = tab[i].Name;
+  //     if (tab[i]?.id_Hardskills) {
+  //       newTab.push({
+  //         id_Hardskills: tab[i].id_Hardskills,
+  //         value: name,
+  //         label: name,
+  //       });
+  //     } else if (tab[i]?.id_Softskills) {
+  //       newTab.push({
+  //         id_Softskills: tab[i].id_Softskills,
+  //         value: name,
+  //         label: name,
+  //       });
+  //     } else {
+  //       newTab.push({
+  //         id_Categories: tab[i].id_Categories,
+  //         value: name,
+  //         label: name,
+  //       });
+  //     }
+  //   }
+  //   return newTab;
+  // };
 
-    const response = await fetch("api/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({}),
-    });
-    if (response.ok) {
-      console.info("Form submitted successfully");
-    } else {
-      console.error("Merci de remplir tous les champs du formulaire");
-    }
+  // get //
+  useEffect(() => {
+    const gethardSkills = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/hardskills`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          // const transformDataHardskill = await structureData(data);
+          setHardSkills(data);
+        } else {
+          console.error("Champs non trouvé");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    gethardSkills();
   }, []);
+
+  useEffect(() => {
+    const getsoftSkills = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/softskills`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          // const transformDataSoftskill = await structureData(data);
+          setSoftSkills(data);
+        } else {
+          console.error("Champs non trouvé");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getsoftSkills();
+  }, []);
+
+  useEffect(() => {
+    const getCategorie = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/categorie`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          // console.log(data);
+          // const transformDataCategie = await structureData(data);
+          setCategories(data);
+        } else {
+          console.error("Champs non trouvé");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getCategorie();
+  }, []);
+
+  // post//
+  const [titlePost, setTitlePost] = useState("");
+  const [descriptionoffre, setDescriptionoffre] = useState("");
+  const [insertLogo, setInsertLogo] = useState("");
+
+  const [selectSoftSkills, setSelectSoftSkills] = useState([]);
+  const [selectHardSkills, setSelectHardSkills] = useState([]);
+  const [selectCategorie, setSelectCategorie] = useState("");
+  const handleoffre = async () => {
+    try {
+      const form = new FormData();
+      form.append("tabSoftSkills", JSON.stringify(selectSoftSkills));
+      form.append("tabHardSkills", JSON.stringify(selectHardSkills));
+      form.append("Training", training === "true" ? 1 : 0);
+      form.append("Level", level);
+      form.append("Domaine", selectDomaine?.value);
+      form.append("Location", selectCity?.value);
+      form.append("Categorie", selectCategorie.id_Categories);
+      form.append("Description", descriptionoffre);
+      form.append("Post_title", titlePost);
+      form.append("Logo", insertLogo);
+
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/post`,
+        {
+          method: "POST",
+          credentials: "include",
+          body: form,
+        }
+      );
+      if (response.ok) {
+        console.info("Form submitted successfully");
+        navigate("/ProfilPage1");
+        // const data = await response.json(); navigate
+        // console.log(data)
+      } else {
+        console.error("Merci de remplir tous les champs du formulaire");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleSelectHardSkillChange = (selectedHardSkillOptions) => {
+    setSelectHardSkills(selectedHardSkillOptions);
+  };
+
+  const handleSelectCategorie = (value) => {
+    setSelectCategorie(value);
+  };
+
+  const handleSelectSoftSkillChange = (selectedSoftSkillOptions) => {
+    setSelectSoftSkills(selectedSoftSkillOptions);
+  };
+
+  const handleChangeFormation = (value) => {
+    setTraining(value);
+  };
+
+  const handleChangeAncien = (value) => {
+    setLevel(value);
+  };
+  const handlePostTitle = (e) => {
+    // console.log(e.target.value);
+    setTitlePost(e.target.value);
+  };
+
+  const handledescription = (e) => {
+    // console.log(e.target.value);
+    setDescriptionoffre(e.target.value);
+  };
+  const handleInsertLogo = (e) => {
+    // console.log(e.target.files[0]);
+    setInsertLogo(e.target.files[0]);
+  };
+
   return (
     <div className="pageprofiljesaispas">
       <Header />
       <div className="offersannonces">
         <h1 className="creationannonce">Creation de l'annonce</h1>
 
+        <p> Titre de L'annonce</p>
+        <input
+          className="Title-poste"
+          type="text"
+          name="titlePost"
+          required
+          placeholder="Titre de l'annonce"
+          onChange={handlePostTitle}
+          value={titlePost}
+        />
+        <div>
+          <label htmlFor="avatar">Choose a profile picture:</label>
+          <input
+            type="file"
+            id="avatar"
+            name="avatar"
+            accept="image/png, image/jpeg"
+            onChange={handleInsertLogo}
+            // value={insertLogo}
+          />
+        </div>
+
         <fieldset className="domaine">
           <legend className="legenddomaine">Domaine</legend>
           <label htmlFor="domaine">
-            {/* <select onSubmit={handleoffre} className="departement" id="domaine">
-              <option value="">Indiquez le domaine de l'annonce</option>
-              <option value={rh}>Ressources humaines</option>
-              <option value={technique}>Techniques</option>
-              <option value={sécurité}>Sécurité</option>
-            </select> */}
+            <Select
+              className="villeya"
+              options={Domaine}
+              onChange={setSelectDomaine}
+              value={selectDomaine}
+              //   ref={selectDomaine}
+              // isMulti
+              placeholder="Sélectionnez vos compétences..."
+            />
           </label>
         </fieldset>
 
-        <fieldset className="jobs">
-          <legend className="offersmetier">Métiers</legend>
-          <label htmlFor="metier">
-            {/* <select
-              onSubmit={handleoffre}
-              className="choicejobs"
-              name="metier"
-              id="metier"
-            >
-              <option value="">Metiers correspondant au domaine</option>
-              <option value={Développeur}>Développeur</option>
-              <option value={DataAnalist}>Data analist</option>
-              <option value={sécurité}>Agent SIAAP</option>
-              <option value={RessourcesHumaines}>
-                Chargé(e) de communication
-              </option>
-              <option value="ressource humaines">
-                Responsable developpement commercial
-              </option>
-            </select> */}
+        <fieldset className="domaine">
+          <legend className="legenddomaine">Ville</legend>
+          <label htmlFor="city">
+            <Select
+              className="city"
+              options={City}
+              onChange={setSelectCity}
+              value={selectCity}
+              //   ref={selectDomaine}
+              // isMulti
+              placeholder="Sélectionnez vos city..."
+            />
           </label>
         </fieldset>
 
-        <fieldset className="city">
-          <legend>Localisation</legend>
-          <label htmlFor="ville">
-            {/* <select
-              onSubmit={handleoffre}
-              className="lieux"
-              name="ville"
-              id="ville"
-            >
-              <option value="">Indiquez la ville ou ce situe l'offre</option>
-              <option value={Paris}>Paris</option>
-              <option value={ValdeMarne}>Val de Marne</option>
-              <option value={Toulouse}>Toulouse</option>
-              <option value={Nantes}>Nante</option>
-              <option value={Lille}>Lille</option>
-            </select> */}
-          </label>
-        </fieldset>
-
-        <fieldset className="annoncedecrite">
-          <legend>Annonce</legend>
-          <label onSubmit={handleoffre} htmlFor="descriptionoffers">
-            {/* <textarea
-              className="offersdescription"
-              rows="10"
-              cols="35"
-              name="message"
-              required
-              placeholder="Détailler l'annonce"
-              value={descriptiondeOffre}
-              onChange={(event) => setDescriptiondeOffre(event.target.value)}
-            /> */}
-          </label>
-        </fieldset>
         <h2 className="comptetout">Compétences et Outils</h2>
         <div>
           <p className="skill_block_heading">Soft Skill</p>
           <Select
             className="skill_options"
-            options={softSkillsOptions}
-            value={softSkills}
+            options={softSkills}
+            value={selectSoftSkills}
             onChange={handleSelectSoftSkillChange}
             isMulti
             placeholder="Sélectionnez vos compétences..."
           />
+
           <p className="skill_block_heading">Hard Skills</p>
           <Select
             className="skill_options"
-            options={hardSkillsOptions}
-            value={hardSkills}
+            options={hardSkills}
+            value={selectHardSkills}
             onChange={handleSelectHardSkillChange}
             isMulti
             placeholder="Sélectionnez vos compétences..."
           />
-        </div>
 
+          <p className="skill_block_heading">Categorie</p>
+          <Select
+            className="skill_options"
+            options={categories}
+            value={selectCategorie}
+            onChange={handleSelectCategorie}
+            placeholder="Sélectionnez vos compétences..."
+          />
+        </div>
+        <div>
+          <p> Description de l'annonce</p>
+          <input
+            className="Post-description"
+            type="text"
+            name="description"
+            required
+            placeholder="détaillé la fiche de poste"
+            onChange={handledescription}
+            value={descriptionoffre}
+          />
+        </div>
         <h2 className="formation"> Formation</h2>
         <div>
-          {/* <input
-            onSubmit={handleoffre}
-            type="radio"
-            id="oui"
+          <RadioGroup
             name="formation"
-            value={formation}
-          /> */}
-          <label className="affirmatif" htmlFor="oui">
-            oui
-          </label>
-
-          {/* <input
-            onSubmit={handleoffre}
-            type="radio"
-            id="non"
-            name="formation"
-            value={formation}
-          /> */}
-          <label htmlFor="non">Non</label>
+            selectedValue={training}
+            onChange={handleChangeFormation}
+          >
+            <label htmlFor="oui">
+              <Radio value="true" />
+              oui
+            </label>
+            <label htmlFor="non">
+              <Radio value="false" />
+              non
+            </label>
+          </RadioGroup>
         </div>
 
         <h2 className="demandeanciennete">Ancienneté demandé</h2>
-        <div className="anciennetechoix">
-          {/* <input
-            onSubmit={handleoffre}
-            className="6-mois"
-            type="radio"
-            id="6mois"
-            name="seniority"
-            value={seniority}
-          /> */}
-          <label className="anciennnete" htmlFor="6mois">
+        <RadioGroup
+          name="level"
+          selectedValue={level}
+          onChange={handleChangeAncien}
+        >
+          <label htmlFor="6mois">
+            <Radio value="6 mois" />
             6mois
           </label>
-          {/* <input
-            onSubmit={handleoffre}
-            type="radio"
-            id="1ans"
-            name="seniority"
-            value={seniority}
-          /> */}
-          <label className="anciennete" htmlFor="1ans">
+          <label htmlFor="1ans">
+            <Radio value="1 ans" />
             1ans
           </label>
-          {/* <input
-            onSubmit={handleoffre}
-            type="radio"
-            id="2ans"
-            name="seniority
-            value={seniority}
-          /> */}
-          <label htmlFor="2ans">2ans</label>
-        </div>
+          <label htmlFor="2ans">
+            <Radio value="2 ans" />
+            2ans
+          </label>
+        </RadioGroup>
       </div>
-      <button type="button" className="recapt" onClick={onOpenModalRecap}>
+      <button type="button" className="recapt" onClick={handleoffre}>
         Recapitulatif
-        <Modal open={recap} onClose={onCloseRecap} center>
+        {/* <Modal open={recap} onClose={onCloseRecap} center>
           <RecaPopup titi={hardSkills} />
-        </Modal>
+        </Modal> */}
       </button>
     </div>
   );

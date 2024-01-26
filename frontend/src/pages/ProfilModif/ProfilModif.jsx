@@ -73,7 +73,7 @@ function ProfilModif() {
           Profil
         </Link>
       </div>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="formdeasle" onSubmit={handleSubmit}>
         <label>
           <p className="info"> Mot de passe</p>
           <input className="info_input" type="password" placeholder="*******" />

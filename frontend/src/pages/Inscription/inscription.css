@@ -2,7 +2,7 @@
 .lastname,
 .email,
 .password,
-.seniority,
+.matricule,
 .phonenumber {
   color: #070707;
   text-decoration: none;
@@ -10,9 +10,9 @@
   border: none;
 }
 
-::placeholder {
+/* ::placeholder {
   color: #070707;
-}
+} */
 .inscribody {
   width: 100%;
   height: 100%;
@@ -95,7 +95,7 @@
   background: transparent;
 }
 
-.seniority {
+.matricule {
   width: 85%;
   padding: 3px;
   font-size: 20px;
@@ -107,7 +107,7 @@
 }
 
 .pickerdate {
-  width: 140px;
+  width: 160px;
   padding: 5px;
   font-size: 20px;
   color: #070707;

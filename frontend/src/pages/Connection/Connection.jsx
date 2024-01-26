@@ -1,11 +1,43 @@
-import React from "react";
+import React, { useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import authContext from "../../context/AuthContext";
 import "./connection.css";
 import logorf from "../../assets/images/logorf.png";
 import logorayj from "../../assets/images/logorayj.png";
 
 function Connection() {
   const navigate = useNavigate();
+
+  const Email = useRef();
+  const Password = useRef();
+
+  const auth = useContext(authContext);
+
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/users/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            Email: Email.current.value,
+            Password: Password.current.value,
+          }),
+          credentials: "include",
+        }
+      );
+      if (response.status === 200) {
+        const user = await response.json();
+        auth.setUser(user);
+        navigate("/homepage");
+      } else {
+        console.error("regardez votre saisie");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="connection">
@@ -18,6 +50,7 @@ function Connection() {
             id="email"
             required
             placeholder="Votre adresse e-mail"
+            ref={Email}
           />
         </div>
         <div className="user-box">
@@ -27,13 +60,14 @@ function Connection() {
             id="password"
             required
             placeholder="Votre mot de passe"
+            ref={Password}
           />
         </div>
         <div>
           <button
-            className="btn-connection"
+            className="btn-connection-yayou"
             type="button"
-            onClick={() => navigate("/homepage")}
+            onClick={handleSubmit}
           >
             Connexion
           </button>

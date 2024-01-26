@@ -1,49 +1,62 @@
-import { useState, useCallback } from "react";
+import { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import logorf from "../../assets/images/logorf.png";
 import logorayj from "../../assets/images/logorayj.png";
 import "./inscription.css";
+import authContext from "../../context/AuthContext";
 
 function inscription() {
-  const [firstName, setFirstname] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [phoneNumber, setphoneNumber] = useState("");
+  const navigate = useNavigate();
+  const firstName = useRef();
+  const lastName = useRef();
+  const email = useRef();
+  const password = useRef();
+  const phoneNumber = useRef();
+  const [matricule, setMatricule] = useState("");
   const [seniority, setSeniority] = useState("");
-  const [pickerdate, setPickerdate] = useState("");
   const [introduction, setIntroduction] = useState("");
 
-  const handlesubmit = useCallback(
-    async (event) => {
-      event.preventDefault();
+  const auth = useContext(authContext);
 
-      const response = await fetch("api/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ firstName, lastName }),
-      });
+  // const handlesubmit = useCallback(
+  //   async (event) => {
+  //     event.preventDefault();
+
+  const handlesubmit = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/users`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            Lastname: lastName.current.value,
+            Firstname: firstName.current.value,
+            Matricule: matricule,
+            Password: password.current.value,
+            Email: email.current.value,
+            Phone: phoneNumber.current.value,
+            Seniority: seniority,
+            Introduction: introduction,
+            Admin: false,
+          }),
+          credentials: "include",
+        }
+      );
       if (response.ok) {
-        console.info("Form submitted successfully");
+        const newUser = await response.json();
+        console.info(newUser);
+        auth.setUser(newUser);
+        navigate("/homepage");
       } else {
-        console.error("Merci de remplir tous les champs du formulaire");
+        console.error("regardez votre saisie");
       }
-    },
-    [
-      firstName,
-      lastName,
-      email,
-      password,
-      phoneNumber,
-      seniority,
-      pickerdate,
-      introduction,
-    ]
-  );
+    } catch (error) {
+      console.error(error);
+    }
 
-  const validation = useNavigate();
+    // status ok redirect to login or fetch login route to autologin
+  };
 
   return (
     <div className="inscribody">
@@ -57,9 +70,8 @@ function inscription() {
               type="text"
               name="firstName"
               required
-              value={firstName}
+              ref={firstName}
               placeholder="Prénom"
-              onChange={(event) => setFirstname(event.target.value)}
             />
 
             <input
@@ -68,7 +80,7 @@ function inscription() {
               name="Lastname"
               required
               placeholder="Nom"
-              onChange={(event) => setLastName(event.target.value)}
+              ref={lastName}
             />
 
             <input
@@ -76,10 +88,9 @@ function inscription() {
               type="email"
               name="email"
               id="email"
-              value={email}
               required
               placeholder="E-mail"
-              onChange={(event) => setEmail(event.target.value)}
+              ref={email}
             />
             <input
               className="password"
@@ -87,25 +98,23 @@ function inscription() {
               name="password"
               id="password"
               required
-              value={password}
+              ref={password}
               placeholder="Mot de passe"
-              onChange={(event) => setPassword(event.target.value)}
             />
             <input
               className="phonenumber"
               type="tel"
               name="phoneNumber"
               placeholder="numéro de téléphone"
-              value={phoneNumber}
-              onChange={(event) => setphoneNumber(event.target.value)}
+              ref={phoneNumber}
             />
             <input
-              className="seniority"
+              className="matricule"
               type="number"
               name="matricule"
               placeholder="Votre Matricule"
-              value={seniority}
-              onChange={(event) => setSeniority(event.target.value)}
+              value={matricule}
+              onChange={(event) => setMatricule(event.target.value)}
             />
             <label htmlFor="start" className="embauche">
               Date d'embauche:
@@ -114,8 +123,8 @@ function inscription() {
                 type="date"
                 name="start"
                 id="start"
-                value={pickerdate}
-                onChange={(event) => setPickerdate(event.target.value)}
+                value={seniority}
+                onChange={(event) => setSeniority(event.target.value)}
               />
             </label>
 
@@ -132,11 +141,7 @@ function inscription() {
           </div>
         </div>
         <div>
-          <button
-            className="validation"
-            type="submit"
-            onClick={() => validation("/")}
-          >
+          <button className="validation" type="button" onClick={handlesubmit}>
             Valider
           </button>
         </div>
@@ -150,4 +155,4 @@ function inscription() {
 
 export default inscription;
 
-// voir authentification gerer l'auto-login v2//
+// voir authentification gerer l'auto-login v2/
