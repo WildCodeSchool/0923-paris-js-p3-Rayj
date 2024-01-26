@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Modal, Box } from "@mui/material";
+import fetchUsers from "../../../api";
 
 // import FilterAdmin from "../../../components/filteradmin/FilterAdmin";
 
@@ -19,22 +20,10 @@ function ProfilPage1() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/api/users`,
-
-          {
-            method: "GET",
-          }
-        );
-
-        if (response.status === 200) {
-          const data = await response.json();
-          setUsers(data);
-        } else {
-          console.error("Erreur lors de la récupération des données ");
-        }
+        const usersData = await fetchUsers();
+        setUsers(usersData);
       } catch (error) {
-        console.error(error);
+        console.error("Erreur lors de la récupération des utilisateurs", error);
       }
     };
 

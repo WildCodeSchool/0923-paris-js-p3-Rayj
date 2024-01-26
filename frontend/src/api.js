@@ -4,6 +4,7 @@ async function fetchUsers() {
       `${import.meta.env.VITE_BACKEND_URL}/api/users`,
       {
         method: "GET",
+        credentials: "include",
       }
     );
 

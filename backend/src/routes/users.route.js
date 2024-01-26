@@ -10,8 +10,7 @@ router.post("/users", auth.hashPassword, userController.add);
 router.post("/users/login", userController.login);
 
 // recuperer tous les users
-router.get("/users", userController.getAll);
-// router.get("/users", auth.isAuth, auth.isAdmin, userController.getAll);
+router.get("/users", auth.isAuth, auth.isAdmin, userController.getAll);
 
 // admin route
 router.get("/users/:id", auth.isAuth, userController.getById);
