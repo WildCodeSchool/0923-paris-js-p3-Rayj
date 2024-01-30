@@ -5,6 +5,10 @@ const userModel = require("../models/users.models");
 const add = async (req, res, next) => {
   try {
     const user = req.body;
+    user.Admin = 0;
+    user.Picture = `${req.protocol}://${req.get("host")}/upload/${
+      req.files[0].filename
+    }`;
     const [result] = await userModel.insert(user);
     if (result.insertId) {
       const [[newUser]] = await userModel.findById(result.insertId);

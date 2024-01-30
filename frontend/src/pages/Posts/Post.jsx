@@ -307,8 +307,10 @@ function Post() {
         </div>
         <div>
           <p> Description de l'annonce</p>
-          <input
+          <textarea
             className="Post-description"
+            rows="25"
+            cols="40"
             type="text"
             name="description"
             required

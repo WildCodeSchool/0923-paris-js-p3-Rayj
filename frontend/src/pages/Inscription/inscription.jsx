@@ -15,6 +15,7 @@ function inscription() {
   const [matricule, setMatricule] = useState("");
   const [seniority, setSeniority] = useState("");
   const [introduction, setIntroduction] = useState("");
+  const insertPicture = useRef();
 
   const auth = useContext(authContext);
 
@@ -24,25 +25,25 @@ function inscription() {
 
   const handlesubmit = async () => {
     try {
+      const formInscription = new FormData();
+      formInscription.append("Lastname", lastName.current.value);
+      formInscription.append("Firstname", firstName.current.value);
+      formInscription.append("Matricule", matricule);
+      formInscription.append("Password", password.current.value);
+      formInscription.append("Email", email.current.value);
+      formInscription.append("Phone", phoneNumber.current.value);
+      formInscription.append("Seniority", seniority);
+      formInscription.append("Introduction", introduction);
+      formInscription.append("Picture", insertPicture.current.files[0]);
       const response = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/api/users`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            Lastname: lastName.current.value,
-            Firstname: firstName.current.value,
-            Matricule: matricule,
-            Password: password.current.value,
-            Email: email.current.value,
-            Phone: phoneNumber.current.value,
-            Seniority: seniority,
-            Introduction: introduction,
-            Admin: false,
-          }),
           credentials: "include",
+          body: formInscription,
         }
       );
+      // console.error("toto", response);
       if (response.ok) {
         const newUser = await response.json();
         console.info(newUser);
@@ -57,7 +58,6 @@ function inscription() {
 
     // status ok redirect to login or fetch login route to autologin
   };
-
   return (
     <div className="inscribody">
       <img className="logorf" src={logorf} alt="logo de la société" />
@@ -138,6 +138,17 @@ function inscription() {
               value={introduction}
               onChange={(event) => setIntroduction(event.target.value)}
             />
+
+            <div>
+              <label htmlFor="avatar">Photo de profil:</label>
+              <input
+                type="file"
+                id="avatar"
+                name="avatar"
+                accept="image/png, image/jpeg"
+                ref={insertPicture}
+              />
+            </div>
           </div>
         </div>
         <div>

@@ -36,9 +36,9 @@ const isAuth = async (req, res, next) => {
 };
 
 const isAdmin = (req, res, next) => {
-  if (req.body.admin) {
+  if (req.admin) {
     next();
-  } else res.sendStatus(404);
+  } else res.sendStatus(403);
 };
 module.exports = {
   hashpassword,

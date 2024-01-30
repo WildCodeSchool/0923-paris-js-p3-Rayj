@@ -32,6 +32,7 @@ app.use(
   cors({
     origin: [
       process.env.FRONTEND_URL, // keep this one, after checking the value in `backend/.env`
+      "http://127.0.0.1:3000",
     ],
     credentials: true,
   })
@@ -53,7 +54,7 @@ app.use(
 // Uncomment one or more of these options depending on the format of the data sent by your client:
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false, limit: "50mb" }));
+app.use(express.urlencoded({ extended: false, limit: "150mb" }));
 // app.use(express.text());
 // app.use(express.raw());
 
@@ -125,22 +126,21 @@ app.get("*", (req, res) => {
 // Middleware for Error Logging (Uncomment to enable)
 // Important: Error-handling middleware should be defined last, after other app.use() and routes calls.
 
-const publicFolderPath = path.join(__dirname, "../public/upload");
+const publicFolderPath = path.join(__dirname, "../public");
 app.use(express.static(publicFolderPath));
-/*
+
 // Define a middleware function to log errors
-const logErrors = (err, req, res, next) => {
-  // Log the error to the console for debugging purposes
-  console.error(err);
-  console.error("on req:", req.method, req.path);
+// const logErrors = (err, req, res, next) => {
+//   // Log the error to the console for debugging purposes
+//   console.error(err);
+//   console.error("on req:", req.method, req.path);
 
-  // Pass the error to the next middleware in the stack
-  next(err);
-};
+//   // Pass the error to the next middleware in the stack
+//   res.sendStatus(500);
+// };
 
-// Mount the logErrors middleware globally
-app.use(logErrors);
-*/
+// // Mount the logErrors middleware globally
+// app.use(logErrors);
 
 /* ************************************************************************* */
 

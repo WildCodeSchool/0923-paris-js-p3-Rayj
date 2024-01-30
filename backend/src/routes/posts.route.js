@@ -10,9 +10,9 @@ router.get("/categorie", postsControllers.getcategoriepost);
 router.post(
   "/post",
   auth.isAuth,
+  auth.isAdmin,
   fileUpload.any(),
   postsControllers.add
-  // postsControllers.addLogo
 );
 
 module.exports = router;

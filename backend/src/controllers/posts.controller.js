@@ -62,7 +62,7 @@ const add = async (req, res, next) => {
     // console.log(req.files)
     data.Logo = `${req.protocol}://${req.get("host")}/upload/${
       req.files[0].filename
-    }}`;
+    }`;
 
     data.userID = req.userID;
     data.tabSoftSkills = JSON.parse(data.tabSoftSkills);
