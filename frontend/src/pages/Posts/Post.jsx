@@ -19,6 +19,14 @@ const City = [
   { value: "Espagne", label: "Espagne" },
 ];
 
+const formatSelectData = (data, table) => {
+  const arr = [];
+  for (const d of data) {
+    arr.push({ value: d[`id_${table}`], label: d.Name });
+  }
+  return arr;
+};
+
 function Post() {
   // modal //
   // const [recap, setRecap] = useState(false);
@@ -79,8 +87,7 @@ function Post() {
         );
         if (response.ok) {
           const data = await response.json();
-          // const transformDataHardskill = await structureData(data);
-          setHardSkills(data);
+          setHardSkills(formatSelectData(data, "Hardskills"));
         } else {
           console.error("Champs non trouvé");
         }
@@ -103,8 +110,11 @@ function Post() {
         );
         if (response.ok) {
           const data = await response.json();
-          // const transformDataSoftskill = await structureData(data);
-          setSoftSkills(data);
+          // const arr = [];
+          // for (const d of data) {
+          //   arr.push({ value: d.id_Softskills, label: d.Name });
+          // }
+          setSoftSkills(formatSelectData(data, "Softskills"));
         } else {
           console.error("Champs non trouvé");
         }
@@ -119,7 +129,7 @@ function Post() {
     const getCategorie = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/api/categorie`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/categories`,
           {
             method: "GET",
             credentials: "include",
@@ -127,9 +137,7 @@ function Post() {
         );
         if (response.ok) {
           const data = await response.json();
-          // console.log(data);
-          // const transformDataCategie = await structureData(data);
-          setCategories(data);
+          setCategories(formatSelectData(data, "Categories"));
         } else {
           console.error("Champs non trouvé");
         }
@@ -157,13 +165,13 @@ function Post() {
       form.append("Level", level);
       form.append("Domaine", selectDomaine?.value);
       form.append("Location", selectCity?.value);
-      form.append("Categorie", selectCategorie.id_Categories);
+      form.append("Categorie", selectCategorie.value);
       form.append("Description", descriptionoffre);
       form.append("Post_title", titlePost);
       form.append("Logo", insertLogo);
 
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/post`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/offers`,
         {
           method: "POST",
           credentials: "include",

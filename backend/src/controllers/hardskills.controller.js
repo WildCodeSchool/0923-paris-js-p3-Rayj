@@ -1,17 +1,17 @@
-const softskillsModel = require("../models/softskills.model");
+const hardskillsModel = require("../models/hardskills.model");
 
 // The R of BREAD - Read operation
-const readSoftSkills = async (req, res, next) => {
+const readHardSkills = async (req, res, next) => {
   try {
     // Fetch a specific softskill from the database based on the provided ID
-    const [softskills] = await softskillsModel.getSoftSkills();
+    const [hardskills] = await hardskillsModel.getHardSkills();
 
     // If the softskill is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the item in JSON format
-    if (softskills == null) {
+    if (hardskills == null) {
       res.sendStatus(404);
     } else {
-      res.json(softskills);
+      res.json(hardskills);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -19,12 +19,12 @@ const readSoftSkills = async (req, res, next) => {
   }
 };
 
-const readSoftSkillsById = async (req, res, next) => {
+const readHardSkillsById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const [[softskill]] = await softskillsModel.getSoftSkillsById(id);
-    if (!softskill) res.sendStatus(422);
-    else res.status(200).json(softskill);
+    const [[hardskill]] = await hardskillsModel.getHardSkillsById(id);
+    if (!hardskill) res.sendStatus(422);
+    else res.status(200).json(hardskill);
   } catch (error) {
     next(error);
   }
@@ -33,7 +33,7 @@ const readSoftSkillsById = async (req, res, next) => {
 const add = async (req, res, next) => {
   try {
     const { name } = req.body;
-    const [result] = await softskillsModel.insert(name);
+    const [result] = await hardskillsModel.insert(name);
     if (!result.insertId) res.sendStatus(422);
     else res.sendStatus(201);
   } catch (error) {
@@ -42,7 +42,7 @@ const add = async (req, res, next) => {
 };
 
 module.exports = {
-  readSoftSkills,
-  readSoftSkillsById,
+  readHardSkills,
+  readHardSkillsById,
   add,
 };
