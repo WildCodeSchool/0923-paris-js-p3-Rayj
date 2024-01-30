@@ -28,6 +28,7 @@ const isAuth = async (req, res, next) => {
   try {
     const token = req.cookies["auth-token"];
     const decoded = jwt.verify(token, process.env.APP_SECRET);
+
     req.body.userID = decoded.id;
     next();
   } catch (error) {

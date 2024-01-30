@@ -39,6 +39,14 @@ const login = async (req, res, next) => {
     next(error);
   }
 };
+const getAll = async (_, res, next) => {
+  try {
+    const [users] = await userModel.findAll();
+    res.status(200).json(users);
+  } catch (error) {
+    next(error);
+  }
+};
 
 const getById = async (req, res, next) => {
   try {
@@ -55,4 +63,5 @@ module.exports = {
   add,
   login,
   getById,
+  getAll,
 };
