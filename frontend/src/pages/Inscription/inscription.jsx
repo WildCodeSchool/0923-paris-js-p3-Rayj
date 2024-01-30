@@ -43,7 +43,6 @@ function inscription() {
           body: formInscription,
         }
       );
-      // console.error("toto", response);
       if (response.ok) {
         const newUser = await response.json();
         console.info(newUser);
@@ -127,7 +126,6 @@ function inscription() {
                 onChange={(event) => setSeniority(event.target.value)}
               />
             </label>
-
             <textarea
               className="introduction"
               rows="25"

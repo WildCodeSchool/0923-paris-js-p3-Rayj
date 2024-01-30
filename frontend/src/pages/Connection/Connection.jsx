@@ -1,16 +1,21 @@
-import React, { useRef, useContext } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import authContext from "../../context/AuthContext";
 import "./connection.css";
 import logorf from "../../assets/images/logorf.png";
 import logorayj from "../../assets/images/logorayj.png";
+import Popup from "../../components/popup/Popup";
 
 function Connection() {
-  const navigate = useNavigate();
+  const [popupVisible, setPopupVisible] = useState(true);
 
+  const closePopup = () => {
+    setPopupVisible(false);
+  };
+
+  const navigate = useNavigate();
   const Email = useRef();
   const Password = useRef();
-
   const auth = useContext(authContext);
 
   const handleSubmit = async () => {
@@ -19,20 +24,24 @@ function Connection() {
         `${import.meta.env.VITE_BACKEND_URL}/api/users/login`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
           body: JSON.stringify({
             Email: Email.current.value,
             Password: Password.current.value,
           }),
-          credentials: "include",
         }
       );
       if (response.status === 200) {
         const user = await response.json();
         auth.setUser(user);
-        navigate("/homepage");
+
+        if (user.Admin === 1) navigate("/profil1");
+        else navigate("/homepage");
       } else {
-        console.error("regardez votre saisie");
+        console.error("veuillez verifier votre saisie.");
       }
     } catch (error) {
       console.error(error);
@@ -41,6 +50,8 @@ function Connection() {
 
   return (
     <div className="connection">
+      {popupVisible && <Popup onClose={closePopup} />}
+
       <img className="logo" src={logorf} alt="logo de la société" />
       <div className="login-box">
         <div className="user-box">

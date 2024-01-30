@@ -1,6 +1,7 @@
 // Load the express module to create a web application
 
 const express = require("express");
+const cors = require("cors");
 const path = require("path");
 
 const app = express();
@@ -26,12 +27,12 @@ const app = express();
 // 4. Be sure to only have URLs in the array with domains from which you want to allow requests.
 // For example: ["http://mysite.com", "http://another-domain.com"]
 
-const cors = require("cors");
-
 app.use(
   cors({
     origin: [
       process.env.FRONTEND_URL, // keep this one, after checking the value in `backend/.env`
+      "http://mysite.com",
+      "http://another-domain.com",
       "http://127.0.0.1:3000",
     ],
     credentials: true,
@@ -139,7 +140,7 @@ app.use(express.static(publicFolderPath));
 //   res.sendStatus(500);
 // };
 
-// // Mount the logErrors middleware globally
+// Mount the logErrors middleware globally
 // app.use(logErrors);
 
 /* ************************************************************************* */

@@ -3,9 +3,15 @@
 -- Model: New Model    Version: 1.0
 -- MySQL Workbench Forward Engineering
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+SET @OLD_UNIQUE_CHECKS = @@UNIQUE_CHECKS, UNIQUE_CHECKS = 0;
+
+SET
+    @OLD_FOREIGN_KEY_CHECKS = @@FOREIGN_KEY_CHECKS,
+    FOREIGN_KEY_CHECKS = 0;
+
+SET
+    @OLD_SQL_MODE = @@SQL_MODE,
+    SQL_MODE = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
 -- Schema RAYJ
@@ -14,261 +20,142 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema RAYJ
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `RAYJ` DEFAULT CHARACTER SET utf8 ;
-USE `RAYJ` ;
+CREATE SCHEMA IF NOT EXISTS `RAYJ` DEFAULT CHARACTER SET utf8;
+
+USE `RAYJ`;
 
 -- -----------------------------------------------------
 -- Table `RAYJ`.`Users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `RAYJ`.`Users` ;
+DROP TABLE IF EXISTS `RAYJ`.`Users`;
 
 CREATE TABLE IF NOT EXISTS `RAYJ`.`Users` (
-  `id_Users` INT NOT NULL AUTO_INCREMENT,
-  `Lastname` VARCHAR(45) NOT NULL,
-  `Firstname` VARCHAR(45) NOT NULL,
-  `Matricule` VARCHAR(85) NOT NULL,
-  `Password` VARCHAR(255) NOT NULL,
-  `Email` VARCHAR(80) NOT NULL,
-  `Phone` VARCHAR(10) NOT NULL,
-  `Seniority` DATETIME NOT NULL,
-  `Admin` TINYINT NOT NULL,
-  `Introduction` TEXT NULL,
-  `Picture` TEXT NOT NULL,
-  PRIMARY KEY (`id_Users`))
-ENGINE = InnoDB;
-
+    `id_Users` INT NOT NULL AUTO_INCREMENT, `Lastname` VARCHAR(45) NOT NULL, `Firstname` VARCHAR(45) NOT NULL, `Matricule` VARCHAR(85) NOT NULL, `Password` VARCHAR(255) NOT NULL, `Email` VARCHAR(80) NOT NULL, `Phone` VARCHAR(10) NOT NULL, `Seniority` DATETIME NOT NULL, `Admin` TINYINT NOT NULL, `Introduction` TEXT NULL, `Picture` TEXT NOT NULL, PRIMARY KEY (`id_Users`)
+) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `RAYJ`.`Categories`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `RAYJ`.`Categories` ;
+DROP TABLE IF EXISTS `RAYJ`.`Categories`;
 
 CREATE TABLE IF NOT EXISTS `RAYJ`.`Categories` (
-  `id_Categories` INT NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_Categories`))
-ENGINE = InnoDB;
-
+    `id_Categories` INT NOT NULL AUTO_INCREMENT, `Name` VARCHAR(45) NOT NULL, PRIMARY KEY (`id_Categories`)
+) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `RAYJ`.`Hardskills`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `RAYJ`.`Hardskills` ;
+DROP TABLE IF EXISTS `RAYJ`.`Hardskills`;
 
 CREATE TABLE IF NOT EXISTS `RAYJ`.`Hardskills` (
-  `id_Hardskills` INT NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_Hardskills`))
-ENGINE = InnoDB;
-
+    `id_Hardskills` INT NOT NULL AUTO_INCREMENT, `Name` VARCHAR(45) NOT NULL, PRIMARY KEY (`id_Hardskills`)
+) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `RAYJ`.`Users_Hardskills`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `RAYJ`.`Users_Hardskills` ;
+DROP TABLE IF EXISTS `RAYJ`.`Users_Hardskills`;
 
 CREATE TABLE IF NOT EXISTS `RAYJ`.`Users_Hardskills` (
-  `Hardskills_id_Hardskills` INT NOT NULL,
-  `Users_idUsers` INT NOT NULL,
-  PRIMARY KEY (`Hardskills_id_Hardskills`, `Users_idUsers`),
-  INDEX `fk_Hardskills_has_Users_Users1_idx` (`Users_idUsers` ASC) VISIBLE,
-  INDEX `fk_Hardskills_has_Users_Hardskills1_idx` (`Hardskills_id_Hardskills` ASC) VISIBLE,
-  CONSTRAINT `fk_Hardskills_has_Users_Hardskills1`
-    FOREIGN KEY (`Hardskills_id_Hardskills`)
-    REFERENCES `RAYJ`.`Hardskills` (`id_Hardskills`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Hardskills_has_Users_Users1`
-    FOREIGN KEY (`Users_idUsers`)
-    REFERENCES `RAYJ`.`Users` (`id_Users`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
+    `Hardskills_id_Hardskills` INT NOT NULL, `Users_idUsers` INT NOT NULL, PRIMARY KEY (
+        `Hardskills_id_Hardskills`, `Users_idUsers`
+    ), INDEX `fk_Hardskills_has_Users_Users1_idx` (`Users_idUsers` ASC) VISIBLE, INDEX `fk_Hardskills_has_Users_Hardskills1_idx` (
+        `Hardskills_id_Hardskills` ASC
+    ) VISIBLE, CONSTRAINT `fk_Hardskills_has_Users_Hardskills1` FOREIGN KEY (`Hardskills_id_Hardskills`) REFERENCES `RAYJ`.`Hardskills` (`id_Hardskills`) ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT `fk_Hardskills_has_Users_Users1` FOREIGN KEY (`Users_idUsers`) REFERENCES `RAYJ`.`Users` (`id_Users`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `RAYJ`.`Offers`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `RAYJ`.`Offers` ;
+DROP TABLE IF EXISTS `RAYJ`.`Offers`;
 
 CREATE TABLE IF NOT EXISTS `RAYJ`.`Offers` (
-  `id_Offers` INT NOT NULL AUTO_INCREMENT,
-  `Date_of_publication` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Post_title` VARCHAR(80) NOT NULL,
-  `Description` TEXT NOT NULL,
-  `Training` TINYINT NULL,
-  `Level` VARCHAR(45) NULL,
-  `Domaine` VARCHAR(85) NOT NULL,
-  `Location` VARCHAR(255) NOT NULL,
-  `Users_idUsers` INT NOT NULL,
-  `Logo` TEXT NOT NULL,
-  PRIMARY KEY (`id_Offers`, `Users_idUsers`),
-  INDEX `fk_Offers_Users1_idx` (`Users_idUsers` ASC) VISIBLE,
-  CONSTRAINT `fk_Offers_Users1`
-    FOREIGN KEY (`Users_idUsers`)
-    REFERENCES `RAYJ`.`Users` (`id_Users`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
+    `id_Offers` INT NOT NULL AUTO_INCREMENT, `Date_of_publication` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, `Post_title` VARCHAR(80) NOT NULL, `Description` TEXT NOT NULL, `Training` TINYINT NULL, `Level` VARCHAR(45) NULL, `Domaine` VARCHAR(85) NOT NULL, `Location` VARCHAR(255) NOT NULL, `Users_idUsers` INT NOT NULL, `Logo` TEXT NOT NULL, PRIMARY KEY (`id_Offers`, `Users_idUsers`), INDEX `fk_Offers_Users1_idx` (`Users_idUsers` ASC) VISIBLE, CONSTRAINT `fk_Offers_Users1` FOREIGN KEY (`Users_idUsers`) REFERENCES `RAYJ`.`Users` (`id_Users`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `RAYJ`.`Candidates`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `RAYJ`.`Candidates` ;
+DROP TABLE IF EXISTS `RAYJ`.`Candidates`;
 
 CREATE TABLE IF NOT EXISTS `RAYJ`.`Candidates` (
-  `Users_idUsers` INT NOT NULL,
-  `Offers_Id_offers` INT NOT NULL,
-  `Status` VARCHAR(80) NOT NULL,
-  PRIMARY KEY (`Users_idUsers`, `Offers_Id_offers`),
-  INDEX `fk_Users_has_Offers_Offers1_idx` (`Offers_Id_offers` ASC) VISIBLE,
-  INDEX `fk_Users_has_Offers_Users1_idx` (`Users_idUsers` ASC) VISIBLE,
-  CONSTRAINT `fk_Users_has_Offers_Users1`
-    FOREIGN KEY (`Users_idUsers`)
-    REFERENCES `RAYJ`.`Users` (`id_Users`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Users_has_Offers_Offers1`
-    FOREIGN KEY (`Offers_Id_offers`)
-    REFERENCES `RAYJ`.`Offers` (`id_Offers`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
+    `Users_idUsers` INT NOT NULL, `Offers_Id_offers` INT NOT NULL, `Status` VARCHAR(80) NOT NULL, PRIMARY KEY (
+        `Users_idUsers`, `Offers_Id_offers`
+    ), INDEX `fk_Users_has_Offers_Offers1_idx` (`Offers_Id_offers` ASC) VISIBLE, INDEX `fk_Users_has_Offers_Users1_idx` (`Users_idUsers` ASC) VISIBLE, CONSTRAINT `fk_Users_has_Offers_Users1` FOREIGN KEY (`Users_idUsers`) REFERENCES `RAYJ`.`Users` (`id_Users`) ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT `fk_Users_has_Offers_Offers1` FOREIGN KEY (`Offers_Id_offers`) REFERENCES `RAYJ`.`Offers` (`id_Offers`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `RAYJ`.`Offers_Categories`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `RAYJ`.`Offers_Categories` ;
+DROP TABLE IF EXISTS `RAYJ`.`Offers_Categories`;
 
 CREATE TABLE IF NOT EXISTS `RAYJ`.`Offers_Categories` (
-  `Offers_Id_offers` INT NOT NULL,
-  `Categories_idCategories` INT NOT NULL,
-  PRIMARY KEY (`Offers_Id_offers`, `Categories_idCategories`),
-  INDEX `fk_Offers_has_Categories_Categories1_idx` (`Categories_idCategories` ASC) VISIBLE,
-  INDEX `fk_Offers_has_Categories_Offers1_idx` (`Offers_Id_offers` ASC) VISIBLE,
-  CONSTRAINT `fk_Offers_has_Categories_Offers1`
-    FOREIGN KEY (`Offers_Id_offers`)
-    REFERENCES `RAYJ`.`Offers` (`id_Offers`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Offers_has_Categories_Categories1`
-    FOREIGN KEY (`Categories_idCategories`)
-    REFERENCES `RAYJ`.`Categories` (`id_Categories`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
+    `Offers_Id_offers` INT NOT NULL, `Categories_idCategories` INT NOT NULL, PRIMARY KEY (
+        `Offers_Id_offers`, `Categories_idCategories`
+    ), INDEX `fk_Offers_has_Categories_Categories1_idx` (`Categories_idCategories` ASC) VISIBLE, INDEX `fk_Offers_has_Categories_Offers1_idx` (`Offers_Id_offers` ASC) VISIBLE, CONSTRAINT `fk_Offers_has_Categories_Offers1` FOREIGN KEY (`Offers_Id_offers`) REFERENCES `RAYJ`.`Offers` (`id_Offers`) ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT `fk_Offers_has_Categories_Categories1` FOREIGN KEY (`Categories_idCategories`) REFERENCES `RAYJ`.`Categories` (`id_Categories`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `RAYJ`.`Hardskills_Offers`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `RAYJ`.`Hardskills_Offers` ;
+DROP TABLE IF EXISTS `RAYJ`.`Hardskills_Offers`;
 
 CREATE TABLE IF NOT EXISTS `RAYJ`.`Hardskills_Offers` (
-  `Hardskills_id_Hardskills` INT NOT NULL,
-  `Offers_Id_offers` INT NOT NULL,
-  PRIMARY KEY (`Hardskills_id_Hardskills`, `Offers_Id_offers`),
-  INDEX `fk_Hardskills_has_Offers_Offers1_idx` (`Offers_Id_offers` ASC) VISIBLE,
-  INDEX `fk_Hardskills_has_Offers_Hardskills1_idx` (`Hardskills_id_Hardskills` ASC) VISIBLE,
-  CONSTRAINT `fk_Hardskills_has_Offers_Hardskills1`
-    FOREIGN KEY (`Hardskills_id_Hardskills`)
-    REFERENCES `RAYJ`.`Hardskills` (`id_Hardskills`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Hardskills_has_Offers_Offers1`
-    FOREIGN KEY (`Offers_Id_offers`)
-    REFERENCES `RAYJ`.`Offers` (`id_Offers`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
+    `Hardskills_id_Hardskills` INT NOT NULL, `Offers_Id_offers` INT NOT NULL, PRIMARY KEY (
+        `Hardskills_id_Hardskills`, `Offers_Id_offers`
+    ), INDEX `fk_Hardskills_has_Offers_Offers1_idx` (`Offers_Id_offers` ASC) VISIBLE, INDEX `fk_Hardskills_has_Offers_Hardskills1_idx` (
+        `Hardskills_id_Hardskills` ASC
+    ) VISIBLE, CONSTRAINT `fk_Hardskills_has_Offers_Hardskills1` FOREIGN KEY (`Hardskills_id_Hardskills`) REFERENCES `RAYJ`.`Hardskills` (`id_Hardskills`) ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT `fk_Hardskills_has_Offers_Offers1` FOREIGN KEY (`Offers_Id_offers`) REFERENCES `RAYJ`.`Offers` (`id_Offers`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `RAYJ`.`Softskills`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `RAYJ`.`Softskills` ;
+DROP TABLE IF EXISTS `RAYJ`.`Softskills`;
 
 CREATE TABLE IF NOT EXISTS `RAYJ`.`Softskills` (
-  `id_Softskills` INT NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(85) NOT NULL,
-  PRIMARY KEY (`id_Softskills`))
-ENGINE = InnoDB;
-
+    `id_Softskills` INT NOT NULL AUTO_INCREMENT, `Name` VARCHAR(85) NOT NULL, PRIMARY KEY (`id_Softskills`)
+) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `RAYJ`.`Users_Softskills`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `RAYJ`.`Users_Softskills` ;
+DROP TABLE IF EXISTS `RAYJ`.`Users_Softskills`;
 
 CREATE TABLE IF NOT EXISTS `RAYJ`.`Users_Softskills` (
-  `Users_idUsers` INT NOT NULL,
-  `Softskills_id_Softskills` INT NOT NULL,
-  PRIMARY KEY (`Users_idUsers`, `Softskills_id_Softskills`),
-  INDEX `fk_Users_has_Softskills_Softskills1_idx` (`Softskills_id_Softskills` ASC) VISIBLE,
-  INDEX `fk_Users_has_Softskills_Users1_idx` (`Users_idUsers` ASC) VISIBLE,
-  CONSTRAINT `fk_Users_has_Softskills_Users1`
-    FOREIGN KEY (`Users_idUsers`)
-    REFERENCES `RAYJ`.`Users` (`id_Users`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Users_has_Softskills_Softskills1`
-    FOREIGN KEY (`Softskills_id_Softskills`)
-    REFERENCES `RAYJ`.`Softskills` (`id_Softskills`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
+    `Users_idUsers` INT NOT NULL, `Softskills_id_Softskills` INT NOT NULL, PRIMARY KEY (
+        `Users_idUsers`, `Softskills_id_Softskills`
+    ), INDEX `fk_Users_has_Softskills_Softskills1_idx` (
+        `Softskills_id_Softskills` ASC
+    ) VISIBLE, INDEX `fk_Users_has_Softskills_Users1_idx` (`Users_idUsers` ASC) VISIBLE, CONSTRAINT `fk_Users_has_Softskills_Users1` FOREIGN KEY (`Users_idUsers`) REFERENCES `RAYJ`.`Users` (`id_Users`) ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT `fk_Users_has_Softskills_Softskills1` FOREIGN KEY (`Softskills_id_Softskills`) REFERENCES `RAYJ`.`Softskills` (`id_Softskills`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `RAYJ`.`Softskills_Offers`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `RAYJ`.`Softskills_Offers` ;
+DROP TABLE IF EXISTS `RAYJ`.`Softskills_Offers`;
 
 CREATE TABLE IF NOT EXISTS `RAYJ`.`Softskills_Offers` (
-  `Softskills_id_Softskills` INT NOT NULL,
-  `Offers_Id_offers` INT NOT NULL,
-  PRIMARY KEY (`Softskills_id_Softskills`, `Offers_Id_offers`),
-  INDEX `fk_Softskills_has_Offers_Offers1_idx` (`Offers_Id_offers` ASC) VISIBLE,
-  INDEX `fk_Softskills_has_Offers_Softskills1_idx` (`Softskills_id_Softskills` ASC) VISIBLE,
-  CONSTRAINT `fk_Softskills_has_Offers_Softskills1`
-    FOREIGN KEY (`Softskills_id_Softskills`)
-    REFERENCES `RAYJ`.`Softskills` (`id_Softskills`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Softskills_has_Offers_Offers1`
-    FOREIGN KEY (`Offers_Id_offers`)
-    REFERENCES `RAYJ`.`Offers` (`id_Offers`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
+    `Softskills_id_Softskills` INT NOT NULL, `Offers_Id_offers` INT NOT NULL, PRIMARY KEY (
+        `Softskills_id_Softskills`, `Offers_Id_offers`
+    ), INDEX `fk_Softskills_has_Offers_Offers1_idx` (`Offers_Id_offers` ASC) VISIBLE, INDEX `fk_Softskills_has_Offers_Softskills1_idx` (
+        `Softskills_id_Softskills` ASC
+    ) VISIBLE, CONSTRAINT `fk_Softskills_has_Offers_Softskills1` FOREIGN KEY (`Softskills_id_Softskills`) REFERENCES `RAYJ`.`Softskills` (`id_Softskills`) ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT `fk_Softskills_has_Offers_Offers1` FOREIGN KEY (`Offers_Id_offers`) REFERENCES `RAYJ`.`Offers` (`id_Offers`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `RAYJ`.`Favorites`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `RAYJ`.`Favorites` ;
+DROP TABLE IF EXISTS `RAYJ`.`Favorites`;
 
 CREATE TABLE IF NOT EXISTS `RAYJ`.`Favorites` (
-  `Users_idUsers` INT NOT NULL,
-  `Offers_Id_offers` INT NOT NULL,
-  PRIMARY KEY (`Users_idUsers`, `Offers_Id_offers`),
-  INDEX `fk_Users_has_Offers_Offers2_idx` (`Offers_Id_offers` ASC) VISIBLE,
-  INDEX `fk_Users_has_Offers_Users2_idx` (`Users_idUsers` ASC) VISIBLE,
-  CONSTRAINT `fk_Users_has_Offers_Users2`
-    FOREIGN KEY (`Users_idUsers`)
-    REFERENCES `RAYJ`.`Users` (`id_Users`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Users_has_Offers_Offers2`
-    FOREIGN KEY (`Offers_Id_offers`)
-    REFERENCES `RAYJ`.`Offers` (`id_Offers`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    `Users_idUsers` INT NOT NULL, `Offers_Id_offers` INT NOT NULL, PRIMARY KEY (
+        `Users_idUsers`, `Offers_Id_offers`
+    ), INDEX `fk_Users_has_Offers_Offers2_idx` (`Offers_Id_offers` ASC) VISIBLE, INDEX `fk_Users_has_Offers_Users2_idx` (`Users_idUsers` ASC) VISIBLE, CONSTRAINT `fk_Users_has_Offers_Users2` FOREIGN KEY (`Users_idUsers`) REFERENCES `RAYJ`.`Users` (`id_Users`) ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT `fk_Users_has_Offers_Offers2` FOREIGN KEY (`Offers_Id_offers`) REFERENCES `RAYJ`.`Offers` (`id_Offers`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB;
 
+SET SQL_MODE = @OLD_SQL_MODE;
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
+
+SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;

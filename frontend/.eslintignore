@@ -1,0 +1,4 @@
+# .eslintignore
+*.jpg
+*.png
+*.svg

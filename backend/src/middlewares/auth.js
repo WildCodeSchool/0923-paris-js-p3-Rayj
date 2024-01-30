@@ -19,14 +19,15 @@ const hashpassword = async (req, res, next) => {
     res.status(500).json(error.message);
   }
 };
-
+const comparePassword = async (hash, password) => {
+  return argon.verify(hash, password);
+};
 const isAuth = async (req, res, next) => {
   try {
     const token = req.cookies["auth-token"];
-    // console.log("token", token)
+
     const decoded = jwt.verify(token, process.env.APP_SECRET);
-    // console.log("decoded", decoded)
-    req.userID = decoded.id;
+    req.userId = decoded.id;
     req.admin = decoded.admin;
     next();
   } catch (error) {
@@ -40,8 +41,10 @@ const isAdmin = (req, res, next) => {
     next();
   } else res.sendStatus(403);
 };
+
 module.exports = {
   hashpassword,
+  comparePassword,
   isAuth,
   isAdmin,
 };
