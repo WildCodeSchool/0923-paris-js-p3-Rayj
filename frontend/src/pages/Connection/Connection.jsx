@@ -76,7 +76,7 @@ function Connection() {
         </div>
         <div>
           <button
-            className="btn-connection"
+            className="btn-connection-yayou"
             type="button"
             onClick={handleSubmit}
           >

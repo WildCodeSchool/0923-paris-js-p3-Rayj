@@ -8,7 +8,7 @@ const hashingOptions = {
   parallelism: 1,
 };
 
-const hashPassword = async (req, res, next) => {
+const hashpassword = async (req, res, next) => {
   const { Password } = req.body;
 
   try {
@@ -35,14 +35,15 @@ const isAuth = async (req, res, next) => {
     res.status(401).json(error.message);
   }
 };
-const isAdmin = async (req, res, next) => {
+
+const isAdmin = (req, res, next) => {
   if (req.admin) {
     next();
   } else res.sendStatus(403);
 };
 
 module.exports = {
-  hashPassword,
+  hashpassword,
   comparePassword,
   isAuth,
   isAdmin,

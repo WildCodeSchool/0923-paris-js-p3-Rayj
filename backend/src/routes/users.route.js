@@ -2,9 +2,10 @@ const router = require("express").Router();
 
 const userController = require("../controllers/users.controller");
 const auth = require("../middlewares/auth");
+const fileUpload = require("../middlewares/upload.image");
 
 // inscription user
-router.post("/users", auth.hashPassword, userController.add);
+router.post("/users", fileUpload.any(), auth.hashpassword, userController.add);
 
 // connection user
 router.post("/users/login", userController.login);
