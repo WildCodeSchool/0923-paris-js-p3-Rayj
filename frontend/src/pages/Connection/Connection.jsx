@@ -37,6 +37,7 @@ function Connection() {
       if (response.status === 200) {
         const user = await response.json();
         auth.setUser(user);
+
         if (user.Admin === 1) navigate("/profil1");
         else navigate("/homepage");
       } else {
@@ -75,7 +76,7 @@ function Connection() {
         </div>
         <div>
           <button
-            className="btn-connection"
+            className="btn-connection-yayou"
             type="button"
             onClick={handleSubmit}
           >

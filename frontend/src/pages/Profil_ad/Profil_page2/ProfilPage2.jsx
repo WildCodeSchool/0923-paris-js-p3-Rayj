@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import Header from "../../../components/header/Header";
+
+import fetchUsers from "../../../api";
 
 import "./profilpage2.css";
 
@@ -16,27 +19,40 @@ const SecteursActivites = [
   { value: "Sécurité", label: "Sécurité" },
 ];
 
-const Candidats = [
-  { value: "Michel", label: "Michel" },
-  { value: "Serge", label: "Serge" },
-  {
-    value: "Richard",
-    label: "Richard",
-  },
-  { value: "Léon", label: "Léon" },
-  { value: "Rida", label: "Rida" },
-  { value: "Sherazade", label: "Sherazade" },
-];
-
 function ProfilPage2() {
   const [secteuractivite, setSecteuractivite] = useState([]);
+  const [candidat, setCandidat] = useState([]);
+  const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const usersData = await fetchUsers();
+        setUsers(usersData);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des utilisateurs", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleSelectSecteurActivites = (selectedSecteurActivites) => {
     setSecteuractivite(selectedSecteurActivites);
   };
-  const [candidat, setCandidat] = useState([]);
+
   const handleSelectCandidats = (selectedCandidats) => {
     setCandidat(selectedCandidats);
   };
+
+  const handleValidation = () => {
+    const selectedData = {
+      candidat,
+    };
+    navigate(`/profil1/${encodeURIComponent(JSON.stringify(selectedData))}`);
+  };
+
   return (
     <section className="highpage">
       <Header />
@@ -44,7 +60,6 @@ function ProfilPage2() {
         <section className="cardchoice">
           <div>
             <h3>Domaines d'activités</h3>
-
             <Select
               className="choix-activite"
               options={SecteursActivites}
@@ -57,10 +72,12 @@ function ProfilPage2() {
 
           <div>
             <h3>Candidats</h3>
-
             <Select
               className="choix-candidat"
-              options={Candidats}
+              options={users.map((user) => ({
+                value: user.id,
+                label: user.Firstname,
+              }))}
               value={candidat}
               onChange={handleSelectCandidats}
               isMulti
@@ -68,7 +85,11 @@ function ProfilPage2() {
             />
           </div>
 
-          <button type="button" className="btnvalidate">
+          <button
+            type="button"
+            className="btnvalidate"
+            onClick={handleValidation}
+          >
             Valider
           </button>
         </section>

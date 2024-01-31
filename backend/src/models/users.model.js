@@ -43,10 +43,16 @@ const findAll = () => {
 const updateById = (id, data) => {
   return db.query("UPDATE  users SET ? WHERE id_Users = ?", [data, id]);
 };
+
+const deleteById = (id) => {
+  return db.query("DELETE FROM users WHERE id_Users = ?", [id]);
+};
+
 module.exports = {
   insert,
   findById,
   findByEmail,
   findAll,
   updateById,
+  deleteById,
 };

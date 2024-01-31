@@ -1,11 +1,11 @@
 const router = require("express").Router();
 
-const hardskillsController = require("../controllers/hardskills.controller");
+const harskillsController = require("../controllers/hardskills.controller");
 
-router.get("/hardskills", hardskillsController.readHardSkills);
+router.get("/hardskills", harskillsController.readHardSkills);
 
-router.get("/hardskills/:id", hardskillsController.readHardSkillsById);
+router.get("/hardskills/:id", harskillsController.readHardSkillsById);
 
-router.delete("/hardskills/:id", hardskillsController.deleteHardSkillsById);
+router.post("/hardskills", harskillsController.add);
 
 module.exports = router;

@@ -79,7 +79,6 @@ function Profil() {
           placeholder="Email"
           value={user?.Email}
         />
-        {/* <p className="info_display_heading">Password</p> */}
         <p className="info_display_heading">Phone</p>
         <input
           className="info_display_input"
@@ -94,7 +93,7 @@ function Profil() {
           placeholder="Ancienneté"
           value={user?.Seniority}
         />
-        <Link to="/" className="logout_btn">
+        <Link to="/connection" className="logout_btn">
           <p>Log out</p>
         </Link>
       </div>
@@ -120,7 +119,6 @@ function Profil() {
             </ul>
           </div>
         </section>
-
         <h2 className="motivation_heading">Motivation</h2>
         <textarea
           className="motivation_input"

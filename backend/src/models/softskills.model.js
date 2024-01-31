@@ -9,7 +9,13 @@ const getSoftSkillsById = (id) => {
   return db.query("select * from softskills where id_Softskills = ?", [id]);
   // Return the first row of the result, which represents the item
 };
+
+const insert = (name) => {
+  return db.query("insert into softskills ( Name ) values (?)", [name]);
+};
+
 module.exports = {
   getSoftSkills,
   getSoftSkillsById,
+  insert,
 };

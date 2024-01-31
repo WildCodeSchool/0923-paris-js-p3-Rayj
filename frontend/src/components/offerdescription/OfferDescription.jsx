@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import AnnonceContext from "../../context/AnnonceContext";
 import ButtonCandidate from "../buttoncandidate/ButtonCandidate";
@@ -6,11 +6,12 @@ import "./offerdescription.css";
 import Header from "../header/Header";
 
 function OfferDescription() {
-  const annonce = useContext(AnnonceContext);
-  const { idOffers } = useParams();
-  const [filterAnnonce] = annonce.offre.filter((poste) => {
-    return poste.id_Offers === parseInt(idOffers, 9);
+  const { offre } = useContext(AnnonceContext);
+  const { offer } = useParams();
+  const [filterAnnonce] = offre.filter((poste) => {
+    return poste.id_Offers === parseInt(offer, 2);
   });
+
   return (
     <>
       <Header />
@@ -39,9 +40,10 @@ function OfferDescription() {
             </table>
           </div>
         </div>
-        <ButtonCandidate />
+        <ButtonCandidate offer={offre} offerId={parseInt(offer, 2)} />
       </section>
     </>
   );
 }
+
 export default OfferDescription;

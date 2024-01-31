@@ -16,17 +16,31 @@ const readSoftSkills = async (req, res, next) => {
     next(err);
   }
 };
+
 const readSoftSkillsById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const [softskill] = await softskillsModel.getSoftSkillsById(id);
-    if (softskill.softskills) res.sendStatus(422);
+    const [[softskill]] = await softskillsModel.getSoftSkillsById(id);
+    if (!softskill) res.sendStatus(422);
     else res.status(200).json(softskill);
   } catch (error) {
     next(error);
   }
 };
+
+const add = async (req, res, next) => {
+  try {
+    const { name } = req.body;
+    const [result] = await softskillsModel.insert(name);
+    if (!result.insertId) res.sendStatus(422);
+    else res.sendStatus(201);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   readSoftSkills,
   readSoftSkillsById,
+  add,
 };
