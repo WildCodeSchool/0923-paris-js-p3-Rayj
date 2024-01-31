@@ -11,12 +11,16 @@ import "./post.css";
 const Domaine = [
   { value: "Securite", label: "Securite" },
   { value: "Technique", label: "Technique" },
-  { value: "Rh", label: "Rh" },
+  { value: "Ressources Humaines", label: "Ressources Humaines" },
 ];
 
 const City = [
   { value: "Paris", label: "Paris" },
-  { value: "Espagne", label: "Espagne" },
+  { value: "Lille", label: "Lille" },
+  { value: "Bordeaux", label: "Bordeaux" },
+  { value: "Nantes", label: "Nantes" },
+  { value: "Toulouse", label: "Toulouse" },
+
 ];
 
 const formatSelectData = (data, table) => {

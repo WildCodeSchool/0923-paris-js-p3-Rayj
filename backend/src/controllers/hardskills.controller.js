@@ -8,13 +8,13 @@ const readHardSkills = async (req, res, next) => {
 
     // If the softskill is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the item in JSON format
+
     if (hardskills == null) {
       res.sendStatus(404);
     } else {
       res.json(hardskills);
     }
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };

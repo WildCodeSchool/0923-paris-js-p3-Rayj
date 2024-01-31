@@ -14,7 +14,12 @@ const categorieRouter = require("./routes/categories.route");
 const offerRouter = require("./routes/offers.route");
 const favoriteRouter = require("./routes/favorites.route");
 const candidateRouter = require("./routes/candidates.routes");
+const userhardRouter = require("./routes/userhard.route");
+const usersoftRouter = require("./routes/usersoft.route");
+// Apply routes
 
+router.use(usersoftRouter);
+router.use(userhardRouter);
 router.use(softskillRouter);
 router.use(hardskillRouter);
 router.use(categorieRouter);

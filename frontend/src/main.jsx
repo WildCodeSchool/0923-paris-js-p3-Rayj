@@ -53,12 +53,6 @@ const router = createBrowserRouter([
       {
         path: "/profil",
         element: <Profil />,
-        // loader: () => {
-        //   return fetch(`${import.meta.env.VITE_BACKEND_URL}/api/users/:id`, {
-        //     method: "GET",
-        //     credentials: "include",
-        //   });
-        // },
       },
 
       {

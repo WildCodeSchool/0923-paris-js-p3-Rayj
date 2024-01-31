@@ -1,4 +1,5 @@
 import { React } from "react";
+import { useNavigate } from "react-router-dom";
 import rf from "../../assets/images/logorf.png";
 import rara from "../../assets/images/rara.png";
 import logorayj from "../../assets/images/logorayj.png";
@@ -6,6 +7,8 @@ import Arrow from "../../assets/images/return_arrow.svg";
 import "./header.css";
 
 function Header() {
+  const navigate = useNavigate();
+
   return (
     <section className="block_header">
       <div className="logo_header">
@@ -19,7 +22,11 @@ function Header() {
           <button type="button" className="button-precedent">
             <img className="flecheprec" alt="" src={Arrow} />
           </button>
-          <button type="button" className="butbutprofil">
+          <button
+            type="button"
+            className="butbutprofil"
+            onClick={() => navigate("/profil")}
+          >
             Profil
           </button>
         </div>
