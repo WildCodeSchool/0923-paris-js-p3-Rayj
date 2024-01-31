@@ -11,7 +11,7 @@ function NavBarHome() {
 
   return (
     <div className="home">
-      <Link to="/homePage">
+      <Link to="/homepage">
         <button type="button" onClick={resetFilter}>
           <img src={Home} alt="home" />
         </button>
