@@ -3,9 +3,8 @@ import CardAnnonce from "../../components/cards/CardAnnonce";
 import AnnonceContext from "../../context/AnnonceContext";
 import Header from "../../components/header/Header";
 import NavBar from "../../components/navbar/NavBar";
-
-import "./following.css";
 import FollowedOffers from "../../components/FollowedOffers/FollowedOffers";
+import "./following.css";
 
 function Following() {
   const { favorites } = useContext(AnnonceContext);

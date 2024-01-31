@@ -1,67 +1,76 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import logorf from "../../assets/images/logorf.png";
 import logorayj from "../../assets/images/logorayj.png";
 import "./inscription.css";
+import authContext from "../../context/AuthContext";
 
 function inscription() {
-  const redirect = useNavigate();
-  const Firstname = useRef();
-  const Lastname = useRef();
-  const Email = useRef();
-  const Password = useRef();
-  const Phone = useRef();
-  const Matricule = useRef();
-  const Introduction = useRef();
+  const navigate = useNavigate();
+  const firstName = useRef();
+  const lastName = useRef();
+  const email = useRef();
+  const password = useRef();
+  const phoneNumber = useRef();
+  const [matricule, setMatricule] = useState("");
   const [seniority, setSeniority] = useState("");
+  const [introduction, setIntroduction] = useState("");
+  const insertPicture = useRef();
 
-  const handleSubmit = async () => {
+  const auth = useContext(authContext);
+
+  // const handlesubmit = useCallback(
+  //   async (event) => {
+  //     event.preventDefault();
+
+  const handlesubmit = async () => {
     try {
+      const formInscription = new FormData();
+      formInscription.append("Lastname", lastName.current.value);
+      formInscription.append("Firstname", firstName.current.value);
+      formInscription.append("Matricule", matricule);
+      formInscription.append("Password", password.current.value);
+      formInscription.append("Email", email.current.value);
+      formInscription.append("Phone", phoneNumber.current.value);
+      formInscription.append("Seniority", seniority);
+      formInscription.append("Introduction", introduction);
+      formInscription.append("Picture", insertPicture.current.files[0]);
       const response = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/api/users`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            Lastname: Lastname.current.value,
-            Firstname: Firstname.current.value,
-            Matricule: Matricule.current.value,
-            Password: Password.current.value,
-            Email: Email.current.value,
-            Phone: Phone.current.value,
-            Seniority: seniority,
-            Admin: false,
-            Introduction: Introduction.current.value,
-          }),
+          credentials: "include",
+          body: formInscription,
         }
       );
-
-      if (response.status === 201) {
-        const user = await response.json();
-        console.info(user);
-        redirect("/");
+      if (response.ok) {
+        const newUser = await response.json();
+        console.info(newUser);
+        auth.setUser(newUser);
+        navigate("/homepage");
       } else {
-        console.error("veuillez verifier votre saisie.");
+        console.error("regardez votre saisie");
       }
     } catch (error) {
       console.error(error);
     }
-  };
 
+    // status ok redirect to login or fetch login route to autologin
+  };
   return (
     <div className="inscribody">
       <img className="logorf" src={logorf} alt="logo de la société" />
 
-      <from className="form-inscription">
+      <form onSubmit={handlesubmit} className="form-inscription">
         <div className="inscription-box">
           <div className="all">
             <input
               className="firstname"
               type="text"
-              name="firstname"
+              name="firstName"
               required
+              ref={firstName}
               placeholder="Prénom"
-              ref={Firstname}
             />
 
             <input
@@ -70,7 +79,7 @@ function inscription() {
               name="Lastname"
               required
               placeholder="Nom"
-              ref={Lastname}
+              ref={lastName}
             />
 
             <input
@@ -80,7 +89,7 @@ function inscription() {
               id="email"
               required
               placeholder="E-mail"
-              ref={Email}
+              ref={email}
             />
             <input
               className="password"
@@ -88,22 +97,23 @@ function inscription() {
               name="password"
               id="password"
               required
+              ref={password}
               placeholder="Mot de passe"
-              ref={Password}
             />
             <input
               className="phonenumber"
               type="tel"
               name="phoneNumber"
               placeholder="numéro de téléphone"
-              ref={Phone}
+              ref={phoneNumber}
             />
             <input
-              className="seniority"
+              className="matricule"
               type="number"
               name="matricule"
               placeholder="Votre Matricule"
-              ref={Matricule}
+              value={matricule}
+              onChange={(event) => setMatricule(event.target.value)}
             />
             <label htmlFor="start" className="embauche">
               Date d'embauche:
@@ -113,10 +123,9 @@ function inscription() {
                 name="start"
                 id="start"
                 value={seniority}
-                onChange={(e) => setSeniority(e.target.value)}
+                onChange={(event) => setSeniority(event.target.value)}
               />
             </label>
-
             <textarea
               className="introduction"
               rows="25"
@@ -124,16 +133,28 @@ function inscription() {
               name="message"
               required
               placeholder="Expliquez vos motivation"
-              ref={Introduction}
+              value={introduction}
+              onChange={(event) => setIntroduction(event.target.value)}
             />
+
+            <div>
+              <label htmlFor="avatar">Photo de profil:</label>
+              <input
+                type="file"
+                id="avatar"
+                name="avatar"
+                accept="image/png, image/jpeg"
+                ref={insertPicture}
+              />
+            </div>
           </div>
         </div>
-      </from>
-      <div>
-        <button className="validation" type="button" onClick={handleSubmit}>
-          Valider
-        </button>
-      </div>
+        <div>
+          <button className="validation" type="button" onClick={handlesubmit}>
+            Valider
+          </button>
+        </div>
+      </form>
       <div>
         <img className="rayinscrir" src={logorayj} alt="logo société" />
       </div>
@@ -142,3 +163,5 @@ function inscription() {
 }
 
 export default inscription;
+
+// voir authentification gerer l'auto-login v2/

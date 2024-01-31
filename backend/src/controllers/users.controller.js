@@ -1,17 +1,32 @@
 const jwt = require("jsonwebtoken");
+const argon = require("argon2");
 const userModel = require("../models/users.model");
-const { comparePassword } = require("../middlewares/auth");
 
 const add = async (req, res, next) => {
   try {
     const user = req.body;
+    user.Admin = 0;
+    user.Picture = `${req.protocol}://${req.get("host")}/upload/${
+      req.files[0].filename
+    }`;
     const [result] = await userModel.insert(user);
-
     if (result.insertId) {
       const [[newUser]] = await userModel.findById(result.insertId);
+      const token = jwt.sign(
+        { id: newUser.id_Users, admin: newUser.Admin },
+        process.env.APP_SECRET,
+        { expiresIn: "2h" }
+      );
+      res.cookie("auth-token", token, {
+        expire: "2h",
+        httpOnly: true /* secure en deploiment */,
+        secure: false,
+        sameSite: "lax",
+      });
       res.status(201).json(newUser);
-    } else res.sendStatus(422);
+    } else res.sendStatus(402);
   } catch (error) {
+    console.error("error", error);
     next(error);
   }
 };
@@ -21,7 +36,7 @@ const login = async (req, res, next) => {
     const { Email, Password } = req.body;
     const [[user]] = await userModel.findByEmail(Email);
     if (!user) res.sendStatus(422);
-    else if (comparePassword(user.Password, Password)) {
+    else if (await argon.verify(user.Password, Password)) {
       const token = jwt.sign(
         { id: user.id_Users, admin: user.Admin },
         process.env.APP_SECRET,
@@ -29,9 +44,9 @@ const login = async (req, res, next) => {
       );
       res.cookie("auth-token", token, {
         expire: "30d",
-        httpOnly: true,
+        httpOnly: true /* secure en deploiment */,
         secure: false,
-        sameSite: "Lax",
+        sameSite: "lax",
       });
       res.status(200).json(user);
     } else res.sendStatus(422);
@@ -39,7 +54,8 @@ const login = async (req, res, next) => {
     next(error);
   }
 };
-const getAll = async (_, res, next) => {
+
+const getAll = async (req, res, next) => {
   try {
     const [users] = await userModel.findAll();
     res.status(200).json(users);
@@ -51,9 +67,40 @@ const getAll = async (_, res, next) => {
 const getById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const [[user]] = await userModel.findById(id);
+    const [user] = await userModel.findById(id);
     if (!user) res.sendStatus(422);
     else res.status(200).json(user);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const putById = async (req, res, next) => {
+  try {
+    const id = req.userId;
+    const data = req.body;
+    const [result] = await userModel.updateById(id, data);
+    if (result.affectedRows <= 0) res.sendStatus(422);
+    else {
+      const [[user]] = await userModel.findById(id);
+      res.status(200).json(user);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+const deleteById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await userModel.deleteById(id);
+    if (result.affectedRows > 0) {
+      res.status(200).json({ message: "Utilisateur supprimé avec succès." });
+    } else {
+      res
+        .status(404)
+        .json({ message: "Aucun utilisateur trouvé avec cet ID." });
+    }
   } catch (error) {
     next(error);
   }
@@ -62,6 +109,8 @@ const getById = async (req, res, next) => {
 module.exports = {
   add,
   login,
-  getById,
   getAll,
+  getById,
+  putById,
+  deleteById,
 };

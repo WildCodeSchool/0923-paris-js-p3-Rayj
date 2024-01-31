@@ -11,9 +11,8 @@ import Post from "./pages/Posts/Post";
 import Profil from "./pages/Profil/Profil";
 import ProfilPage2 from "./pages/Profil_ad/Profil_page2/ProfilPage2";
 import ProfilPage3 from "./pages/Profil_ad/Profil_page3/ProfilPage3";
-import Descriptiondeloffre from "./pages/DescriptionOffre/Descriptiondeloffre";
 import Validation from "./pages/Validation/Validation";
-import ProfilModif from "./pages/ProfilModif/ProfilModif";
+import ProfilModif from "./pages/Profil/ProfilModif";
 import Connection from "./pages/Connection/Connection";
 import OfferDescription from "./components/offerdescription/OfferDescription";
 import ContactCandidat from "./components/contact_candidat/ContactCandidat";
@@ -34,6 +33,16 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
+        path: "/homepage",
+        element: <HomePage />,
+        loader: () => {
+          return fetch(`${import.meta.env.VITE_BACKEND_URL}/api/users`, {
+            credentials: "include",
+          });
+        },
+      },
+
+      {
         path: "/candidate",
         element: <Candidate />,
       },
@@ -48,6 +57,12 @@ const router = createBrowserRouter([
       {
         path: "/profil",
         element: <Profil />,
+        // loader: () => {
+        //   return fetch(`${import.meta.env.VITE_BACKEND_URL}/api/users/:id`, {
+        //     method: "GET",
+        //     credentials: "include",
+        //   });
+        // },
       },
 
       {
@@ -59,6 +74,9 @@ const router = createBrowserRouter([
         path: "/profil2",
         element: <ProfilPage2 />,
       },
+      // {
+      //       path="/profil1/:data" element={<ProfilPage1 />}
+      // }
       {
         path: "/profil3",
         element: <ProfilPage3 />,
@@ -74,16 +92,12 @@ const router = createBrowserRouter([
         element: <Validation />,
       },
       {
-        path: "/profilmodif",
-        element: <ProfilModif />,
-      },
-      {
-        path: "/OfferDescription/:offer",
+        path: "/OfferDescription/:idOffers",
         element: <OfferDescription />,
       },
       {
-        path: "/descriptionoffre",
-        element: <Descriptiondeloffre />,
+        path: "/ProfilModif/:id",
+        element: <ProfilModif />,
       },
       {
         path: "/inscription",
@@ -92,7 +106,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
