@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import Header from "../../components/header/Header";
 import Category from "../../components/category/Category";
 import NavBar from "../../components/navbar/NavBar";
@@ -8,12 +8,15 @@ import "./homepage.css";
 
 function HomePage() {
   const { offre, filter, setFilter } = useContext(AnnonceContext);
+
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
   };
+
   const filterAnnonce = offre.filter((poste) => {
     return filter.length === 0 || filter.includes(poste.Domaine);
   });
+
   return (
     <div className="homepage">
       <section className="entete">
@@ -25,7 +28,7 @@ function HomePage() {
       <section className="row">
         <div className="annonce">
           {filterAnnonce.map((poste) => (
-            <CardAnnonce poste={poste} />
+            <CardAnnonce key={poste.id_Offers} poste={poste} />
           ))}
         </div>
       </section>

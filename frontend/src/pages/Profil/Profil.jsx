@@ -55,7 +55,7 @@ function Profil() {
           placeholder="7 ans"
           value={user?.Seniority}
         />
-        <Link to="/" className="logout_btn">
+        <Link to="/connection" className="logout_btn">
           <p>Log out</p>
         </Link>
       </div>
