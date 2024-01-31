@@ -1,14 +1,11 @@
-import { React, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { React } from "react";
 import rf from "../../assets/images/logorf.png";
 import rara from "../../assets/images/rara.png";
 import logorayj from "../../assets/images/logorayj.png";
-import AuthContext from "../../context/AuthContext";
+import Arrow from "../../assets/images/return_arrow.svg";
 import "./header.css";
 
 function Header() {
-  const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
   return (
     <section className="block_header">
       <div className="logo_header">

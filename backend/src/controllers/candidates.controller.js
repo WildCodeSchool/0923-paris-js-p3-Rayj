@@ -3,7 +3,7 @@ const candidatesModel = require("../models/candidates.model");
 const addCandidate = async (req, res, next) => {
   try {
     const candidate = req.body;
-    candidate.userID = req.userID;
+    candidate.userID = req.userId;
 
     const [result] = await candidatesModel.insertCandidate(candidate);
 
@@ -19,7 +19,7 @@ const addCandidate = async (req, res, next) => {
 
 const removeCandidate = async (req, res, next) => {
   try {
-    const userId = req.userID;
+    const { userId } = req;
     const offerId = req.params.id;
 
     const [result] = await candidatesModel.deleteCandidate(userId, offerId);

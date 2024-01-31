@@ -5,7 +5,7 @@ import { AnnonceProvider } from "./context/AnnonceContext";
 import { AuthProvider } from "./context/AuthContext";
 import App from "./App";
 import HomePage from "./pages/HomePage/HomePage";
-import Candidate from "./pages/Candidate/Candidate";
+
 import Following from "./pages/Following/Following";
 import Post from "./pages/Posts/Post";
 import Profil from "./pages/Profil/Profil";
@@ -42,10 +42,6 @@ const router = createBrowserRouter([
         },
       },
 
-      {
-        path: "/candidate",
-        element: <Candidate />,
-      },
       {
         path: "/following",
         element: <Following />,

@@ -3,7 +3,7 @@ const favoriteModel = require("../models/favorites.model");
 const add = async (req, res, next) => {
   try {
     const favorite = req.body;
-    favorite.userID = req.userID;
+    favorite.userID = req.userId;
 
     const [result] = await favoriteModel.insert(favorite);
 
@@ -19,7 +19,7 @@ const add = async (req, res, next) => {
 const remove = async (req, res, next) => {
   try {
     const offerId = req.params.id;
-    const userId = req.userID;
+    const { userId } = req;
 
     const [result] = await favoriteModel.deleteFavs(userId, offerId);
 
