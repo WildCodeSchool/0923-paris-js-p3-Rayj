@@ -20,6 +20,7 @@ const City = [
   { value: "Bordeaux", label: "Bordeaux" },
   { value: "Nantes", label: "Nantes" },
   { value: "Toulouse", label: "Toulouse" },
+
 ];
 
 const formatSelectData = (data, table) => {

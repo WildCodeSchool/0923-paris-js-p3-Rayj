@@ -1,4 +1,5 @@
 const softskillsModel = require("../models/softskills.model");
+
 // The R of BREAD - Read operation
 const readSoftSkills = async (req, res, next) => {
   try {

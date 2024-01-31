@@ -8,6 +8,7 @@ import "./header.css";
 
 function Header() {
   const navigate = useNavigate();
+
   return (
     <section className="block_header">
       <div className="logo_header">

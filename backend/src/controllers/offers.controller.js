@@ -1,6 +1,7 @@
 const offerModel = require("../models/offers.model");
 const categoriesModel = require("../models/categories.model");
 /* eslint-disable no-await-in-loop */
+
 const getAll = async (_, res, next) => {
   try {
     const [offers] = await offerModel.findAll();
