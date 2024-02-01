@@ -74,7 +74,7 @@ function ProfilModif() {
           Profil
         </Link>
       </div>
-      <form className="form">
+      <form className="form-modification">
         <label>
           <p className="info"> Mot de passe</p>
           <input className="info_input" type="password" placeholder="*******" />

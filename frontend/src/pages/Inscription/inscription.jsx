@@ -58,11 +58,11 @@ function inscription() {
     // status ok redirect to login or fetch login route to autologin
   };
   return (
-    <div className="inscribody">
+    <div className="inscribody-ya">
       <img className="logorf" src={logorf} alt="logo de la société" />
 
-      <form onSubmit={handlesubmit} className="form-inscription">
-        <div className="inscription-box">
+      <form onSubmit={handlesubmit} className="form-inscription-ya">
+        <div className="inscription-box-ya">
           <div className="all">
             <input
               className="firstname"
@@ -72,7 +72,6 @@ function inscription() {
               ref={firstName}
               placeholder="Prénom"
             />
-
             <input
               className="lastname"
               type="text"
@@ -104,7 +103,7 @@ function inscription() {
               className="phonenumber"
               type="tel"
               name="phoneNumber"
-              placeholder="numéro de téléphone"
+              placeholder="Numéro de téléphone"
               ref={phoneNumber}
             />
             <input
@@ -137,9 +136,10 @@ function inscription() {
               onChange={(event) => setIntroduction(event.target.value)}
             />
 
-            <div>
-              <label htmlFor="avatar">Photo de profil:</label>
+            <div className="fileUpload">
+              <label htmlFor="avatar">Photo de profil</label>
               <input
+                className="upload"
                 type="file"
                 id="avatar"
                 name="avatar"
@@ -150,7 +150,11 @@ function inscription() {
           </div>
         </div>
         <div>
-          <button className="validation" type="button" onClick={handlesubmit}>
+          <button
+            className="validation-inscription"
+            type="button"
+            onClick={handlesubmit}
+          >
             Valider
           </button>
         </div>

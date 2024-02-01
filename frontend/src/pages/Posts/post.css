@@ -1,4 +1,4 @@
-.pageprofiljesaispas {
+.page_news_annonces {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,39 +8,109 @@
   margin-top: 10rem;
   border-radius: 10px;
   background-color: #ad9d8b;
-  width: 25rem;
-  height: 54rem;
+  width: 90%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  border: 1px solid red;
+}
+.creation_annonce {
+  margin: 0.8rem 0 0.8rem 0;
 }
 
-.domaine,
-.jobs,
-.city,
-.annoncedecrite {
-  padding: 0px 0px 10px 5px;
+.Title-poste {
+  color: #070707;
+  text-decoration: none;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  width: 60%;
+  padding: 5px;
+  font-size: 20px;
+  margin-bottom: 30px;
+  border-bottom: 3px solid black;
+}
+
+.Logo_input {
+  border: 1.4px #61646bb6;
+  border-style: dashed;
+  height: 5rem;
+  width: 65%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.info_Logo {
+  color: #61646bb6;
+}
+
+.upload_icon_Logo {
+  width: 45px;
+  margin-top: -1rem;
+}
+
+/*
+.logo-file-upload {
+  margin-top: 3rem;
+  background: #5e4a35a8;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  border-style: dashed;
+  color: #070707;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0.2rem 0 2.2rem 0;
+  overflow: hidden;
+  padding: 0.875em; /*14px/16px
+  position: relative;
+  text-align: center;
+  width: 150px;
+  cursor: pointer;
+}
+*/
+
+.Domaine-Fieldset {
+  padding: 0px 0px 20px 5px;
+  border: none;
+  width: 16rem;
+}
+
+.City-Fieldset {
+  padding: 0px 0px 10px 3px;
+  border: none;
+  width: 18rem;
+  margin-left: 2rem;
+}
+
+.domaine-options,
+.city-options {
+  width: 90%;
+}
+
+.Post-description {
+  margin-top: 1rem;
+  background: #5e4a35a8;
+  color: #070707;
   border: none;
 }
-
-.choicejobs,
-.departement,
-.lieux {
-  width: 9.7rem;
-}
-
-.descriptionoffers {
-  padding: 0px 0px 10px 5px;
-  margin-left: 8px;
-}
-
 .comptetout,
 .creationannonce,
 .formation,
-.demandeanciennete {
+.demandeanciennete,
+.Description-annonce {
   font-size: 1.3rem;
+}
+
+.Description-annonce {
+  margin-top: 2rem;
 }
 
 .anciennetechoix {
@@ -49,15 +119,22 @@
   width: 60%;
 }
 
-.skill_options {
-  width: 88%;
+.categories_options,
+.skill_hard_options,
+.skill_hard_options {
+  width: 16rem;
   background-color: #58524b;
 }
 
-.affirmatif {
+.Choice_yes {
   margin-right: 2.5rem;
 }
-.anciennete {
+.Seniority_choice {
+  margin-bottom: 1rem;
+}
+
+.anciennete_six_mois,
+.anciennete_un_ans {
   margin-right: 0.5rem;
 }
 
