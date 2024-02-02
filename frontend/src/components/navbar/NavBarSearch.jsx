@@ -95,6 +95,7 @@ function NavBarSearch() {
     <div className="search">
       <button type="button" onClick={openModal}>
         <img src={Search} alt="search" />
+        <p className="nav_head">Filtre</p>
       </button>
       <ReactModal isOpen={modalIsOpen}>
         <h2>Annonce</h2>

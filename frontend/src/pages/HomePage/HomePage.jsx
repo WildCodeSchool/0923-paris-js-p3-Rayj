@@ -5,6 +5,7 @@ import NavBar from "../../components/navbar/NavBar";
 import CardAnnonce from "../../components/cards/CardAnnonce";
 import AnnonceContext from "../../context/AnnonceContext";
 import "./homepage.css";
+import HeaderDesktop from "../../components/header/headerDesktop/HeaderDesktop";
 
 function HomePage() {
   const { offre, filter, setFilter } = useContext(AnnonceContext);
@@ -17,10 +18,12 @@ function HomePage() {
     return filter.length === 0 || filter.includes(poste.Domaine);
   });
 
+  const isMobile = window.innerWidth <= 780;
+
   return (
     <div className="homepage">
       <section className="entete">
-        <Header />
+        {isMobile ? <Header /> : <HeaderDesktop />}
       </section>
       <section className="catfilter">
         <Category onFilterChange={handleFilterChange} />
@@ -32,9 +35,7 @@ function HomePage() {
           ))}
         </div>
       </section>
-      <section className="footer">
-        <NavBar />
-      </section>
+      <section className="footer">{isMobile && <NavBar />}</section>
     </div>
   );
 }

@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { Link } from "react-router-dom";
 import "./profilmodif.css";
-import profilPic from "../../assets/Profil/profil_pic.jpg";
+import Header from "../../components/header/Header";
+import HeaderDesktop from "../../components/header/headerDesktop/HeaderDesktop";
+import ProfilHeader from "../../components/header/ProfilHeader";
+import NavBar from "../../components/navbar/NavBar";
 import modifPen from "../../assets/Profil/modif_pen.svg";
 import uploadIcon from "../../assets/Profil/upload_icon.svg";
 
@@ -63,16 +66,12 @@ function ProfilModif() {
   const handleSelectHardSkillChange = (selectedHardSkillOptions) => {
     sethardSkills(selectedHardSkillOptions);
   };
+  const isMobile = window.innerWidth <= 780;
 
   return (
     <div className="pg_modify">
-      <div className="img_btn">
-        <img className="profilpic" src={profilPic} alt="profilpic" />
-        <p className="user_name">Rudy Martin</p>
-        <Link to="/profil" className="btn_profil">
-          Profil
-        </Link>
-      </div>
+      {isMobile ? <Header /> : <HeaderDesktop />}
+      <ProfilHeader />
       <form className="formdeasle" onSubmit={handleSubmit}>
         <label>
           <p className="info"> Mot de passe</p>
@@ -167,6 +166,7 @@ function ProfilModif() {
       <Link to="/profil" className="btn_save">
         SAUVEGARDER
       </Link>
+      {isMobile && <NavBar />}
     </div>
   );
 }

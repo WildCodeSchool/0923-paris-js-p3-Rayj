@@ -1,22 +1,20 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./profil.css";
-import profilPic from "../../assets/Profil/profil_pic.jpg";
-import authContext from "../../context/AuthContext";
+import Header from "../../components/header/Header";
+import HeaderDesktop from "../../components/header/headerDesktop/HeaderDesktop";
+import ProfilHeader from "../../components/header/ProfilHeader";
 import NavBar from "../../components/navbar/NavBar";
+import authContext from "../../context/AuthContext";
 
 function Profil() {
   const { user } = useContext(authContext);
   const navigate = useNavigate();
+  const isMobile = window.innerWidth <= 780;
   return (
     <div className="profil">
-      <div className="img_btn">
-        <img className="profilpic" src={profilPic} alt="profilpic" />
-        <p className="user_name">{user?.Lastname}</p>
-        <Link to="/profil" className="btn_profil">
-          Profil
-        </Link>
-      </div>
+      {isMobile ? <Header /> : <HeaderDesktop />}
+      <ProfilHeader />
       <button
         className="btn_modif"
         type="button"
@@ -96,7 +94,7 @@ function Profil() {
           value={user?.Introduction}
         />
       </div>
-      <NavBar />
+      {isMobile && <NavBar />}
     </div>
   );
 }

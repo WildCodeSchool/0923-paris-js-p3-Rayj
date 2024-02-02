@@ -1,0 +1,58 @@
+.profil_img_name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.photoprofil {
+  width: 78px;
+  height: 88px;
+  border: 5px solid #ad9d8b;
+  border-radius: 50%;
+  padding: 7px;
+  margin-top: -3rem;
+}
+
+.profilname {
+  font-size: 20px;
+  margin: 10px 0 0 0;
+}
+.lesbuttons {
+  width: 100%;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.button-precedent {
+  width: 5rem;
+  height: 4.2rem;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+}
+.flecheprec {
+  width: 47%;
+  height: 4.3rem;
+}
+.butbutprofil {
+  width: 10rem;
+  height: 3rem;
+  color: white;
+  background-color: #557cae;
+  border-radius: 2rem;
+  font-size: 100%;
+  font-weight: bold;
+}
+
+@media (min-width: 780px) {
+  .photoprofil {
+    margin-top: 3rem;
+  }
+  .lesbuttons {
+    width: 100%;
+    display: flex;
+    gap: 37rem;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+}

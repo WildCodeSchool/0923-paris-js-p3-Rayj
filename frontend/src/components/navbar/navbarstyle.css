@@ -12,6 +12,9 @@
   height: 4rem;
   width: 4rem;
   border-radius: 1rem;
+  background-color: transparent;
+  border: none;
+  margin-top: 0.7rem;
 }
 
 .mobile {
@@ -20,5 +23,10 @@
   justify-content: space-around;
   border: black;
   background-color: #8d7b64;
-  width: 430px;
+  height: 5rem;
+  margin-top: 4rem;
+}
+
+.nav_head {
+  margin-top: 0;
 }

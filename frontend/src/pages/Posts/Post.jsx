@@ -7,6 +7,8 @@ import { RadioGroup, Radio } from "react-radio-group";
 import Header from "../../components/header/Header";
 // import RecaPopup from "../../components/popup/recapopup";
 import "./post.css";
+import NavBarAd from "../../components/navbar/navbar_ad/NavBarAd";
+import AdHeader from "../../components/header/AdHeader/AdHeader";
 
 const Domaine = [
   { value: "Securite", label: "Securite" },
@@ -223,10 +225,11 @@ function Post() {
     // console.log(e.target.files[0]);
     setInsertLogo(e.target.files[0]);
   };
+  const isMobile = window.innerWidth <= 780;
 
   return (
     <div className="pageprofiljesaispas">
-      <Header />
+      {isMobile ? <Header /> : <AdHeader />}
       <div className="offersannonces">
         <h1 className="creationannonce">Creation de l'annonce</h1>
 
@@ -371,6 +374,7 @@ function Post() {
           <RecaPopup titi={hardSkills} />
         </Modal> */}
       </button>
+      {isMobile && <NavBarAd />}
     </div>
   );
 }

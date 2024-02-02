@@ -8,6 +8,7 @@ function NavBarFollowing() {
     <div className="following">
       <button type="button" onClick={() => navigate("/following")}>
         <img src={Following} alt="following" />
+        <p className="nav_head">Suivi</p>
       </button>
     </div>
   );
