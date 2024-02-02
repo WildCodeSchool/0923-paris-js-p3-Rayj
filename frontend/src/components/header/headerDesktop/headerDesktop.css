@@ -1,0 +1,11 @@
+.logo_header_desktop {
+  display: flex;
+  width: 100%;
+  background-color: #8d7b64;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav_header_desktop {
+  display: flex;
+  gap: 0.7rem;
+}

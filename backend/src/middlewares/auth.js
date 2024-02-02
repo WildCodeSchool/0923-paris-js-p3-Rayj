@@ -19,9 +19,11 @@ const hashpassword = async (req, res, next) => {
     res.status(500).json(error.message);
   }
 };
+
 const comparePassword = async (hash, password) => {
   return argon.verify(hash, password);
 };
+
 const isAuth = async (req, res, next) => {
   try {
     const token = req.cookies["auth-token"];

@@ -1,3 +1,22 @@
+.home,
+.search,
+.profile,
+.following {
+  height: 4rem;
+  width: 4rem;
+}
+.home button,
+.search button,
+.profile button,
+.following button {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 1rem;
+  background-color: transparent;
+  border: none;
+  margin-top: 0.7rem;
+}
+
 .mobile {
   display: flex;
   justify-content: space-between;
@@ -24,4 +43,8 @@
   padding: 0;
   width: 100px;
   height: 35px;
+}
+
+.nav_head {
+  margin-top: 0;
 }
