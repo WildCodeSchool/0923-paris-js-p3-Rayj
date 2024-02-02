@@ -8,6 +8,7 @@ function NavBarProfile() {
     <div className="profile">
       <button type="button" onClick={() => navigate("/profil")}>
         <img src={Profile} alt="profile" />
+        <p className="nav_head">Profile</p>
       </button>
     </div>
   );

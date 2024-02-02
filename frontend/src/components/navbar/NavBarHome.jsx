@@ -14,6 +14,7 @@ function NavBarHome() {
       <Link to="/homepage">
         <button type="button" onClick={resetFilter}>
           <img src={Home} alt="home" />
+          <p className="nav_head">Acceuil</p>
         </button>
       </Link>
     </div>

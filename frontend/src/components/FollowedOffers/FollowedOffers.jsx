@@ -8,7 +8,7 @@ function FollowedOffers() {
   return (
     <div className="followed_posts">
       <p className="header_fav">Suivi</p>
-      <div>
+      <div className="block_post_candidates">
         {followedOffers.map((candidates) => (
           <CardAnnonce
             isCandidate={1}

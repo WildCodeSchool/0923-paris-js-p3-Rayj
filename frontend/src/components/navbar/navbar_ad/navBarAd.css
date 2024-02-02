@@ -1,32 +1,23 @@
 .home,
-.search,
 .profile,
-.following {
+.filter {
   height: 4rem;
   width: 4rem;
 }
+
 .home button,
-.search button,
 .profile button,
-.following button {
+.filter button {
   height: 4rem;
   width: 4rem;
   border-radius: 1rem;
-  background-color: transparent;
-  border: none;
-  margin-top: 0.7rem;
 }
 
-.mobile {
+.administration {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
   border: black;
   background-color: #8d7b64;
-  height: 5rem;
-  margin-top: 4rem;
-}
-
-.nav_head {
-  margin-top: 0;
+  width: 430px;
 }
