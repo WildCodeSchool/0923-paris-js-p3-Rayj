@@ -5,3 +5,6 @@
 .header_fav {
   margin-right: 72%;
 }
+.block_post_candidates {
+  overflow: auto;
+}

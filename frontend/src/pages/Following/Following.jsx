@@ -2,16 +2,20 @@ import React, { useContext } from "react";
 import CardAnnonce from "../../components/cards/CardAnnonce";
 import AnnonceContext from "../../context/AnnonceContext";
 import Header from "../../components/header/Header";
+import HeaderDesktop from "../../components/header/headerDesktop/HeaderDesktop";
+import ProfilHeader from "../../components/header/ProfilHeader";
 import NavBar from "../../components/navbar/NavBar";
 import FollowedOffers from "../../components/FollowedOffers/FollowedOffers";
 import "./following.css";
 
 function Following() {
   const { favorites } = useContext(AnnonceContext);
+  const isMobile = window.innerWidth <= 780;
 
   return (
     <div className="following_page">
-      <Header />
+      {isMobile ? <Header /> : <HeaderDesktop />}
+      <ProfilHeader />
 
       <div className="Block_following">
         <section className="following_posts">
@@ -27,7 +31,7 @@ function Following() {
           </div>
         </section>
       </div>
-      <NavBar />
+      {isMobile && <NavBar />}
     </div>
   );
 }

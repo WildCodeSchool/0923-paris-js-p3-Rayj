@@ -9,6 +9,7 @@ import NavBarAd from "../../components/navbar/navBarAd/navBarAd";
 // import RecaPopup from "../../components/popup/recapopup";
 import uploadIcon from "../../assets/Profil/upload_icon.svg";
 import "./post.css";
+import AdHeader from "../../components/header/AdHeader/AdHeader";
 
 const Domaine = [
   { value: "Securite", label: "Securite" },
@@ -225,10 +226,11 @@ function Post() {
   const handleInsertLogo = (e) => {
     setInsertLogo(e.target.files[0]);
   };
+  const isMobile = window.innerWidth <= 780;
 
   return (
-    <div className="page_news_annonces">
-      <Header />
+    <div className="pageprofiljesaispas">
+      {isMobile ? <Header /> : <AdHeader />}
       <div className="offersannonces">
         <h1 className="creation_annonce">Creation de l'annonce</h1>
 
@@ -382,7 +384,7 @@ function Post() {
           <RecaPopup titi={hardSkills} />
         </Modal> */}
       </button>
-      <NavBarAd />
+      {isMobile && <NavBarAd />}
     </div>
   );
 }

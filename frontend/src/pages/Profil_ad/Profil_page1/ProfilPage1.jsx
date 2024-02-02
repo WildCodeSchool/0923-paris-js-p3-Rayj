@@ -9,7 +9,8 @@ import Header from "../../../components/header/Header";
 import InformationEmploye from "../../../components/informationemploye/InformationEmploye";
 import ContactCandidat from "../../../components/contact_candidat/ContactCandidat";
 import "./profilpage1.css";
-// import NavBarAd from "../../../components/navbar/navbar_ad/NavBar_Ad";
+import NavBarAd from "../../../components/navbar/navbar_ad/NavBarAd";
+import AdHeader from "../../../components/header/AdHeader/AdHeader";
 
 function ProfilPage1() {
   const [users, setUsers] = useState([]);
@@ -41,10 +42,11 @@ function ProfilPage1() {
 
     setOpenModal(false);
   };
+  const isMobile = window.innerWidth <= 780;
 
   return (
     <section className="affichagepageprofil1">
-      <Header />
+      {isMobile ? <Header /> : <AdHeader />}
       <section className="bloc_card">
         <div>
           <h2 className="htwopageprofil1">Candidatures :</h2>
@@ -76,7 +78,7 @@ function ProfilPage1() {
           )}
         </Box>
       </Modal>
-      {/* <NavBarAd /> */}
+      {isMobile && <NavBarAd />}
     </section>
   );
 }
