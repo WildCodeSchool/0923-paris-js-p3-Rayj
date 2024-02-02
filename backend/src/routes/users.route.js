@@ -8,7 +8,7 @@ const fileUpload = require("../middlewares/upload.image");
 router.post("/users", fileUpload.any(), auth.hashpassword, userController.add);
 
 // connection user
-router.post("/users/login", userController.login);
+router.post("/users/login", auth.isAuth, userController.login);
 
 // recuperer tous les users
 router.get("/users", auth.isAuth, auth.isAdmin, userController.getAll);

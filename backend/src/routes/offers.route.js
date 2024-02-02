@@ -11,7 +11,7 @@ router.post(
   fileUpload.any(),
   offerController.add
 );
-router.get("/offers", offerController.getAll);
-router.get("/offers/:id", offerController.getById);
+router.get("/offers", auth.isAuth, offerController.getAll);
+router.get("/offers/:id", auth.isAuth, offerController.getById);
 
 module.exports = router;

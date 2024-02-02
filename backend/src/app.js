@@ -131,17 +131,16 @@ const publicFolderPath = path.join(__dirname, "../public");
 app.use(express.static(publicFolderPath));
 
 // Define a middleware function to log errors
-// const logErrors = (err, req, res, next) => {
-//   // Log the error to the console for debugging purposes
-//   console.error(err);
-//   console.error("on req:", req.method, req.path);
+const logErrors = (err, req, res) => {
+  // Log the error to the console for debugging purposes
+  console.error(err);
+  console.error("on req:", req.method, req.path);
 
-//   // Pass the error to the next middleware in the stack
-//   res.sendStatus(500);
-// };
+  // Pass the error to the next middleware in the stack
+  res.sendStatus(500);
+};
 
-// Mount the logErrors middleware globally
-// app.use(logErrors);
+app.use(logErrors);
 
 /* ************************************************************************* */
 
