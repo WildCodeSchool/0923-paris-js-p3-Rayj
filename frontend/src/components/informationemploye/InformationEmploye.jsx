@@ -1,5 +1,4 @@
 import React from "react";
-import { format } from "date-fns";
 
 import "./informationemploye.css";
 
@@ -7,22 +6,19 @@ function InformationEmploye({ user, onOpenModal }) {
   const handleOpenModal = () => {
     onOpenModal(user);
   };
-
   return (
     <div className="super_usercard">
       <button type="button" className="card_user" onClick={handleOpenModal}>
         <img
           className="candidate_photo"
-          src={user?.image}
-          // alt={`${user?.LastName}`}
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt={user.Firstname}
         />
         <div className="identity">
           <p>Nom : {user?.Lastname}</p>
           <p>Prénom : {user?.Firstname}</p>
           <p>Matricule : {user?.Matricule}</p>
-          <p>Profession : {user?.Profession}</p>
-          <p> Ancienneté : {format(new Date(user.Seniority), "dd/MM/yyyy")} </p>
+          <p>Email : {user?.Email}</p>
         </div>
       </button>
     </div>

@@ -1,4 +1,3 @@
-// import react from "react";
 import Arrow from "../../assets/images/Arrow.svg";
 import "./recapopup.css";
 

@@ -1,7 +1,4 @@
 import { useMemo, useState, createContext, useEffect } from "react";
-// import armees from "../assets/cards/cardannonce/armees.png";
-// import interieur from "../assets/cards/cardannonce/interieur.png";
-// import mtfp from "../assets/cards/cardannonce/mtfp.png";
 
 const AnnonceContext = createContext();
 

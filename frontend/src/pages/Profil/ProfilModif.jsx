@@ -143,7 +143,6 @@ function ProfilModif() {
         <Select
           className="skill_options"
           options={softSkillsOptions}
-          // value={softSkills}
           onChange={handleSelectSoftSkillChange}
           isMulti
           placeholder="Sélectionnez vos compétences..."
@@ -152,7 +151,6 @@ function ProfilModif() {
         <Select
           className="skill_options"
           options={hardSkillsOptions}
-          // value={hardSkills}
           onChange={handleSelectHardSkillChange}
           isMulti
           placeholder="Sélectionnez vos compétences..."

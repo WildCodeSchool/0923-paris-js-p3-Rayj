@@ -1,44 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./listeskills.css";
 
-function ListeSkills({ titre }) {
-  const [skills, setSkills] = useState([]);
-
+function ListeSkills({ titre, user }) {
+  const [softSkills, setSoftSkills] = useState();
+  const [filter] = useState([]);
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchSkills = async () => {
       try {
-        const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/api/softskills`,
-
-          {
-            method: "GET",
-          }
+        const skillsResponse = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/candidates/competences`,
+          { method: "GET" }
         );
 
-        if (response.status === 200) {
-          const data = await response.json();
-          setSkills(data || []);
+        if (skillsResponse.status === 200) {
+          const skillsData = await skillsResponse.json();
+          setSoftSkills(skillsData);
         } else {
-          console.error("Erreur lors de la récupération des données ");
+          console.error("Erreur lors de la récupération des compétences");
         }
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchData();
-  }, [titre]);
-
+    fetchSkills();
+  }, []);
+  const filteredSoftSkills = useMemo(() => {
+    if (!softSkills) return [];
+    return softSkills.filter((use) => use.Users_idUsers === user.Id_Users);
+  }, [softSkills, filter, user]);
   return (
     <div className="hop">
-      <h3 className="titrelistskill">{titre}</h3>
-      <ul className="listskill">
-        {skills.map((skill) => (
-          <li className="hophop" key={skill.id_Softskills}>
-            {skill.Name}
-          </li>
-        ))}
-      </ul>
+      <h3 className="titrelistskill">
+        {titre === "Softskills" ? titre : "Hardskills"}
+      </h3>
+      {filteredSoftSkills.map((hi) => (
+        <ul className="listskill" key={hi.User_idUsers}>
+          <li>{hi.Softskill_Name}</li>
+          <li>{hi.Hardskill_Name}</li>
+        </ul>
+      ))}
     </div>
   );
 }

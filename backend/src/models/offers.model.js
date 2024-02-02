@@ -17,6 +17,7 @@ const insert = (offer) => {
     ]
   );
 };
+
 const findById = (id) => {
   return db.query("SELECT * FROM offers WHERE id_Offers = ?", [id]);
 };
