@@ -1,4 +1,4 @@
-.connection {
+.connectionya {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -6,11 +6,11 @@
   background: #eae0d5;
 }
 
-.login-box {
+.login-boxya {
   padding: 2rem 0;
 }
 
-.login-box .user-box input {
+.login-boxya .user-boxya input {
   width: 100%;
   padding: 10px 0;
   font-size: 20px;
@@ -21,8 +21,8 @@
   background: transparent;
 }
 
-.btn-connection-yayou {
-  margin-left: 4rem;
+.btn-connection-ya {
+  margin-left: -1rem;
   padding-top: 10px;
   font-size: 20px;
   color: #000000;
@@ -31,7 +31,7 @@
   border: none;
 }
 
-.ligne-btn-connection {
+.ligne-btn-connectionya {
   margin-left: 4.1rem;
   border-top: 3px solid #000000;
   overflow: visible;
@@ -39,25 +39,19 @@
   width: 6.3rem;
 }
 
-.ray {
-  margin-left: -0.1rem;
-  width: 15rem;
-  height: 15rem;
-}
-
-.inscription-box {
+.inscription-boxya {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.creationcompte {
+.creationcompteya {
   letter-spacing: 3px;
 }
 
-.inscrire {
+.inscrireya {
   width: 16rem;
-  margin-left: 2.2rem;
+  margin-left: 1.2rem;
   padding-top: 10px;
   font-size: 20px;
   color: #000000;
@@ -66,10 +60,16 @@
   border: none;
 }
 
-.ligne-inscription {
-  margin-left: 4.1rem;
+.ligne-inscriptionya {
+  margin-left: 3.1rem;
   border-top: 3px solid #000000;
   overflow: visible;
   text-align: center;
   width: 12.3rem;
+}
+
+.ray {
+  margin: 1rem 0 0 -0.1rem;
+  width: 13rem;
+  height: 12rem;
 }

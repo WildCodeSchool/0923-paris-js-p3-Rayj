@@ -171,7 +171,7 @@ function ProfilModif() {
           Profil
         </Link>
       </div>
-      <form className="form">
+      <form className="form-modification">
         <label>
           <p className="info"> Adresse Mail</p>
           <input

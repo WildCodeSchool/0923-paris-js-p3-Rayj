@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { RadioGroup, Radio } from "react-radio-group";
 // import { Modal } from "react-responsive-modal";
 import Header from "../../components/header/Header";
+import NavBarAd from "../../components/navbar/navBarAd/navBarAd";
 // import RecaPopup from "../../components/popup/recapopup";
+import uploadIcon from "../../assets/Profil/upload_icon.svg";
 import "./post.css";
 
 const Domaine = [
@@ -20,7 +22,6 @@ const City = [
   { value: "Bordeaux", label: "Bordeaux" },
   { value: "Nantes", label: "Nantes" },
   { value: "Toulouse", label: "Toulouse" },
-
 ];
 
 const formatSelectData = (data, table) => {
@@ -215,26 +216,22 @@ function Post() {
     setLevel(value);
   };
   const handlePostTitle = (e) => {
-    // console.log(e.target.value);
     setTitlePost(e.target.value);
   };
 
   const handledescription = (e) => {
-    // console.log(e.target.value);
     setDescriptionoffre(e.target.value);
   };
   const handleInsertLogo = (e) => {
-    // console.log(e.target.files[0]);
     setInsertLogo(e.target.files[0]);
   };
 
   return (
-    <div className="pageprofiljesaispas">
+    <div className="page_news_annonces">
       <Header />
       <div className="offersannonces">
-        <h1 className="creationannonce">Creation de l'annonce</h1>
+        <h1 className="creation_annonce">Creation de l'annonce</h1>
 
-        <p> Titre de L'annonce</p>
         <input
           className="Title-poste"
           type="text"
@@ -244,53 +241,70 @@ function Post() {
           onChange={handlePostTitle}
           value={titlePost}
         />
-        <div>
-          <label htmlFor="avatar">Choose a profile picture:</label>
+        {/* <div>
+          <label htmlFor="avatar">Illustration de l'annonce</label>
+          <input
+            className="logo-Upload"
+            type="file"
+            id="avatar"
+            name="avatar"
+            accept="image/png, image/jpeg"
+            onChange={handleInsertLogo}
+          />
+        </div> */}
+
+        <label className="Logo_input">
+          <p className="info_Logo"> Illustration de l'annonce</p>
+          <img className="upload_icon_Logo" src={uploadIcon} alt="uploadIcon" />
           <input
             type="file"
             id="avatar"
             name="avatar"
             accept="image/png, image/jpeg"
             onChange={handleInsertLogo}
-            // value={insertLogo}
+            hidden
           />
-        </div>
+        </label>
 
-        <fieldset className="domaine">
-          <legend className="legenddomaine">Domaine</legend>
+        <fieldset className="Domaine-Fieldset">
+          <legend className="legenddomaine">Departement</legend>
           <label htmlFor="domaine">
             <Select
-              className="villeya"
+              className="Domaine-options"
               options={Domaine}
               onChange={setSelectDomaine}
               value={selectDomaine}
-              //   ref={selectDomaine}
-              // isMulti
-              placeholder="Sélectionnez vos compétences..."
+              placeholder="Secteur"
             />
           </label>
         </fieldset>
 
-        <fieldset className="domaine">
-          <legend className="legenddomaine">Ville</legend>
+        <fieldset className="City-Fieldset">
+          <legend className="City">Ville</legend>
           <label htmlFor="city">
             <Select
-              className="city"
+              className="city-options"
               options={City}
               onChange={setSelectCity}
               value={selectCity}
-              //   ref={selectDomaine}
-              // isMulti
-              placeholder="Sélectionnez vos city..."
+              placeholder="Localisation"
             />
           </label>
         </fieldset>
 
         <h2 className="comptetout">Compétences et Outils</h2>
         <div>
-          <p className="skill_block_heading">Soft Skill</p>
+          <p className="skill_block_heading">Categories</p>
           <Select
-            className="skill_options"
+            className="categories_options"
+            options={categories}
+            value={selectCategorie}
+            onChange={handleSelectCategorie}
+            placeholder="Sélectionnez vos compétences..."
+          />
+          <p className="skill_block_heading">Soft Skills</p>
+          <Select
+            className="skill_hard_options"
             options={softSkills}
             value={selectSoftSkills}
             onChange={handleSelectSoftSkillChange}
@@ -300,25 +314,16 @@ function Post() {
 
           <p className="skill_block_heading">Hard Skills</p>
           <Select
-            className="skill_options"
+            className="skill_hard_options"
             options={hardSkills}
             value={selectHardSkills}
             onChange={handleSelectHardSkillChange}
             isMulti
             placeholder="Sélectionnez vos compétences..."
           />
-
-          <p className="skill_block_heading">Categorie</p>
-          <Select
-            className="skill_options"
-            options={categories}
-            value={selectCategorie}
-            onChange={handleSelectCategorie}
-            placeholder="Sélectionnez vos compétences..."
-          />
         </div>
         <div>
-          <p> Description de l'annonce</p>
+          <h2 className="Description-annonce"> Description de l'annonce</h2>
           <textarea
             className="Post-description"
             rows="25"
@@ -326,7 +331,7 @@ function Post() {
             type="text"
             name="description"
             required
-            placeholder="détaillé la fiche de poste"
+            placeholder="Détaillé la fiche de poste"
             onChange={handledescription}
             value={descriptionoffre}
           />
@@ -338,7 +343,7 @@ function Post() {
             selectedValue={training}
             onChange={handleChangeFormation}
           >
-            <label htmlFor="oui">
+            <label htmlFor="oui" className="Choice_yes">
               <Radio value="true" />
               oui
             </label>
@@ -348,33 +353,36 @@ function Post() {
             </label>
           </RadioGroup>
         </div>
-
-        <h2 className="demandeanciennete">Ancienneté demandé</h2>
-        <RadioGroup
-          name="level"
-          selectedValue={level}
-          onChange={handleChangeAncien}
-        >
-          <label htmlFor="6mois">
-            <Radio value="6 mois" />
-            6mois
-          </label>
-          <label htmlFor="1ans">
-            <Radio value="1 ans" />
-            1ans
-          </label>
-          <label htmlFor="2ans">
-            <Radio value="2 ans" />
-            2ans
-          </label>
-        </RadioGroup>
+        <div className="Seniority_choice">
+          <h2 className="demandeanciennete">Ancienneté demandé</h2>
+          <RadioGroup
+            name="level"
+            selectedValue={level}
+            onChange={handleChangeAncien}
+          >
+            <label htmlFor="6mois" className="anciennete_six_mois">
+              <Radio value="6 mois" />
+              6mois
+            </label>
+            <label htmlFor="1ans" className="anciennete_un_ans">
+              <Radio value="1 ans" />
+              1ans
+            </label>
+            <label htmlFor="2ans">
+              <Radio value="2 ans" />
+              2ans
+            </label>
+          </RadioGroup>
+        </div>
       </div>
+
       <button type="button" className="recapt" onClick={handleoffre}>
         Recapitulatif
         {/* <Modal open={recap} onClose={onCloseRecap} center>
           <RecaPopup titi={hardSkills} />
         </Modal> */}
       </button>
+      <NavBarAd />
     </div>
   );
 }
