@@ -6,9 +6,12 @@ function NavBarProfile() {
   const navigate = useNavigate();
   return (
     <div className="profile">
-      <button type="button" onClick={() => navigate("/profil")}>
-        <img src={Profile} alt="profile" />
-        <p className="nav_head">Profile</p>
+      <button
+        className="profile_nav_but"
+        type="button"
+        onClick={() => navigate("/profil")}
+      >
+        <img className="profile_img" src={Profile} alt="profile" />
       </button>
     </div>
   );
