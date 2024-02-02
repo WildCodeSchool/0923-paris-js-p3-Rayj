@@ -14,12 +14,11 @@
   border-radius: 1rem;
   background-color: transparent;
   border: none;
-  margin-top: 0.7rem;
 }
 
 .mobile {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   border: black;
   background-color: #8d7b64;
@@ -41,7 +40,6 @@
 .following_img {
   margin: 0;
   padding: 0;
-  width: 100px;
   height: 35px;
 }
 
