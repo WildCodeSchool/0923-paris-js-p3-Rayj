@@ -1,11 +1,11 @@
 const db = require("../../database/client");
 
 const findAll = () => {
-  return db.query("SELECT * FROM offers");
+  return db.query("SELECT * FROM Offers");
 };
 
 const findById = (offerId) => {
-  return db.query("select * from offers where id_Offers = ?", [offerId]);
+  return db.query("select * from Offers where id_Offers = ?", [offerId]);
 };
 
 const addCategorieOffer = (dataAddCategorie) => {

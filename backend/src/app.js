@@ -131,7 +131,8 @@ const publicFolderPath = path.join(__dirname, "../public");
 app.use(express.static(publicFolderPath));
 
 // Define a middleware function to log errors
-const logErrors = (err, req, res) => {
+// eslint-disable-next-line no-unused-vars
+const logErrors = (err, req, res, next) => {
   // Log the error to the console for debugging purposes
   console.error(err);
   console.error("on req:", req.method, req.path);
