@@ -1,7 +1,7 @@
 const db = require("../../database/client");
 
 const findByCategorie = () => {
-  return db.query("select * from categories");
+  return db.query("select * from Categories");
 };
 
 const findByCategorieId = (categorieId) => {
