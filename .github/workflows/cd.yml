@@ -30,5 +30,16 @@ jobs:
       - name: Add known hosts
         run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Deploy front on VPS
+      - name: Deploy on VPS
         run: rsync -avz . ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST}}:/var/www/html/rayj
+
+      - name: Migrate database
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd ~/var/www/html/rayj
+            npm run db:migrate
