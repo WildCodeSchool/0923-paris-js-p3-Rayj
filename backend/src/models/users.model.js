@@ -15,7 +15,7 @@ const insert = (user) => {
   } = user;
 
   return db.query(
-    "INSERT INTO users (Lastname, Firstname, Matricule, Password, Email, Phone, Seniority, Admin, Introduction, Picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    "INSERT INTO Users (Lastname, Firstname, Matricule, Password, Email, Phone, Seniority, Admin, Introduction, Picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
     [
       Lastname,
       Firstname,
@@ -32,20 +32,20 @@ const insert = (user) => {
 };
 
 const findById = (id) => {
-  return db.query("SELECT * FROM users WHERE id_Users = ?", [id]);
+  return db.query("SELECT * FROM Users WHERE id_Users = ?", [id]);
 };
 const findByEmail = (email) => {
-  return db.query("SELECT * FROM users WHERE Email =?", [email]);
+  return db.query("SELECT * FROM Users WHERE Email =?", [email]);
 };
 const findAll = () => {
-  return db.query("SELECT * FROM users");
+  return db.query("SELECT * FROM Users");
 };
 const updateById = (id, data) => {
-  return db.query("UPDATE  users SET ? WHERE id_Users = ?", [data, id]);
+  return db.query("UPDATE  Users SET ? WHERE id_Users = ?", [data, id]);
 };
 
 const deleteById = (id) => {
-  return db.query("DELETE FROM users WHERE id_Users = ?", [id]);
+  return db.query("DELETE FROM Users WHERE id_Users = ?", [id]);
 };
 
 module.exports = {

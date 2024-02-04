@@ -1,15 +1,15 @@
 const db = require("../../database/client");
 
 const getHardSkills = () => {
-  return db.query("select * from hardskills");
+  return db.query("select * from Hardskills");
 };
 
 const getHardSkillsById = (id) => {
-  return db.query("select * from hardskills where id_Hardskills = ?", [id]);
+  return db.query("select * from Hardskills where id_Hardskills = ?", [id]);
 };
 
 const insert = (name) => {
-  return db.query("insert into hardskills ( Name ) values (?)", [name]);
+  return db.query("insert into Hardskills ( Name ) values (?)", [name]);
 };
 
 module.exports = {
