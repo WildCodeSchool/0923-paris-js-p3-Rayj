@@ -32,6 +32,17 @@
     "concurrently": "^8.2.0",
     "cross-env": "^7.0.3",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.3"
+    "lint-staged": "^13.2.3",
+    "nib": "^1.2.0",
+    "stylus": "^0.62.0"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.5",
+    "react-modal": "^3.16.1",
+    "react-radio-group": "^3.0.3",
+    "react-select": "^5.8.0"
+
   }
 }

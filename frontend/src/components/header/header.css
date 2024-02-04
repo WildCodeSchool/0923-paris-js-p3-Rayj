@@ -1,0 +1,18 @@
+.logo_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+}
+
+.logo_rf {
+  width: 94px;
+  height: 6rem;
+}
+
+.logo_rayj {
+  height: 4.5rem;
+
+  width: 4.8rem;
+}

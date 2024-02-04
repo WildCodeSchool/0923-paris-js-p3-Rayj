@@ -1,0 +1,82 @@
+.connectionya {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: sans-serif;
+  background: #eae0d5;
+}
+
+.login-boxya {
+  padding: 2rem 0;
+}
+
+.login-boxya .user-boxya input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 20px;
+  color: #070707;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 3px solid #060606;
+  background: transparent;
+}
+
+.btn-connection-ya {
+  margin-left: -1rem;
+  padding-top: 10px;
+  font-size: 20px;
+  color: #000000;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+}
+
+.ligne-btn-connection {
+  margin-left: 3rem;
+  border-top: 3px solid #000000;
+  overflow: visible;
+  text-align: center;
+  width: 6.3rem;
+}
+
+.ray {
+  width: 8.8rem;
+  height: 9rem;
+  margin-top: 0.5rem;
+  margin-left: 0.7rem;
+}
+
+.inscription-box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.creationcompteya {
+  letter-spacing: 3px;
+}
+
+.inscrireya {
+  width: 16rem;
+  margin-left: 1.2rem;
+  padding-top: 10px;
+  font-size: 20px;
+  color: #000000;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+}
+
+.ligne-inscriptionya {
+  margin-left: 3.1rem;
+  border-top: 3px solid #000000;
+  overflow: visible;
+  text-align: center;
+  width: 12.3rem;
+}
+
+.ray {
+  margin: 1rem 0 0 -0.1rem;
+  width: 13rem;
+  height: 12rem;
+}
