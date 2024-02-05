@@ -15,10 +15,8 @@ function InformationEmploye({ user, onOpenModal }) {
           alt={user.Firstname}
         />
         <div className="identity">
-          <p>Nom : {user?.Lastname}</p>
-          <p>Prénom : {user?.Firstname}</p>
-          <p>Matricule : {user?.Matricule}</p>
-          <p>Email : {user?.Email}</p>
+          <p>{user?.Lastname}</p>
+          <p> {user?.Firstname}</p>
         </div>
       </button>
     </div>

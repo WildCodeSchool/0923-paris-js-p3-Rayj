@@ -40,13 +40,13 @@ function ContactCandidat({ user, onCloseModal }) {
           type="button"
           onClick={() => {
             const emailSubject = encodeURIComponent(
-              `Candidat - ${user.Firstname} ${user.Lastname}`
+              `Candidat - ${user?.Firstname} ${user?.Lastname}`
             );
             const emailBody = encodeURIComponent(
               "Votre candidature n'a pas été retenue. Nous vous invitons à continuer votre recherche d'emploi. "
             );
 
-            const mailtoURL = `mailto:${user.email}?subject=${emailSubject}&body=${emailBody}`;
+            const mailtoURL = `mailto:${user?.email}?subject=${emailSubject}&body=${emailBody}`;
 
             window.location.href = mailtoURL;
           }}
@@ -58,13 +58,13 @@ function ContactCandidat({ user, onCloseModal }) {
           type="button"
           onClick={() => {
             const emailSubject = encodeURIComponent(
-              `Candidat - ${user.Firstname} ${user.Lastname}`
+              `Candidat - ${user?.Firstname} ${user?.Lastname}`
             );
             const emailBody = encodeURIComponent(
               "Votre candidature a été retenue. Je prendrai contact avec vous dans les meilleurs délais afin de fixer un entretien."
             );
 
-            const mailtoURL = `mailto:${user.email}?subject=${emailSubject}&body=${emailBody}`;
+            const mailtoURL = `mailto:${user?.email}?subject=${emailSubject}&body=${emailBody}`;
 
             window.location.href = mailtoURL;
           }}
@@ -73,8 +73,8 @@ function ContactCandidat({ user, onCloseModal }) {
         </button>
       </div>
       <div className="listingskills">
-        <ListeSkills titre="Softskills" user={user} />
-        <ListeSkills titre="Hardskills" user={user} />
+        <ListeSkills titre="Softskill" user={user} />
+        <ListeSkills titre="Hardskill" user={user} />
       </div>
     </section>
   );

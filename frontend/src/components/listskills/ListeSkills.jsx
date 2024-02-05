@@ -2,8 +2,9 @@ import React, { useState, useEffect, useMemo } from "react";
 import "./listeskills.css";
 
 function ListeSkills({ titre, user }) {
-  const [softSkills, setSoftSkills] = useState();
+  const [competences, setCompetences] = useState();
   const [filter] = useState([]);
+
   useEffect(() => {
     const fetchSkills = async () => {
       try {
@@ -14,7 +15,7 @@ function ListeSkills({ titre, user }) {
 
         if (skillsResponse.status === 200) {
           const skillsData = await skillsResponse.json();
-          setSoftSkills(skillsData);
+          setCompetences(skillsData);
         } else {
           console.error("Erreur lors de la récupération des compétences");
         }
@@ -25,19 +26,23 @@ function ListeSkills({ titre, user }) {
 
     fetchSkills();
   }, []);
-  const filteredSoftSkills = useMemo(() => {
-    if (!softSkills) return [];
-    return softSkills.filter((use) => use.Users_idUsers === user.Id_Users);
-  }, [softSkills, filter, user]);
+
+  const filteredCompetences = useMemo(() => {
+    if (!competences) return [];
+    return competences.filter((use) => use.Users_idUsers === user.Id_Users);
+  }, [competences, filter, user]);
+
   return (
     <div className="hop">
       <h3 className="titrelistskill">
-        {titre === "Softskills" ? titre : "Hardskills"}
+        {titre === "Softskill" ? "Softskills" : "Hardskills"}
       </h3>
-      {filteredSoftSkills.map((hi) => (
-        <ul className="listskill" key={hi.User_idUsers}>
-          <li>{hi.Softskill_Name}</li>
-          <li>{hi.Hardskill_Name}</li>
+      {filteredCompetences.map((hi) => (
+        <ul
+          className={hi.isMatch ? "lightgreen" : "white"}
+          key={hi.User_idUsers}
+        >
+          <li className="comparer">{hi[`${titre}_Name`]}</li>
         </ul>
       ))}
     </div>

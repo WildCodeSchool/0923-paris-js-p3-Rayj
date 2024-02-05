@@ -46,8 +46,17 @@ const getAllCandidates = async (req, res, next) => {
 };
 const getCandidateById = async (req, res, next) => {
   try {
-    const userId = req.params.id;
-    const [[candidate]] = await candidatesModel.findById(userId);
+    const [candoffre] = await candidatesModel.findOffersById();
+    if (!candoffre) res.sendStatus(404);
+    else res.status(200).json(candoffre);
+  } catch (error) {
+    next(error);
+  }
+};
+const getCandidateOffersById = async (req, res, next) => {
+  try {
+    const OfferId = req.params.id;
+    const [[candidate]] = await candidatesModel.findOffersById(OfferId);
     if (!candidate) res.sendStatus(404);
     else res.status(200).json(candidate);
   } catch (error) {
@@ -59,5 +68,6 @@ module.exports = {
   getAllCompetences,
   getAllCandidates,
   getCandidateById,
+  getCandidateOffersById,
   removeCandidate,
 };
