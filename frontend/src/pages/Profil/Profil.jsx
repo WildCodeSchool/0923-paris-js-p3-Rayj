@@ -19,7 +19,7 @@ function Profil() {
         const response = await fetch(
           `${import.meta.env.VITE_BACKEND_URL}/api/usersoft/${user.id_Users}`,
           {
-            method: "Get",
+            method: "GET",
             credentials: "include",
           }
         );
@@ -33,7 +33,7 @@ function Profil() {
         const upresponse = await fetch(
           `${import.meta.env.VITE_BACKEND_URL}/api/userhard/${user.id_Users}`,
           {
-            method: "Get",
+            method: "GET",
             credentials: "include",
           }
         );
@@ -49,7 +49,7 @@ function Profil() {
       }
     };
     kills();
-  }, []);
+  }, [user]);
   const isMobile = window.innerWidth <= 780;
   return (
     <div className="profil">

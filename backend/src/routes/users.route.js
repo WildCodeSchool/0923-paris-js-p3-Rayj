@@ -12,7 +12,7 @@ router.post("/users/login", auth.isAuth, userController.login);
 
 // recuperer tous les users
 router.get("/users", auth.isAuth, auth.isAdmin, userController.getAll);
-
+router.get("/user/me", auth.isAuth, userController.getCurrentUser);
 // admin route
 router.get("/users/:id", auth.isAuth, userController.getById);
 router.put("/users", auth.isAuth, userController.putById);
