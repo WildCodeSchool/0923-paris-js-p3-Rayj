@@ -167,5 +167,3 @@ function inscription() {
 }
 
 export default inscription;
-
-// voir authentification gerer l'auto-login v2/

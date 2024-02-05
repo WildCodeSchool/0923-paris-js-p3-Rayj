@@ -14,7 +14,6 @@ function InformationEmploye({ user, onOpenModal }) {
         <img
           className="candidate_photo"
           src={user?.image}
-          // alt={`${user?.LastName}`}
           alt={user.Firstname}
         />
         <div className="identity">

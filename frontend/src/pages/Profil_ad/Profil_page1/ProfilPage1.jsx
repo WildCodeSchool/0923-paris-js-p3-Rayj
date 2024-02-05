@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import { Modal, Box } from "@mui/material";
 import fetchUsers from "../../../api";
 
-// import FilterAdmin from "../../../components/filteradmin/FilterAdmin";
-
 import Header from "../../../components/header/Header";
 import InformationEmploye from "../../../components/informationemploye/InformationEmploye";
 import ContactCandidat from "../../../components/contact_candidat/ContactCandidat";

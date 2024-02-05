@@ -18,8 +18,11 @@ const findSoftById = (id) => {
   );
 };
 
-const deleteSoftAll = () => {
-  return db.query("DELETE FROM Users_softskills");
+const deleteSoftAll = (id) => {
+  return db.query(
+    "DELETE FROM Users_softskills WHERE Users_hardskills.Users_idUsers = ?",
+    [id]
+  );
 };
 
 const deleteSoftById = (id) => {
