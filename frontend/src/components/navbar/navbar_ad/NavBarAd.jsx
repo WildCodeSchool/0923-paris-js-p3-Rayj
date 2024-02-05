@@ -20,12 +20,14 @@ function NavBarAd() {
       <div className="filter">
         <button type="button" onClick={() => navigate("/post")}>
           <img src={Following} alt="filter" />
+          <p className="nav_head">Filtre</p>
         </button>
       </div>
 
       <div className="profile">
-        <button type="button">
+        <button type="button" onClick={() => navigate("/profil")}>
           <img src={Profile} alt="profile" />
+          <p className="nav_head">Profil</p>
         </button>
       </div>
     </div>

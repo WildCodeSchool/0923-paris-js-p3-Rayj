@@ -14,6 +14,7 @@
   border-radius: 1rem;
   background-color: transparent;
   border: none;
+  margin-top: 0.5rem;
 }
 
 .mobile {
@@ -24,23 +25,6 @@
   background-color: #8d7b64;
   width: 100%;
   height: 4rem;
-}
-
-.home_nav_but,
-.search_nav_but,
-.profile_nav_but,
-.following_nav_but {
-  background-color: transparent;
-  border: none;
-  height: 1rem;
-}
-.home_img,
-.search_img,
-.profile_img,
-.following_img {
-  margin: 0;
-  padding: 0;
-  height: 35px;
 }
 
 .nav_head {

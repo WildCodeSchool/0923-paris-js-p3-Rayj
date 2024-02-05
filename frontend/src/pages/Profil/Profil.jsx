@@ -127,7 +127,7 @@ function Profil() {
           value={user?.Introduction}
         />
       </div>
-      {isMobile && <NavBar />}
+      <section className="footer">{isMobile && <NavBar />}</section>
     </div>
   );
 }

@@ -31,7 +31,7 @@ function Following() {
           </div>
         </section>
       </div>
-      {isMobile && <NavBar />}
+      <section className="footer">{isMobile && <NavBar />}</section>
     </div>
   );
 }
