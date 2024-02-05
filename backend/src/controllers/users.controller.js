@@ -105,6 +105,23 @@ const deleteById = async (req, res, next) => {
     next(error);
   }
 };
+// rafraichissement de la page
+const getCurrentUser = async (req, res, next) => {
+  try {
+    const [[user]] = await userModel.findById(req.userId);
+    res.status(200).json(user);
+  } catch (error) {
+    next(error);
+  }
+};
+// logout
+const logout = async (req, res, next) => {
+  try {
+    res.clearCookie("auth-token").sendStatus(200);
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
   add,
@@ -113,4 +130,6 @@ module.exports = {
   getById,
   putById,
   deleteById,
+  getCurrentUser,
+  logout,
 };

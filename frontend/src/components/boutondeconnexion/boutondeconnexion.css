@@ -1,0 +1,12 @@
+.boutonsedecora {
+  background-color: #ff3d00;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 2%;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #8d1313;
+  }
+}

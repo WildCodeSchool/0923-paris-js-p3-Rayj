@@ -9,6 +9,7 @@ import Header from "../../../components/header/Header";
 import InformationEmploye from "../../../components/informationemploye/InformationEmploye";
 import ContactCandidat from "../../../components/contact_candidat/ContactCandidat";
 import "./profilpage1.css";
+import BoutonDeconnexion from "../../../components/boutondeconnexion/BoutonDeconnexion";
 // import NavBarAd from "../../../components/navbar/navbar_ad/NavBar_Ad";
 
 function ProfilPage1() {
@@ -45,6 +46,7 @@ function ProfilPage1() {
   return (
     <section className="affichagepageprofil1">
       <Header />
+      <BoutonDeconnexion />
       <section className="bloc_card">
         <div>
           <h2 className="htwopageprofil1">Candidatures :</h2>

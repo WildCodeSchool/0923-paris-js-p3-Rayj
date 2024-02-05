@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./listeskills.css";
 
-function ListeSkills({ titre }) {
-  const [skills, setSkills] = useState([]);
+function ListeSkills({ titre, name, name2, name3, nameH, nameH1, nameH2 }) {
+  // const [skills, setSkills] = useState([]);
+  const [setSkills] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/api/softskills`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/hardskills`,
 
           {
             method: "GET",
@@ -30,16 +31,31 @@ function ListeSkills({ titre }) {
   }, [titre]);
 
   return (
-    <div className="hop">
-      <h3 className="titrelistskill">{titre}</h3>
-      <ul className="listskill">
-        {skills.map((skill) => (
-          <li className="hophop" key={skill.id_Softskills}>
-            {skill.Name}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <div className="hop">
+        <h3 className="titrelistskill">{titre}</h3>
+        <ul className="listskill">
+          {/* {skills.map(() => ( */}
+          <li className="hophop">{name}</li>
+          <li className="hophop">{name2}</li>
+          <li className="hophop">{name3}</li>
+
+          {/* ))} */}
+        </ul>
+      </div>
+
+      <div className="hop">
+        <h3 className="titrelistskill">{titre}</h3>
+        <ul className="listskill">
+          {/* {skills.map(() => ( */}
+          <li className="hophop">{nameH}</li>
+          <li className="hophop">{nameH1}</li>
+          <li className="hophop">{nameH2}</li>
+
+          {/* ))} */}
+        </ul>
+      </div>
+    </>
   );
 }
 

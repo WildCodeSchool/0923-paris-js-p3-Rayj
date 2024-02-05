@@ -7,9 +7,9 @@ import "./contactcandidat.css";
 import ListeSkills from "../listskills/ListeSkills";
 
 function ContactCandidat({ user, onCloseModal }) {
-  const softSkills = user.id_SoftSkills?.Name || [];
+  // const softSkills = user.id_SoftSkills?.Name || [];
 
-  const hardSkills = [];
+  // const hardSkills = [];
   return (
     <section className="candidat-card">
       {user ? (
@@ -83,8 +83,20 @@ function ContactCandidat({ user, onCloseModal }) {
         </button>
       </div>
       <div className="listingskills">
-        <ListeSkills titre="Softskills :" skills={softSkills} />
-        <ListeSkills titre="Hardskills :" skills={hardSkills} />
+        <ListeSkills
+          titre="Softskills :"
+          // skills={softSkills}
+          name="Empathie"
+          name2="Réactivité"
+          name3="Prise d'initiative"
+        />
+        <ListeSkills
+          titre="Hardskills :"
+          // skills={hardSkills}
+          nameH="HTML 5"
+          nameH1="CSS 3"
+          nameH2="Anglais"
+        />
       </div>
     </section>
   );

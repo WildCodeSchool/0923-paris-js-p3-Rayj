@@ -4,6 +4,7 @@ import "./profil.css";
 import profilPic from "../../assets/Profil/profil_pic.jpg";
 import authContext from "../../context/AuthContext";
 import NavBar from "../../components/navbar/NavBar";
+import BoutonDeconnexion from "../../components/boutondeconnexion/BoutonDeconnexion";
 
 function Profil() {
   const { user } = useContext(authContext);
@@ -49,6 +50,7 @@ function Profil() {
   }, []);
   return (
     <div className="profil">
+      <BoutonDeconnexion />
       <div className="img_btn">
         <img className="profilpic" src={profilPic} alt="profilpic" />
         <p className="user_name">{user?.Lastname}</p>

@@ -15,6 +15,8 @@ const findSoftById = (id) => {
   return db.query(
     "SELECT softskills.Name as softName FROM users_softskills JOIN  softskills on softskills.id_Softskills = users_softskills.Softskills_id_Softskills WHERE users_softskills.Users_idUsers = ?",
     [id]
+    // "SELECT Name FROM softskills JOIN users_softskills ON Users_idUsers = id_Softskills = ?",
+    // [id]
   );
 };
 
