@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { RadioGroup, Radio } from "react-radio-group";
 // import { Modal } from "react-responsive-modal";
 import Header from "../../components/header/Header";
-import NavBarAd from "../../components/navbar/navBarAd/navBarAd";
+import NavBarAd from "../../components/navbar/navbar_ad/NavBarAd";
 // import RecaPopup from "../../components/popup/recapopup";
 import uploadIcon from "../../assets/Profil/upload_icon.svg";
 import "./post.css";
@@ -384,7 +384,7 @@ function Post() {
           <RecaPopup titi={hardSkills} />
         </Modal> */}
       </button>
-      {isMobile && <NavBarAd />}
+      <section className="footer">{isMobile && <NavBarAd />}</section>
     </div>
   );
 }

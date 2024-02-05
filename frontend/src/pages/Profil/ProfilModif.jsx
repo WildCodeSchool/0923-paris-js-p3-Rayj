@@ -5,6 +5,10 @@ import "./profilmodif.css";
 import authContext from "../../context/AuthContext";
 import profilPic from "../../assets/Profil/profil_pic.jpg";
 import modifPen from "../../assets/Profil/modif_pen.svg";
+import NavBar from "../../components/navbar/NavBar";
+// import Header from "../../components/header/Header";
+// import HeaderDesktop from "../../components/header/headerDesktop/HeaderDesktop";
+// import ProfilHeader from "../../components/header/ProfilHeader";
 // import uploadIcon from "../../assets/Profil/upload_icon.svg";
 
 function ProfilModif() {
@@ -162,6 +166,7 @@ function ProfilModif() {
     };
     data();
   }, []);
+  const isMobile = window.innerWidth <= 780;
   return (
     <div className="pg_modify">
       <div className="img_btn">
@@ -170,6 +175,8 @@ function ProfilModif() {
         <Link to="/profil" className="btn_profil">
           Profil
         </Link>
+        {/* {isMobile ? <Header /> : <HeaderDesktop />}
+      <ProfilHeader /> */}
       </div>
       <form className="form-modification">
         <label>
@@ -269,6 +276,7 @@ function ProfilModif() {
       <button type="button" onClick={handleSubmit}>
         SAUVEGARDER
       </button>
+      {isMobile && <NavBar />}
     </div>
   );
 }

@@ -12,6 +12,7 @@ function NavBarFollowing() {
         onClick={() => navigate("/following")}
       >
         <img src={Following} alt="following" className="following_img" />
+        <p className="nav_head">Suivi</p>
       </button>
     </div>
   );
