@@ -1,4 +1,4 @@
-.connectionya {
+.Connection_Login {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -6,11 +6,11 @@
   background: #eae0d5;
 }
 
-.login-boxya {
+.Login-Box {
   padding: 2rem 0;
 }
 
-.login-boxya .user-boxya input {
+.Login-Box .Login_User_Box .Mdp_Mail_btn {
   width: 100%;
   padding: 10px 0;
   font-size: 20px;
@@ -21,7 +21,7 @@
   background: transparent;
 }
 
-.btn-connection-ya {
+.btn_Connection_Login {
   margin-left: -1rem;
   padding-top: 10px;
   font-size: 20px;
@@ -31,8 +31,8 @@
   border: none;
 }
 
-.ligne-btn-connection {
-  margin-left: 3rem;
+.ligne_btn_Connection_Login {
+  margin-left: 4rem;
   border-top: 3px solid #000000;
   overflow: visible;
   text-align: center;
@@ -46,7 +46,7 @@
   margin-left: 0.7rem;
 }
 
-.inscription-box {
+.Login_inscription_box {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -67,7 +67,7 @@
   border: none;
 }
 
-.ligne-inscriptionya {
+.Login_ligne_inscriptionya {
   margin-left: 3.1rem;
   border-top: 3px solid #000000;
   overflow: visible;
@@ -75,7 +75,7 @@
   width: 12.3rem;
 }
 
-.ray {
+.Ray_Login {
   margin: 1rem 0 0 -0.1rem;
   width: 13rem;
   height: 12rem;

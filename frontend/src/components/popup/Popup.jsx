@@ -13,7 +13,8 @@ function Popup({ onClose }) {
         >
           &times;
         </button>
-        <p>
+
+        <p className="Text_Presentation">
           Chez RAYJ, nous sommes à la révolution des reconversions internes au
           sein des entreprises. Notre plateforme innovante est une solution
           offrant une expérience fluide et efficace tant pour les employés que
