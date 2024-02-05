@@ -9,6 +9,7 @@ import authContext from "../../context/AuthContext";
 
 function Profil() {
   const { user } = useContext(authContext);
+  console.info(user);
   const navigate = useNavigate();
   const [softkill, setSoftkill] = useState([]);
   const [hardkill, setHardkill] = useState([]);
