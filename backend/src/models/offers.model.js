@@ -35,7 +35,7 @@ const addSoftskillsOffers = (idOffer, idSoftskills) => {
 const insert = (offer) => {
   const { Description, Training, Level, Domaine, Location, Logo } = offer;
   return db.query(
-    "INSERT INTO offers ( Date_of_publication, Post_title, Description, Training, Level, Domaine, Location, Users_idUsers, Logo) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    "INSERT INTO Offers ( Date_of_publication, Post_title, Description, Training, Level, Domaine, Location, Users_idUsers, Logo) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
     [
       offer.Date_of_publication,
       offer.Post_title,
