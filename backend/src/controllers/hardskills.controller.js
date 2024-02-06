@@ -1,23 +1,13 @@
 const hardskillsModel = require("../models/hardskills.model");
 
-const addHardSkill = async (req, res, next) => {
-  try {
-    const hardskill = req.body;
-    const [result] = await hardskillsModel.insertHardSkills(hardskill);
-    if (result.insertId) {
-      const [[newHardSkill]] = await hardskillsModel.getHardSkillsById(
-        result.insertId
-      );
-      res.status(201).json(newHardSkill);
-    } else res.sendStatus(422);
-  } catch (error) {
-    next(error);
-  }
-};
-
+// The R of BREAD - Read operation
 const readHardSkills = async (req, res, next) => {
   try {
+    // Fetch a specific softskill from the database based on the provided ID
     const [hardskills] = await hardskillsModel.getHardSkills();
+
+    // If the softskill is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the item in JSON format
 
     if (hardskills == null) {
       res.sendStatus(404);
@@ -32,16 +22,27 @@ const readHardSkills = async (req, res, next) => {
 const readHardSkillsById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const [hardskill] = await hardskillsModel.getHardSkillsById(id);
-    if (hardskill.hardskills) res.sendStatus(422);
+    const [[hardskill]] = await hardskillsModel.getHardSkillsById(id);
+    if (!hardskill) res.sendStatus(422);
     else res.status(200).json(hardskill);
   } catch (error) {
     next(error);
   }
 };
 
+const add = async (req, res, next) => {
+  try {
+    const { name } = req.body;
+    const [result] = await hardskillsModel.insert(name);
+    if (!result.insertId) res.sendStatus(422);
+    else res.sendStatus(201);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
-  addHardSkill,
   readHardSkills,
   readHardSkillsById,
+  add,
 };

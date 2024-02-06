@@ -6,8 +6,13 @@ function NavBarFollowing() {
   const navigate = useNavigate();
   return (
     <div className="following">
-      <button type="button" onClick={() => navigate("/following")}>
-        <img src={Following} alt="following" />
+      <button
+        className="following_nav_but"
+        type="button"
+        onClick={() => navigate("/following")}
+      >
+        <img src={Following} alt="following" className="following_img" />
+        <p className="nav_head">Suivi</p>
       </button>
     </div>
   );

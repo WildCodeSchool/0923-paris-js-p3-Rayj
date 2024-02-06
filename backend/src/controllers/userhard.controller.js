@@ -15,6 +15,7 @@ const addHard = async (req, res, next) => {
     next(error);
   }
 };
+
 const getHardAll = async (_, res, next) => {
   try {
     const [userhard] = await userhardModel.findHardAll();
@@ -23,9 +24,10 @@ const getHardAll = async (_, res, next) => {
     next(error);
   }
 };
+
 const getHardById = async (req, res, next) => {
   try {
-    const id = req.userId;
+    const id = req.userID;
     const [usersofthard] = await userhardModel.findHardById(id);
     if (usersofthard.users_hardkills) res.sendStatus(422);
     else res.status(200).json(usersofthard);
@@ -33,6 +35,7 @@ const getHardById = async (req, res, next) => {
     next(error);
   }
 };
+
 const suppHardAll = async (_, res, next) => {
   try {
     await userhardModel.deleteHardAll();
@@ -41,9 +44,10 @@ const suppHardAll = async (_, res, next) => {
     next(error);
   }
 };
+
 const suppHardById = async (req, res, next) => {
   try {
-    const id = req.userId;
+    const id = req.userID;
     await userhardModel.deleteHardById(id);
     res.sendStatus(204);
   } catch (error) {

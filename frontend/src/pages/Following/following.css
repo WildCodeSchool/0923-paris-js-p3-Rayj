@@ -1,0 +1,24 @@
+.row_following {
+  width: 100%;
+  /* height: 450px; */
+}
+.favorite-offers {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 2fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+  overflow-y: visible;
+  /* overflow: auto; */
+}
+
+.Block_following {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8%;
+}
+.header_fav {
+  margin-right: 86%;
+  margin-top: 2rem;
+  font-size: 18px;
+}

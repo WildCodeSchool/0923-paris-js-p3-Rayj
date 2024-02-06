@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Header from "../../../components/header/Header";
 import OfferGroup from "../../../components/offeradmin/OfferAdmin";
 import "./profilpage1.css";
+import NavBarAd from "../../../components/navbar/navbar_ad/NavBarAd";
+import AdHeader from "../../../components/header/AdHeader/AdHeader";
 
 function ProfilPage1() {
   const [candidates, setCandidates] = useState([]);
@@ -29,10 +31,11 @@ function ProfilPage1() {
     };
     fetchData();
   }, []);
+  const isMobile = window.innerWidth <= 780;
 
   return (
     <section className="affichagepageprofil1">
-      <Header />
+      {isMobile ? <Header /> : <AdHeader />}
       <section className="bloc_card">
         <div>
           <h3>Domaines d'activités</h3>
@@ -53,6 +56,7 @@ function ProfilPage1() {
         </div>
         <OfferGroup users={candidates} activeDomain={selectedDomain} />
       </section>
+      {isMobile && <NavBarAd />}
     </section>
   );
 }

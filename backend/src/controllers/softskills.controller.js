@@ -1,24 +1,10 @@
 const softskillsModel = require("../models/softskills.model");
 
-const add = async (req, res, next) => {
-  try {
-    const softskill = req.body;
-    const [result] = await softskillsModel.insert(softskill);
-    if (result.insertId) {
-      const [[newSoftSkill]] = await softskillsModel.getSoftSkillsById(
-        result.insertId
-      );
-      res.status(201).json(newSoftSkill);
-    } else res.sendStatus(422);
-  } catch (error) {
-    next(error);
-  }
-};
-
 const readSoftSkills = async (req, res, next) => {
   try {
     const [softskills] = await softskillsModel.getSoftSkills();
-
+    // If the softskill is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the item in JSON format
     if (softskills == null) {
       res.sendStatus(404);
     } else {
@@ -32,23 +18,20 @@ const readSoftSkills = async (req, res, next) => {
 const readSoftSkillsById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const [softskill] = await softskillsModel.getSoftSkillsById(id);
-    if (softskill.softskills) res.sendStatus(422);
+    const [[softskill]] = await softskillsModel.getSoftSkillsById(id);
+    if (!softskill) res.sendStatus(422);
     else res.status(200).json(softskill);
   } catch (error) {
     next(error);
   }
 };
 
-const deleteSoftSkillsById = async (req, res, next) => {
+const add = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const result = await softskillsModel.deletSoftSkillsById(id);
-    if (result.affectedRows > 0) {
-      res.status(200).json({ message: "softskill supprimé avec succès." });
-    } else {
-      res.status(404).json({ message: "Aucun softskill trouvé avec cet ID." });
-    }
+    const { name } = req.body;
+    const [result] = await softskillsModel.insert(name);
+    if (!result.insertId) res.sendStatus(422);
+    else res.sendStatus(201);
   } catch (error) {
     next(error);
   }
@@ -58,5 +41,4 @@ module.exports = {
   add,
   readSoftSkills,
   readSoftSkillsById,
-  deleteSoftSkillsById,
 };

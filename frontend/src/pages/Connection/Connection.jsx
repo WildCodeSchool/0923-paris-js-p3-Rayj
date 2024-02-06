@@ -49,13 +49,14 @@ function Connection() {
   };
 
   return (
-    <div className="connection">
+    <div className="Connection_Login">
       {popupVisible && <Popup onClose={closePopup} />}
 
       <img className="logo" src={logorf} alt="logo de la société" />
-      <div className="login-box">
-        <div className="user-box">
+      <div className="Login-Box">
+        <div className="Login_User_Box">
           <input
+            className="Mdp_Mail_btn"
             type="email"
             name="email"
             id="email"
@@ -64,8 +65,9 @@ function Connection() {
             ref={Email}
           />
         </div>
-        <div className="user-box">
+        <div className="Login_User_Box">
           <input
+            className="Mdp_Mail_btn"
             type="password"
             name="password"
             id="password"
@@ -76,31 +78,31 @@ function Connection() {
         </div>
         <div>
           <button
-            className="btn-connection"
+            className="btn_Connection_Login"
             type="button"
             onClick={handleSubmit}
           >
             Connexion
           </button>
-          <hr className="ligne-btn-connection" />
+          <hr className="ligne_btn_Connection_Login" />
         </div>
       </div>
 
-      <div className="inscription-box">
-        <h2 className="creationcompte">Pas encore De Compte ?</h2>
+      <div className="Login_inscription_box">
+        <h2 className="creationcompteya">Pas encore De Compte ?</h2>
         <div>
           <button
-            className="inscrire"
+            className="inscrireya"
             type="button"
             onClick={() => navigate("/inscription")}
           >
             Je souhaite m'inscrire
           </button>
-          <hr className="ligne-inscription" />
+          <hr className="Login_ligne_inscriptionya" />
         </div>
       </div>
 
-      <img className="ray" src={logorayj} alt="logo société" />
+      <img className="Ray_Login" src={logorayj} alt="logo société" />
     </div>
   );
 }

@@ -1,26 +1,22 @@
 const db = require("../../database/client");
 
-const insert = (softskill) => {
-  const { Name } = softskill;
-
-  return db.query("INSERT INTO softskills ( Name ) values (?)", [Name]);
-};
-
 const getSoftSkills = () => {
-  return db.query("select * from softskills");
+  // Execute the SQL SELECT query to retrieve all softskills from the "softskills" table
+  return db.query("select * from Softskills");
 };
 
 const getSoftSkillsById = (id) => {
-  return db.query("select * from softskills where id_Softskills = ?", [id]);
+  // Execute the SQL SELECT query to retrieve a specific item by its ID
+  return db.query("select * from Softskills where id_Softskills = ?", [id]);
+  // Return the first row of the result, which represents the item
 };
 
-const deleteSoftSkillsById = (id) => {
-  return db.query("DELETE FROM softskills WHERE id_Softskills = ?", [id]);
+const insert = (name) => {
+  return db.query("insert into Softskills ( Name ) values (?)", [name]);
 };
 
 module.exports = {
   insert,
   getSoftSkills,
   getSoftSkillsById,
-  deleteSoftSkillsById,
 };

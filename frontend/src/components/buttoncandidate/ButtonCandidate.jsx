@@ -1,14 +1,46 @@
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import AnnonceContext from "../../context/AnnonceContext";
 import "./buttoncandidate.css";
 
-function ButtonCandidate() {
+function ButtonCandidate({ offer, offerId }) {
+  const { followedOffers, setFollowedOffers } = useContext(AnnonceContext);
+  const navigate = useNavigate();
+
+  const handleCandidater = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/candidates`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            Offers_Id_offers: offerId,
+            Status: "en cours",
+          }),
+        }
+      );
+
+      if (response.status === 201) {
+        setFollowedOffers([...followedOffers, offer]);
+
+        navigate("/following");
+      } else {
+        console.error("Unable to submit candidacy. Please try again later.");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
-      <Link to="/chemin">
-        <button className="candidate" type="button">
-          <p className="textcandidate">CANDIDATER</p>
-        </button>
-      </Link>
+      <button className="candidate" type="button" onClick={handleCandidater}>
+        <p className="textcandidate">CANDIDATER</p>
+      </button>
     </div>
   );
 }

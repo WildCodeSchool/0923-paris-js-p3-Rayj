@@ -1,6 +1,4 @@
 .homepage {
-  position: absolute;
-  max-width: 430px;
   max-height: 932px;
 }
 .category {
@@ -11,9 +9,10 @@
   margin-top: 10rem;
 }
 .footer {
-  width: 15rem;
-  position: absolute;
-  margin-top: 1rem;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  margin-top: 80px;
 }
 .row {
   display: flex;
@@ -30,6 +29,7 @@
   grid-row-gap: 50px;
   overflow-y: visible;
 }
+
 @media (min-width: 500px) {
   .homepage {
     width: 100vw;

@@ -15,6 +15,7 @@ const addSoft = async (req, res, next) => {
     next(error);
   }
 };
+
 const getSoftAll = async (_, res, next) => {
   try {
     const [usersoft] = await usersoftModel.findSoftAll();
@@ -23,9 +24,10 @@ const getSoftAll = async (_, res, next) => {
     next(error);
   }
 };
+
 const getSoftById = async (req, res, next) => {
   try {
-    const id = req.userId;
+    const id = req.userID;
     const [usersoft] = await usersoftModel.findSoftById(id);
     if (usersoft.users_softskills) res.sendStatus(422);
     else res.status(200).json(usersoft);
@@ -33,23 +35,27 @@ const getSoftById = async (req, res, next) => {
     next(error);
   }
 };
-const suppSoftAll = async (_, res, next) => {
+
+const suppSoftAll = async (req, res, next) => {
   try {
-    await usersoftModel.deleteSoftAll();
+    const id = req.userID;
+    await usersoftModel.deleteSoftAll(id);
     res.status(204).json("tous les compétences sont supprimées");
   } catch (error) {
     next(error);
   }
 };
+
 const suppSoftById = async (req, res, next) => {
   try {
-    const id = req.userId;
+    const id = req.userID;
     await usersoftModel.deleteSoftById(id);
     res.sendStatus(204);
   } catch (error) {
     next(error);
   }
 };
+
 module.exports = {
   addSoft,
   getSoftAll,

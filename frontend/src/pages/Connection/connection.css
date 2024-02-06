@@ -1,4 +1,4 @@
-.connection {
+.Connection_Login {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -6,11 +6,11 @@
   background: #eae0d5;
 }
 
-.login-box {
+.Login-Box {
   padding: 2rem 0;
 }
 
-.login-box .user-box input {
+.Login-Box .Login_User_Box .Mdp_Mail_btn {
   width: 100%;
   padding: 10px 0;
   font-size: 20px;
@@ -21,8 +21,8 @@
   background: transparent;
 }
 
-.btn-connection {
-  margin-left: 4rem;
+.btn_Connection_Login {
+  margin-left: -1rem;
   padding-top: 10px;
   font-size: 20px;
   color: #000000;
@@ -31,33 +31,34 @@
   border: none;
 }
 
-.ligne-btn-connection {
-  margin-left: 4.1rem;
+.ligne_btn_Connection_Login {
+  margin-left: 4rem;
   border-top: 3px solid #000000;
   overflow: visible;
   text-align: center;
-  width: 6.3rem;
+  width: 41%;
 }
 
 .ray {
-  margin-left: -0.1rem;
-  width: 15rem;
-  height: 15rem;
+  width: 8.8rem;
+  height: 9rem;
+  margin-top: 0.5rem;
+  margin-left: 0.7rem;
 }
 
-.inscription-box {
+.Login_inscription_box {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.creationcompte {
+.creationcompteya {
   letter-spacing: 3px;
 }
 
-.inscrire {
+.inscrireya {
   width: 16rem;
-  margin-left: 2.2rem;
+  margin-left: 1.2rem;
   padding-top: 10px;
   font-size: 20px;
   color: #000000;
@@ -66,10 +67,16 @@
   border: none;
 }
 
-.ligne-inscription {
-  margin-left: 4.1rem;
+.Login_ligne_inscriptionya {
+  margin-left: 3.1rem;
   border-top: 3px solid #000000;
   overflow: visible;
   text-align: center;
-  width: 12.3rem;
+  width: 72%;
+}
+
+.Ray_Login {
+  margin: 1rem 0 0 -0.1rem;
+  width: 13rem;
+  height: 12rem;
 }

@@ -1,18 +1,17 @@
 const router = require("express").Router();
 
-const hardskillsController = require("../controllers/hardskills.controller");
 const auth = require("../middlewares/auth");
 
-router.post(
-  "/hardskills",
-  auth.hashPassword,
+const harskillsController = require("../controllers/hardskills.controller");
+
+router.get("/hardskills", auth.isAuth, harskillsController.readHardSkills);
+
+router.get(
+  "/hardskills/:id",
   auth.isAuth,
-  auth.isAdmin,
-  hardskillsController.addHardSkill
+  harskillsController.readHardSkillsById
 );
 
-router.get("/hardskills", hardskillsController.readHardSkills);
-
-router.get("/hardskills/:id", hardskillsController.readHardSkillsById);
+router.post("/hardskills", auth.isAuth, harskillsController.add);
 
 module.exports = router;

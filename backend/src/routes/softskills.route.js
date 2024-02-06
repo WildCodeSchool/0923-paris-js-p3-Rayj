@@ -1,25 +1,17 @@
 const router = require("express").Router();
 
-const softskillsController = require("../controllers/softskills.controller");
-
 const auth = require("../middlewares/auth");
 
-router.post(
-  "/softskills",
-  auth.hashPassword,
-  auth.isAuth,
-  softskillsController.add
-);
+const softskillsController = require("../controllers/softskills.controller");
 
-router.get("/softskills", softskillsController.readSoftSkills);
+router.get("/softskills", auth.isAuth, softskillsController.readSoftSkills);
 
-router.get("/softskills/:id", softskillsController.readSoftSkillsById);
-
-router.delete(
+router.get(
   "/softskills/:id",
   auth.isAuth,
-  auth.isAdmin,
-  softskillsController.deleteSoftSkillsById
+  softskillsController.readSoftSkillsById
 );
+
+router.post("/softskills", softskillsController.add);
 
 module.exports = router;

@@ -2,7 +2,7 @@
 .lastname,
 .email,
 .password,
-.seniority,
+.matricule,
 .phonenumber {
   color: #070707;
   text-decoration: none;
@@ -10,10 +10,10 @@
   border: none;
 }
 
-::placeholder {
+/* ::placeholder {
   color: #070707;
-}
-.inscribody {
+} */
+.inscribody-ya {
   width: 100%;
   height: 100%;
   display: flex;
@@ -28,9 +28,10 @@
   width: 10rem;
   height: 10rem;
 }
-.form-inscription {
+.form-inscription-ya {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 100%;
 }
@@ -94,7 +95,7 @@
   background: transparent;
 }
 
-.seniority {
+.matricule {
   width: 85%;
   padding: 3px;
   font-size: 20px;
@@ -106,7 +107,7 @@
 }
 
 .pickerdate {
-  width: 140px;
+  /* width: 160px; */
   padding: 5px;
   font-size: 20px;
   color: #070707;
@@ -136,25 +137,65 @@
   background-color: transparent;
   border-radius: 2px;
 }
+
 .introduction {
   margin-top: 3rem;
   background: #a59580;
   color: #070707;
 }
-.validation {
-  background-color: #557cae;
-  border: none;
+
+/*upload*/
+.fileUpload {
+  margin-top: 3rem;
+  background: #a59580;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  color: #070707;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 1.25em auto; /*20px/16px 0*/
+  overflow: hidden;
+  padding: 0.875em; /*14px/16px*/
+  position: relative;
+  text-align: center;
+  width: 120px;
+  cursor: pointer;
+}
+.fileUpload:hover,
+.fileUpload:active,
+.fileUpload:focus {
+  background: #a59580;
+  cursor: pointer;
+}
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  width: 148px;
+  height: 46px;
+  cursor: pointer;
+}
+
+.validation-inscription {
+  width: 6rem;
+  height: 2rem;
   color: white;
-  padding-bottom: 20px;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  border-radius: 50px;
-  width: 90px;
-  margin-top: 5rem;
+  background-color: #557cae;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  font-size: 95%;
 }
 
 .rayinscrir {
-  width: 12rem;
-  height: 12rem;
+  margin: 1rem 0 0 -0.1rem;
+  width: 8.8rem;
+  height: 9rem;
+  margin-bottom: 1rem;
 }
