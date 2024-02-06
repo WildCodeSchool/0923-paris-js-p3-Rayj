@@ -156,6 +156,7 @@ function ProfilModif() {
           for (const h of datahard) {
             hardSkillsOptions.push({ value: h.id_Hardskills, label: h.Name });
           }
+
           setHard(hardSkillsOptions);
         } else {
           console.error("Mauvaise Donnée");
@@ -250,15 +251,15 @@ function ProfilModif() {
           options={hard}
           isMulti
           placeholder=""
-          filterOption={(option, input) => {
-            const inputLength = input ? input.length : 0;
-            const maxSelectedOptionns = 4;
-            const selectedOptionnsLength = selectedOptionn.length;
-            return (
-              option.label.toLowerCase().includes(input.toLowerCase()) &&
-              selectedOptionnsLength < maxSelectedOptionns - inputLength
-            );
-          }}
+          // filterOption={(option, input) => {
+          //   const inputLength = input ? input.length : 0;
+          //   const maxSelectedOptionns = 4;
+          //   const selectedOptionnsLength = selectedOptionn.length;
+          //   return (
+          //     option.label.toLowerCase().includes(input.toLowerCase()) &&
+          //     selectedOptionnsLength < maxSelectedOptionns - inputLength
+          //   );
+          // }}
         />
         <h1 className="motivation_modif_heading">Motivation</h1>
 

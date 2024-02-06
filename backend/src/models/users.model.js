@@ -40,8 +40,11 @@ const findByEmail = (email) => {
 const findAll = () => {
   return db.query("SELECT * FROM Users");
 };
-const updateById = (id, data) => {
-  return db.query("UPDATE  Users SET ? WHERE id_Users = ?", [data, id]);
+const updateById = (id, { Email, Phone, Introduction }) => {
+  return db.query(
+    "UPDATE  Users SET Email = ?, Phone = ?, Introduction = ? WHERE id_Users = ?",
+    [Email, Phone, Introduction, id]
+  );
 };
 
 const deleteById = (id) => {

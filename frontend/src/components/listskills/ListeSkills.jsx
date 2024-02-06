@@ -1,44 +1,50 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./listeskills.css";
 
-function ListeSkills({ titre }) {
-  const [skills, setSkills] = useState([]);
+function ListeSkills({ titre, user }) {
+  const [competences, setCompetences] = useState();
+  const [filter] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchSkills = async () => {
       try {
-        const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/api/softskills`,
-
-          {
-            method: "GET",
-          }
+        const skillsResponse = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/candidates/competences`,
+          { method: "GET" }
         );
 
-        if (response.status === 200) {
-          const data = await response.json();
-          setSkills(data || []);
+        if (skillsResponse.status === 200) {
+          const skillsData = await skillsResponse.json();
+          setCompetences(skillsData);
         } else {
-          console.error("Erreur lors de la récupération des données ");
+          console.error("Erreur lors de la récupération des compétences");
         }
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchData();
-  }, [titre]);
+    fetchSkills();
+  }, []);
+
+  const filteredCompetences = useMemo(() => {
+    if (!competences) return [];
+    return competences.filter((use) => use.Users_idUsers === user.Id_Users);
+  }, [competences, filter, user]);
 
   return (
     <div className="hop">
-      <h3 className="titrelistskill">{titre}</h3>
-      <ul className="listskill">
-        {skills.map((skill) => (
-          <li className="hophop" key={skill.id_Softskills}>
-            {skill.Name}
-          </li>
-        ))}
-      </ul>
+      <h3 className="titrelistskill">
+        {titre === "Softskill" ? "Softskills" : "Hardskills"}
+      </h3>
+      {filteredCompetences.map((hi) => (
+        <ul
+          className={hi.isMatch ? "lightgreen" : "white"}
+          key={hi.User_idUsers}
+        >
+          <li className="comparer">{hi[`${titre}_Name`]}</li>
+        </ul>
+      ))}
     </div>
   );
 }

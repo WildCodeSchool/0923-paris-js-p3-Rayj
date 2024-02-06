@@ -143,7 +143,7 @@ function inscription() {
                 type="file"
                 id="avatar"
                 name="avatar"
-                accept="image/png, image/jpeg"
+                accept="image/*"
                 ref={insertPicture}
               />
             </div>
@@ -167,5 +167,3 @@ function inscription() {
 }
 
 export default inscription;
-
-// voir authentification gerer l'auto-login v2/
