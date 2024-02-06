@@ -379,7 +379,7 @@ function Post() {
       </div>
 
       <button type="button" className="recapt" onClick={handleoffre}>
-        Recapitulatif
+        Validation
         {/* <Modal open={recap} onClose={onCloseRecap} center>
           <RecaPopup titi={hardSkills} />
         </Modal> */}
