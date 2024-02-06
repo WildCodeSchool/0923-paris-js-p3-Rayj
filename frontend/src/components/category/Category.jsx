@@ -34,7 +34,7 @@ function Category({ onFilterChange }) {
           <button
             type="button"
             className="categories"
-            onClick={() => handleClick("Technique")}
+            onClick={() => handleClick("Techniques")}
           >
             <img src={technique} alt="Techniques" />
           </button>

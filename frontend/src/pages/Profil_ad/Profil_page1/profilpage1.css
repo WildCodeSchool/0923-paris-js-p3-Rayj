@@ -2,30 +2,20 @@
   width: 5rem;
   height: 6rem;
 }
-
+.filtration {
+  margin-bottom: 1rem;
+}
 .bloc_card {
   display: block;
   width: 100%;
   margin-top: 10rem;
 }
-
-.rowrow {
-  display: flex;
-  overflow: auto;
-  width: 100%;
-}
-
 .affichagepageprofil1 {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .htwopageprofil1 {
   text-align: left;
   padding-left: 1rem;
-}
-
-.modalcontactcandidat {
-  margin: 2rem;
 }

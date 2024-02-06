@@ -2,7 +2,6 @@ import { React } from "react";
 import rf from "../../assets/images/logorf.png";
 
 import logorayj from "../../assets/images/logorayj.png";
-
 import "./header.css";
 
 function Header() {

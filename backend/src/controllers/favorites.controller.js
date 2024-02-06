@@ -3,7 +3,7 @@ const favoriteModel = require("../models/favorites.model");
 const add = async (req, res, next) => {
   try {
     const favorite = req.body;
-    favorite.userID = req.userId;
+    favorite.userID = req.userID;
 
     const [result] = await favoriteModel.insert(favorite);
 

@@ -16,7 +16,7 @@ const insert = (name) => {
 };
 
 module.exports = {
+  insert,
   getSoftSkills,
   getSoftSkillsById,
-  insert,
 };

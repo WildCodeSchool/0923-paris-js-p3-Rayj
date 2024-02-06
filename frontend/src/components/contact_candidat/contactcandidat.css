@@ -76,3 +76,8 @@ ul {
   font-size: medium;
   cursor: pointer;
 }
+
+.candidate_photomodal {
+  width: 5rem;
+  height: 6rem;
+}

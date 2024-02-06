@@ -186,7 +186,7 @@ function Post() {
       );
       if (response.ok) {
         console.info("Form submitted successfully");
-        navigate("/ProfilPage1");
+        navigate("/Profil1");
         // const data = await response.json(); navigate
         // console.log(data)
       } else {
@@ -262,7 +262,7 @@ function Post() {
             type="file"
             id="avatar"
             name="avatar"
-            accept="image/png, image/jpeg"
+            accept="image/*"
             onChange={handleInsertLogo}
             hidden
           />
