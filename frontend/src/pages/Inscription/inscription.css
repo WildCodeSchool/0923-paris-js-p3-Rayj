@@ -107,7 +107,7 @@
 }
 
 .pickerdate {
-  width: 160px;
+  /* width: 160px; */
   padding: 5px;
   font-size: 20px;
   color: #070707;
@@ -183,21 +183,6 @@
   cursor: pointer;
 }
 
-input[type="file"] {
-  position: fixed;
-  right: 100%;
-  bottom: 100%;
-  margin-bottom: 1rem;
-}
-.custom-file-upload {
-  border: 1px solid #ccc;
-  display: inline-block;
-  padding: 6px 12px;
-  cursor: pointer;
-}
-
-/*upload*/
-
 .validation-inscription {
   width: 6rem;
   height: 2rem;
@@ -209,6 +194,8 @@ input[type="file"] {
 }
 
 .rayinscrir {
+  margin: 1rem 0 0 -0.1rem;
   width: 8.8rem;
   height: 9rem;
+  margin-bottom: 1rem;
 }

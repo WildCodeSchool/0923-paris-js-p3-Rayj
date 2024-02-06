@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Home from "../../../assets/NavBar/Home.svg";
 import Following from "../../../assets/NavBar/Wallet.svg";
 import Profile from "../../../assets/NavBar/Profile.svg";
-
 import "./navBarAd.css";
 
 function NavBarAd() {

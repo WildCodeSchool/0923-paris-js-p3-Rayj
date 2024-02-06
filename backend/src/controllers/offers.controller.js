@@ -28,7 +28,7 @@ const add = async (req, res, next) => {
       req.files[0].filename
     }`;
 
-    data.userID = req.userId;
+    data.userID = req.userID;
     data.tabSoftSkills = JSON.parse(data.tabSoftSkills);
     data.tabHardSkills = JSON.parse(data.tabHardSkills);
     const [offerAdd] = await offerModel.insert(data);
