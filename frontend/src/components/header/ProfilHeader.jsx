@@ -9,16 +9,23 @@ function ProfilHeader() {
   const goBack = () => {
     navigate(-1);
   };
+
   return (
     <div className="profil_img_name">
       <img className="photoprofil" src={rara} alt="logo de profil" />
       <h2 className="profilname">Rachid Taha</h2>
       <div className="lesbuttons">
+        <button
+          type="button"
+          className="butbutprofil"
+          onClick={() => navigate("/profil")}
+        >
+          Profil
+        </button>
+      </div>
+      <div className="button-precedent-block">
         <button type="button" className="button-precedent" onClick={goBack}>
           <img className="flecheprec" alt="" src={Arrow} />
-        </button>
-        <button type="button" className="butbutprofil">
-          Profil
         </button>
       </div>
     </div>

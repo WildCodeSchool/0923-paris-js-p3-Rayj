@@ -277,7 +277,7 @@ function ProfilModif() {
       <button type="button" onClick={handleSubmit}>
         SAUVEGARDER
       </button>
-      {isMobile && <NavBar />}
+      <section className="footer">{isMobile && <NavBar />}</section>
     </div>
   );
 }

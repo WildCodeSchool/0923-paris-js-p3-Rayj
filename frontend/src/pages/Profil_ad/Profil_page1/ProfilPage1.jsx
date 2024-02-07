@@ -56,7 +56,7 @@ function ProfilPage1() {
         </div>
         <OfferGroup users={candidates} activeDomain={selectedDomain} />
       </section>
-      {isMobile && <NavBarAd />}
+      <section className="footer">{isMobile && <NavBarAd />}</section>
     </section>
   );
 }
