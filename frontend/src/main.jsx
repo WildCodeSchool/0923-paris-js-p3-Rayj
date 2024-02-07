@@ -45,7 +45,7 @@ const router = createBrowserRouter([
         element: <Following />,
       },
       {
-        path: "/post",
+        path: "/annonce",
         element: <Post />,
       },
       {
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/profil1",
+        path: "/candidatespage",
         element: <ProfilPage1 />,
       },
 

@@ -1,22 +1,23 @@
-.homepage {
+/* .homepage {
   max-height: 932px;
-}
-.category {
+} */
+/* .category {
   margin-bottom: 2rem;
-}
-.catfilter {
+} */
+/* .catfilter {
   width: 400px;
   margin-top: 10rem;
-}
-.footer {
+} */
+/* .footer {
   width: 100%;
   position: fixed;
   bottom: 0;
   margin-top: 80px;
-}
+} */
 .row {
   display: flex;
-  overflow: scroll;
+  overflow-y: visible;
+  overflow-x: visible;
   width: 100%;
   height: 450px;
   margin-top: 1rem;

@@ -30,3 +30,32 @@
 .nav_head {
   margin-top: 0;
 }
+
+.Ajustement {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 7rem auto;
+  background-color: #ad9d8b;
+  height: 35vh;
+  width: 85%;
+  border-radius: 10%;
+}
+
+.Annonce_filtre_Domaine {
+  font-size: 2.5rem;
+}
+.Menu_Selection_déroulant {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Selection {
+  width: 30%;
+  padding: 0 10px;
+  font-size: 17px;
+}
+.Affiche_La_Recherche {
+  margin-top: 1rem;
+}

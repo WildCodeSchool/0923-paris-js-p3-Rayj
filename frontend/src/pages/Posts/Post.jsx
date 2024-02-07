@@ -186,7 +186,7 @@ function Post() {
       );
       if (response.ok) {
         console.info("Form submitted successfully");
-        navigate("/Profil1");
+        navigate("/candidatespage");
         // const data = await response.json(); navigate
         // console.log(data)
       } else {
@@ -379,7 +379,7 @@ function Post() {
       </div>
 
       <button type="button" className="recapt" onClick={handleoffre}>
-        Recapitulatif
+        Validation
         {/* <Modal open={recap} onClose={onCloseRecap} center>
           <RecaPopup titi={hardSkills} />
         </Modal> */}
