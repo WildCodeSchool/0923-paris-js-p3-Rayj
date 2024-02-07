@@ -5,10 +5,15 @@ const auth = require("../middlewares/auth");
 
 router.post("/candidates", auth.isAuth, candidatesController.addCandidate);
 
-router.get("/candidates", candidatesController.getAllCandidates);
+router.get("/candidates", auth.isAuth, candidatesController.getAllCandidates);
+router.get(
+  "/candidates/admin",
+  auth.isAuth,
+  candidatesController.getAllCandidatesAdmin
+);
 router.get("/candidates/competences", candidatesController.getAllCompetences);
-router.get("/candidates/:id", candidatesController.getCandidateById);
 router.get("/candidates/offers", candidatesController.getCandidateOffersById);
+router.get("/candidates/:id", candidatesController.getCandidateById);
 router.delete(
   "/candidates/:id",
   auth.isAuth,

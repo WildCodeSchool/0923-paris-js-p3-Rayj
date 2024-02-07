@@ -32,7 +32,7 @@ function AnnonceProvider({ children }) {
 
     const fetchFavorites = async () => {
       try {
-        const response = await fetch(
+        const favresponse = await fetch(
           `${import.meta.env.VITE_BACKEND_URL}/api/favorites`,
           {
             method: "GET",
@@ -40,8 +40,8 @@ function AnnonceProvider({ children }) {
           }
         );
 
-        if (response.status === 200) {
-          const data = await response.json();
+        if (favresponse.status === 200) {
+          const data = await favresponse.json();
           setFavorites(data);
         } else {
           console.error("Unable to fetch favorites. Please try again later.");
@@ -52,7 +52,7 @@ function AnnonceProvider({ children }) {
     };
     const fetchCandidates = async () => {
       try {
-        const response = await fetch(
+        const canresponse = await fetch(
           `${import.meta.env.VITE_BACKEND_URL}/api/candidates`,
           {
             method: "GET",
@@ -60,8 +60,8 @@ function AnnonceProvider({ children }) {
           }
         );
 
-        if (response.status === 200) {
-          const data = await response.json();
+        if (canresponse.status === 200) {
+          const data = await canresponse.json();
           setFollowedOffers(data);
         } else {
           console.error("Unable to fetch Candidates. Please try again later.");

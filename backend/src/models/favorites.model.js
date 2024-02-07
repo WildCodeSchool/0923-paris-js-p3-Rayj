@@ -8,7 +8,10 @@ const insert = (favorite) => {
 };
 
 const findById = (id) => {
-  return db.query("SELECT * FROM Favorites WHERE Users_idUsers = ?", [id]);
+  return db.query(
+    "SELECT Offers.*, Favorites.Users_idUsers AS userID, Favorites.Offers_Id_offers AS offerID FROM Favorites JOIN Offers ON Favorites.Offers_Id_offers = Offers.id_Offers WHERE Favorites.Users_idUsers = ?",
+    [id]
+  );
 };
 
 const deleteFavs = (userId, offerId) => {
@@ -19,7 +22,7 @@ const deleteFavs = (userId, offerId) => {
 };
 const findAll = () => {
   return db.query(
-    "SELECT Offers.* FROM Favorites JOIN Offers ON Favorites.Offers_Id_offers = Offers.id_Offers"
+    "SELECT Offers.*, Favorites.Users_idUsers AS userID FROM Favorites JOIN Offers ON Favorites.Offers_Id_offers = Offers.id_Offers"
   );
 };
 module.exports = {
