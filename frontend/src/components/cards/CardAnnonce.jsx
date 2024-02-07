@@ -7,6 +7,7 @@ import ville from "../../assets/cards/ville.svg";
 
 function CardAnnonce({ poste, isCandidate = false }) {
   const navigate = useNavigate();
+
   const { favorites, setFavorites } = useContext(AnnonceContext);
 
   const handleRemoveFavorite = async (offer) => {
@@ -39,6 +40,7 @@ function CardAnnonce({ poste, isCandidate = false }) {
     } catch (error) {
       console.error("Error removing favorite:", error);
     }
+    [];
   };
 
   const handleClick = async (offer) => {
