@@ -28,7 +28,9 @@
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 50px;
   grid-row-gap: 50px;
-  overflow-y: visible;
+
+  overflow-x: visible;
+  overflow-x: auto;
 }
 
 @media (min-width: 500px) {

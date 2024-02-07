@@ -22,6 +22,7 @@
   gap: 3rem;
   align-items: center;
   margin-top: 0.5rem;
+  justify-content: center;
 }
 .button-precedent {
   width: 5rem;
@@ -29,6 +30,12 @@
   text-decoration: none;
   background-color: transparent;
   border: none;
+}
+.button-precedent-block {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 0px;
 }
 .flecheprec {
   width: 47%;
@@ -51,8 +58,15 @@
   .lesbuttons {
     width: 100%;
     display: flex;
-    gap: 37rem;
+    gap: 41.5%;
     align-items: center;
     margin-top: 0.5rem;
+  }
+
+  .button-precedent-block {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 0px;
   }
 }
