@@ -229,7 +229,7 @@ function Post() {
   const isMobile = window.innerWidth <= 780;
 
   return (
-    <div className="Page_Annonces_Nouvelles">
+    <div className="pageprofiljesaispas">
       {isMobile ? <Header /> : <AdHeader />}
       <div className="offersannonces">
         <h1 className="creation_annonce">Creation de l'annonce</h1>
@@ -262,7 +262,7 @@ function Post() {
             type="file"
             id="avatar"
             name="avatar"
-            accept="image/*"
+            accept="image/png, image/jpeg"
             onChange={handleInsertLogo}
             hidden
           />
