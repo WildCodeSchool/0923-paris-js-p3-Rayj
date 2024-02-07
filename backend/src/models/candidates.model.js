@@ -20,15 +20,16 @@ const findCompetences = () => {
   );
 };
 
-const findAllCandidates = () => {
+const findAllCandidates = (id) => {
   return db.query(
-    "SELECT DISTINCT O.Domaine,O.id_Offers, O.Post_title,U.Lastname,U.Firstname,U.Email,U.Matricule,U.Id_Users FROM Users AS U JOIN Candidates AS C ON U.id_Users = C.Users_idUsers JOIN Offers O ON C.Offers_Id_offers = O.id_Offers GROUP BY U.id_Users, O.Domaine, O.Post_title, O.id_Offers"
+    "SELECT O.Domaine,O.id_Offers, O.Post_title,U.Lastname,U.Firstname,U.Email,U.Matricule,U.Id_Users FROM Users AS U JOIN Candidates AS C ON U.id_Users = C.Users_idUsers JOIN Offers O ON C.Offers_Id_offers = O.id_Offers WHERE O.Users_idUsers = ? GROUP BY U.id_Users, O.Domaine, O.Post_title, O.id_Offers",
+    [id]
   );
 };
-const deleteCandidate = (userId, offerId) => {
+const deleteCandidate = (userID, offerId) => {
   return db.query(
     "DELETE FROM Candidates WHERE Users_idUsers = ? AND Offers_Id_offers = ?",
-    [userId, offerId]
+    [userID, offerId]
   );
 };
 

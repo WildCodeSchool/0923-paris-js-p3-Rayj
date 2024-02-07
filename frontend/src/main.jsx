@@ -73,7 +73,7 @@ const router = createBrowserRouter([
         element: <Validation />,
       },
       {
-        path: "/OfferDescription/:idOffers",
+        path: "/OfferDescription/:offer",
         element: <OfferDescription />,
       },
       {

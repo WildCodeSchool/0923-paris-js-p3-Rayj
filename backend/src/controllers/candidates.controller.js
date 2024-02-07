@@ -41,7 +41,18 @@ const getAllCompetences = async (req, res, next) => {
 };
 const getAllCandidates = async (req, res, next) => {
   try {
-    const [candidates] = await candidatesModel.findAllCandidates();
+    const id = req.userID;
+    const [candidates] = await candidatesModel.findById(id);
+    res.status(200).json(candidates);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getAllCandidatesAdmin = async (req, res, next) => {
+  try {
+    const id = req.userID;
+    const [candidates] = await candidatesModel.findAllCandidates(id);
     res.status(200).json(candidates);
   } catch (error) {
     next(error);
@@ -73,4 +84,5 @@ module.exports = {
   getCandidateById,
   getCandidateOffersById,
   removeCandidate,
+  getAllCandidatesAdmin,
 };

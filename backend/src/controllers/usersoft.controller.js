@@ -27,7 +27,7 @@ const getSoftAll = async (_, res, next) => {
 
 const getSoftById = async (req, res, next) => {
   try {
-    const id = req.userID;
+    const { id } = req.params;
     const [usersoft] = await usersoftModel.findSoftById(id);
     if (usersoft.users_softskills) res.sendStatus(422);
     else res.status(200).json(usersoft);

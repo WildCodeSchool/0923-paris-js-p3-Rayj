@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-expressions */
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -61,6 +62,7 @@ function CardAnnonce({ poste, isCandidate = false }) {
         );
 
         if (response.status === 201) {
+          offer.offerID = poste.id_Offers;
           setFavorites((prev) => [...prev, offer]);
         } else {
           const errorResponse = await response.json();
@@ -75,7 +77,6 @@ function CardAnnonce({ poste, isCandidate = false }) {
       }
     }
   };
-
   return (
     <section className="overlap-group">
       <div className="card">
@@ -87,7 +88,7 @@ function CardAnnonce({ poste, isCandidate = false }) {
               !isCandidate ? handleClick(poste) : null;
             }}
             className={
-              favorites.find((fav) => fav.id_Offers === poste.id_Offers)
+              favorites.find((fav) => fav.offerID === poste.id_Offers)
                 ? "fav jaune"
                 : "icon"
             }

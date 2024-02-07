@@ -1,52 +1,57 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import "./listeskills.css";
 
 function ListeSkills({ titre, user }) {
-  const [competences, setCompetences] = useState();
-  const [filter] = useState([]);
-
+  const [softskill, setSoftkill] = useState([]);
+  const [hardskill, setHardkill] = useState([]);
   useEffect(() => {
-    const fetchSkills = async () => {
+    const kills = async () => {
       try {
-        const skillsResponse = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/api/candidates/competences`,
-          { method: "GET" }
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/usersoft/${user.Id_Users}`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
         );
-
-        if (skillsResponse.status === 200) {
-          const skillsData = await skillsResponse.json();
-          setCompetences(skillsData);
+        if (response.status === 200) {
+          const datasoft = await response.json();
+          setSoftkill(datasoft);
         } else {
-          console.error("Erreur lors de la récupération des compétences");
+          console.error("Mauvaise Donnée soft");
+          throw new Error("Bad data");
+        }
+        const upresponse = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/userhard/${user.Id_Users}`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+        if (upresponse.status === 200) {
+          const datahard = await upresponse.json();
+          setHardkill(datahard);
+        } else {
+          console.error("Mauvaise Donnée hard");
+          throw new Error("Bad data");
         }
       } catch (error) {
         console.error(error);
       }
     };
-
-    fetchSkills();
+    kills();
   }, []);
-
-  const filteredCompetences = useMemo(() => {
-    if (!competences) return [];
-    return competences.filter((use) => use.Users_idUsers === user.Id_Users);
-  }, [competences, filter, user]);
-
   return (
     <div className="hop">
       <h3 className="titrelistskill">
         {titre === "Softskill" ? "Softskills" : "Hardskills"}
       </h3>
-      {filteredCompetences.map((hi) => (
-        <ul
-          className={hi.isMatch ? "lightgreen" : "white"}
-          key={hi.User_idUsers}
-        >
-          <li className="comparer">{hi[`${titre}_Name`]}</li>
-        </ul>
-      ))}
+      <ul className="white">
+        {titre === "Softskill"
+          ? softskill.map((s) => <li key={s.Users_idUsers}>{s.softName}</li>)
+          : hardskill.map((h) => <li>{h.hardName}</li>)}
+      </ul>
     </div>
   );
 }
-
 export default ListeSkills;

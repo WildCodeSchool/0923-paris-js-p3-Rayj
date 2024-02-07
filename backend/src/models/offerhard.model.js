@@ -1,9 +1,9 @@
 const db = require("../../database/client");
 
-const insert = (userhard) => {
+const insert = (offerhard) => {
   return db.query(
     "INSERT INTO hardskills_offers( Offers_Id_offers, Hardskills_id_Hardskills) VALUES ?",
-    [userhard]
+    [offerhard]
   );
 };
 const findHardAll = () => {
