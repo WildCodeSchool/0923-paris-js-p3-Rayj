@@ -186,7 +186,7 @@ function Post() {
       );
       if (response.ok) {
         console.info("Form submitted successfully");
-        navigate("/Profil1");
+        navigate("/candidatespage");
         // const data = await response.json(); navigate
         // console.log(data)
       } else {

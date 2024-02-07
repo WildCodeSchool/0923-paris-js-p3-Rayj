@@ -9,8 +9,8 @@ function Category({ onFilterChange }) {
     onFilterChange(Domaine);
   };
   return (
-    <>
-      <center>Category</center>
+    <div className="Categories_annonce">
+      <center className="Titre_de_categories">Categories</center>
       <section className="categorie">
         <div className="rh">
           <button
@@ -40,7 +40,7 @@ function Category({ onFilterChange }) {
           </button>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

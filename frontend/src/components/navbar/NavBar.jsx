@@ -1,6 +1,6 @@
 import React from "react";
 import NavBarHome from "./NavBarHome";
-import NavBarSearch from "./NavBarSearch";
+// import NavBarSearch from "./NavBarSearch";
 import NavBarProfile from "./NavBarProfile";
 import NavBarFollowing from "./NavBarFollowing";
 import "./navbarstyle.css";
@@ -9,7 +9,7 @@ function Navbar() {
   return (
     <div className="mobile">
       <NavBarHome />
-      <NavBarSearch />
+      {/* <NavBarSearch /> */}
       <NavBarFollowing />
       <NavBarProfile />
     </div>
