@@ -13,7 +13,7 @@ function ProfilPage1() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/api/candidates`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/candidates/admin`,
           {
             method: "GET",
             credentials: "include",

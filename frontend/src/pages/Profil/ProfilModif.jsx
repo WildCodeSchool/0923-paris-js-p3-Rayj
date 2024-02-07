@@ -3,7 +3,6 @@ import Select from "react-select";
 import { Link, useNavigate } from "react-router-dom";
 import "./profilmodif.css";
 import authContext from "../../context/AuthContext";
-import profilPic from "../../assets/Profil/profil_pic.jpg";
 import modifPen from "../../assets/Profil/modif_pen.svg";
 import NavBar from "../../components/navbar/NavBar";
 // import Header from "../../components/header/Header";
@@ -171,7 +170,7 @@ function ProfilModif() {
   return (
     <div className="pg_modify">
       <div className="img_btn">
-        <img className="profilpic" src={profilPic} alt="profilpic" />
+        <img className="profilpic" src={user?.Picture} alt="" />
         <p className="user_name">{user?.Lastname}</p>
         <Link to="/profil" className="btn_profil">
           Profil
