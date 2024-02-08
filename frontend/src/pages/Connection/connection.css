@@ -8,6 +8,9 @@
 
 .Login-Box {
   padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .Login-Box .Login_User_Box .Mdp_Mail_btn {
@@ -21,22 +24,29 @@
   background: transparent;
 }
 
+.La_Connection_Button {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .btn_Connection_Login {
-  margin-left: -1rem;
+  /* margin-left: -1rem; */
   padding-top: 10px;
   font-size: 20px;
   color: #000000;
   text-decoration: none;
   background-color: transparent;
   border: none;
+  margin-right: 10px;
 }
 
 .ligne_btn_Connection_Login {
-  margin-left: 4rem;
+  /* margin-left: 4rem; */
   border-top: 3px solid #000000;
   overflow: visible;
   text-align: center;
-  width: 41%;
+  width: 95%;
 }
 
 .ray {
