@@ -234,7 +234,7 @@ function Post() {
   const isMobile = window.innerWidth <= 780;
 
   return (
-    <div className="pageprofiljesaispas">
+    <div className="Page_Annonces_Nouvelles">
       {!isMobile ? (
         user && user.Admin ? (
           <AdHeader />
