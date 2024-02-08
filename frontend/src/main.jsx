@@ -10,7 +10,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import Following from "./pages/Following/Following";
 import Post from "./pages/Posts/Post";
 import Profil from "./pages/Profil/Profil";
-import Validation from "./pages/Validation/Validation";
+// import Validation from "./pages/Validation/Validation";
 import ProfilModif from "./pages/Profil/ProfilModif";
 import Connection from "./pages/Connection/Connection";
 import OfferDescription from "./components/offerdescription/OfferDescription";
@@ -59,18 +59,9 @@ const router = createBrowserRouter([
         element: <ProfilPage1 />,
       },
 
-      // {
-      //       path="/profil1/:data" element={<ProfilPage1 />}
-      // }
-
       {
         path: "/contact-candidat/:id",
         element: <ContactCandidat />,
-      },
-
-      {
-        path: "/validation",
-        element: <Validation />,
       },
       {
         path: "/OfferDescription/:offer",
