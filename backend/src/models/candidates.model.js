@@ -3,7 +3,8 @@ const db = require("../../database/client");
 const insertCandidate = (candidate) => {
   return db.query(
     "INSERT INTO Candidates (Users_idUsers, Offers_Id_offers, Status) VALUES (?, ?, ?)",
-    [candidate.userID, candidate.Offers_Id_offers, candidate.Status]
+    // [candidate.userID, candidate.Offers_Id_offers, candidate.Status]
+    [candidate.Users_idUsers, candidate.Offers_Id_offers, candidate.Status]
   );
 };
 const findById = (id) => {

@@ -3,7 +3,7 @@ const candidatesModel = require("../models/candidates.model");
 const addCandidate = async (req, res, next) => {
   try {
     const candidate = req.body;
-    candidate.userID = req.userId;
+    candidate.userID = req.userID;
 
     const [result] = await candidatesModel.insertCandidate(candidate);
 
