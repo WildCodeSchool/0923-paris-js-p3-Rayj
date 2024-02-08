@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./profil.css";
 import Header from "../../components/header/Header";
 import AdHeader from "../../components/header/AdHeader/AdHeader";
@@ -12,7 +12,6 @@ import authContext from "../../context/AuthContext";
 
 function Profil() {
   const { user } = useContext(authContext);
-  const navigate = useNavigate();
   const [softkill, setSoftkill] = useState([]);
   const [hardkill, setHardkill] = useState([]);
   useEffect(() => {
@@ -66,69 +65,61 @@ function Profil() {
         <Header />
       )}
       <ProfilHeader />
-      <button
-        className="btn_modif"
-        type="button"
-        onClick={() => navigate(`/ProfilModif/${user?.id_Users}`)}
-      >
-        Modifier
-      </button>
-      <div className="block_profil">
-        <div className="modify">
-          <p className="info_display_heading">{user?.Firstname}</p>
-          <p className="info_display_heading">Matricule</p>
-          <input
-            className="info_display_input"
-            type="text"
-            placeholder="Matricule"
-            value={user?.Matricule}
-          />
-          <p className="info_display_heading">Email</p>
-          <input
-            className="info_display_input"
-            type="text"
-            placeholder="Email"
-            value={user?.Email}
-          />
-          <p className="info_display_heading">Phone</p>
-          <input
-            className="info_display_input"
-            type="text"
-            placeholder="Phone"
-            value={user?.Phone}
-          />
-          <p className="info_display_heading">Ancienneté</p>
-          <input
-            className="info_display_input"
-            type="text"
-            placeholder="Ancienneté"
-            value={user?.Seniority}
-          />
-          <Link to="/" className="logout_btn">
-            <p>Déconnection</p>
-          </Link>
-        </div>
-        <div className="bloc_motiv">
-          <section>
-            <div>
-              <h2 className="heading">Soft Skills</h2>
-              <ul className="check-list">
-                {softkill.map((n) => (
-                  <li>{n.softName}</li>
-                ))}
-              </ul>
-            </div>
-          </section>
-          <section>
-            <div>
-              <h2 className="heading">Hard Skills</h2>
-              <ul className="check-list">
-                {hardkill.map((c) => (
-                  <li>{c.hardName}</li>
-                ))}
-              </ul>
-            </div>
-          </section>
+      <div className="modify">
+        <p className="info_display_heading">{user?.Firstname}</p>
+        <p className="info_display_heading">Matricule</p>
+        <input
+          className="info_display_input"
+          type="text"
+          placeholder="Matricule"
+          value={user?.Matricule}
+        />
+        <p className="info_display_heading">Email</p>
+        <input
+          className="info_display_input"
+          type="text"
+          placeholder="Email"
+          value={user?.Email}
+        />
+        <p className="info_display_heading">Phone</p>
+        <input
+          className="info_display_input"
+          type="text"
+          placeholder="Phone"
+          value={user?.Phone}
+        />
+        <p className="info_display_heading">Ancienneté</p>
+        <input
+          className="info_display_input"
+          type="text"
+          placeholder="Ancienneté"
+          value={user?.Seniority}
+        />
+        <Link to="/" className="logout_btn">
+          <p>Déconnection</p>
+        </Link>
+      </div>
+      <div className="bloc_motiv">
+        <section>
+          <div>
+            <h2 className="heading">Soft Skills</h2>
+            <ul className="check-list">
+              {softkill.map((n) => (
+                <li>{n.softName}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+        <section>
+          <div>
+            <h2 className="heading">Hard Skills</h2>
+            <ul className="check-list">
+              {hardkill.map((c) => (
+                <li>{c.hardName}</li>
+              ))}
+            </ul>
+          </div>
+         </section>
           <h2 className="motivation_heading">Motivation</h2>
           <textarea
             className="motivation_input"

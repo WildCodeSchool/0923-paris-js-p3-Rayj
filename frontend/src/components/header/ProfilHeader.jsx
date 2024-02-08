@@ -33,6 +33,13 @@ function ProfilHeader() {
           <img className="flecheprec" alt="" src={Arrow} />
         </button>
       </div>
+      <button
+        className="btn_modif"
+        type="button"
+        onClick={() => navigate(`/ProfilModif/${user?.id_Users}`)}
+      >
+        Modifier
+      </button>
     </div>
   );
 }

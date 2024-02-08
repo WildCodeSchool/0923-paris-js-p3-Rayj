@@ -22,7 +22,7 @@ const findCompetences = () => {
 
 const findAllCandidates = (id) => {
   return db.query(
-    "SELECT O.Domaine,O.id_Offers, O.Post_title,U.Lastname,U.Firstname,U.Email,U.Matricule,U.Id_Users FROM Users AS U JOIN Candidates AS C ON U.id_Users = C.Users_idUsers JOIN Offers O ON C.Offers_Id_offers = O.id_Offers WHERE O.Users_idUsers = ? GROUP BY U.id_Users, O.Domaine, O.Post_title, O.id_Offers",
+    "SELECT O.Domaine,O.id_Offers, O.Post_title, U.Picture, U.Lastname,U.Firstname,U.Email,U.Matricule,U.Id_Users FROM Users AS U JOIN Candidates AS C ON U.id_Users = C.Users_idUsers JOIN Offers O ON C.Offers_Id_offers = O.id_Offers WHERE O.Users_idUsers = ?",
     [id]
   );
 };

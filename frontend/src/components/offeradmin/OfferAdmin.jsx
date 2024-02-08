@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Grid from "@mui/joy/Grid";
-import AspectRatio from "@mui/joy/AspectRatio";
 import Card from "@mui/joy/Card";
 import Typography from "@mui/joy/Typography";
 import { Modal, Box } from "@mui/material";
 import ContactCandidat from "../contact_candidat/ContactCandidat";
-import InformationEmploye from "../informationemploye/InformationEmploye";
 import "./offeradmin.css";
+import "../informationemploye/informationemploye.css";
 
 function OfferGroup({ users, activeDomain }) {
   const [selectedUser, setSelectedUser] = useState();
@@ -47,27 +46,35 @@ function OfferGroup({ users, activeDomain }) {
           sx={{ flexGrow: 1 }}
         >
           {Object.entries(groupedUsers).map(([offer, usersInOffer]) => (
-            <Grid xs={2} sm={4} md={4.6}>
-              <Card sx={{ width: 320 }}>
-                <div>
-                  <Typography level="title-lg" key={offer}>
-                    {offer}
-                  </Typography>
-                </div>
-                <AspectRatio minHeight="120px" maxHeight="200px">
-                  <div className="rowrow">
-                    {usersInOffer.map((user) => (
-                      <InformationEmploye
-                        key={user.id}
-                        user={user}
-                        offer={offer}
-                        onOpenModal={() => handleopenModal(user)}
-                      />
-                    ))}
-                  </div>
-                </AspectRatio>
+            <div>
+              <h1>{offer}</h1>
+              <Card
+                sx={{
+                  width: 320,
+                  marginTop: "20px",
+                  backgroundColor: "transparent",
+                  border: "none",
+                }}
+              >
+                {usersInOffer.map((user) => (
+                  <button
+                    type="button"
+                    className="card_user"
+                    onClick={() => handleopenModal(user)}
+                  >
+                    <Typography>
+                      <p> {user?.Firstname}</p>
+                      <p>{user?.Lastname}</p>
+                    </Typography>
+                    <img
+                      className="candidate_photo"
+                      src={user?.Picture}
+                      alt={user.Firstname}
+                    />
+                  </button>
+                ))}
               </Card>
-            </Grid>
+            </div>
           ))}
         </Grid>
       </div>
