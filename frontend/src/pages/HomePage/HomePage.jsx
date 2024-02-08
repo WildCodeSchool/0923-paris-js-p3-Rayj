@@ -28,13 +28,13 @@ function HomePage() {
       <section className="catfilter">
         <Category onFilterChange={handleFilterChange} />
       </section>
-      {/* <section className="row"> */}
-      <div className="annonce">
-        {filterAnnonce.map((poste) => (
-          <CardAnnonce key={poste.id_Offers} poste={poste} />
-        ))}
-      </div>
-      {/* </section> */}
+      <section className="row">
+        <div className="annonce">
+          {filterAnnonce.map((poste) => (
+            <CardAnnonce key={poste.id_Offers} poste={poste} />
+          ))}
+        </div>
+      </section>
       <section className="footer">{isMobile && <NavBar />}</section>
     </div>
   );
