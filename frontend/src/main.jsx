@@ -60,9 +60,8 @@ const router = createBrowserRouter([
         path: "/contact-candidat/:id",
         element: <ContactCandidat />,
       },
-
       {
-        path: "/OfferDescription/:idOffers",
+        path: "/OfferDescription/:offer",
         element: <OfferDescription />,
       },
       {
