@@ -1,5 +1,6 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-unneeded-ternary */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 import { RadioGroup, Radio } from "react-radio-group";
@@ -10,6 +11,9 @@ import NavBarAd from "../../components/navbar/navbar_ad/NavBarAd";
 import uploadIcon from "../../assets/Profil/upload_icon.svg";
 import "./post.css";
 import AdHeader from "../../components/header/AdHeader/AdHeader";
+import authContext from "../../context/AuthContext";
+import HeaderDesktop from "../../components/header/headerDesktop/HeaderDesktop";
+import NavBar from "../../components/navbar/NavBar";
 
 const Domaine = [
   { value: "Securite", label: "Securite" },
@@ -40,6 +44,7 @@ function Post() {
   // const onCloseRecap = () => setRecap(false);
 
   const navigate = useNavigate();
+  const { user } = useContext(authContext);
 
   //   const Training = useRef();
   const [training, setTraining] = useState("");
@@ -229,8 +234,16 @@ function Post() {
   const isMobile = window.innerWidth <= 780;
 
   return (
-    <div className="Page_Annonces_Nouvelles">
-      {isMobile ? <Header /> : <AdHeader />}
+    <div className="pageprofiljesaispas">
+      {!isMobile ? (
+        user && user.Admin ? (
+          <AdHeader />
+        ) : (
+          <HeaderDesktop />
+        )
+      ) : (
+        <Header />
+      )}
       <div className="offersannonces">
         <h1 className="creation_annonce">Creation de l'annonce</h1>
 
@@ -384,7 +397,9 @@ function Post() {
           <RecaPopup titi={hardSkills} />
         </Modal> */}
       </button>
-      <section className="footer">{isMobile && <NavBarAd />}</section>
+      <section className="footer">
+        {isMobile ? user && user.Admin ? <NavBarAd /> : <NavBar /> : null}
+      </section>
     </div>
   );
 }

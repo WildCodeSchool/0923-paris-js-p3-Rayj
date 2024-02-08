@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable no-nested-ternary */
+import React, { useState, useEffect, useContext } from "react";
 import Header from "../../../components/header/Header";
 import OfferGroup from "../../../components/offeradmin/OfferAdmin";
 import "./profilpage1.css";
 import NavBarAd from "../../../components/navbar/navbar_ad/NavBarAd";
 import AdHeader from "../../../components/header/AdHeader/AdHeader";
+import authContext from "../../../context/AuthContext";
+import HeaderDesktop from "../../../components/header/headerDesktop/HeaderDesktop";
+import NavBar from "../../../components/navbar/NavBar";
 
 function ProfilPage1() {
   const [candidates, setCandidates] = useState([]);
   const [selectedDomain, setSelectedDomain] = useState("");
+  const { user } = useContext(authContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +40,15 @@ function ProfilPage1() {
 
   return (
     <section className="affichagepageprofil1">
-      {isMobile ? <Header /> : <AdHeader />}
+      {!isMobile ? (
+        user && user.Admin ? (
+          <AdHeader />
+        ) : (
+          <HeaderDesktop />
+        )
+      ) : (
+        <Header />
+      )}
       <section className="bloc_card">
         <div>
           <h3>Domaines d'activités</h3>
@@ -56,7 +69,9 @@ function ProfilPage1() {
         </div>
         <OfferGroup users={candidates} activeDomain={selectedDomain} />
       </section>
-      <section className="footer">{isMobile && <NavBarAd />}</section>
+      <section className="footer">
+        {isMobile ? user && user.Admin ? <NavBarAd /> : <NavBar /> : null}
+      </section>
     </section>
   );
 }

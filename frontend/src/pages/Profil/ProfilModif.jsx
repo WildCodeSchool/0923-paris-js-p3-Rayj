@@ -5,6 +5,8 @@ import "./profilmodif.css";
 import authContext from "../../context/AuthContext";
 import modifPen from "../../assets/Profil/modif_pen.svg";
 import NavBar from "../../components/navbar/NavBar";
+import NavBarAd from "../../components/navbar/navbar_ad/NavBarAd";
+/* eslint-disable no-nested-ternary */
 // import Header from "../../components/header/Header";
 // import HeaderDesktop from "../../components/header/headerDesktop/HeaderDesktop";
 // import ProfilHeader from "../../components/header/ProfilHeader";
@@ -276,7 +278,9 @@ function ProfilModif() {
       <button type="button" onClick={handleSubmit}>
         SAUVEGARDER
       </button>
-      <section className="footer">{isMobile && <NavBar />}</section>
+      <section className="footer">
+        {isMobile ? user && user.Admin ? <NavBarAd /> : <NavBar /> : null}
+      </section>
     </div>
   );
 }
