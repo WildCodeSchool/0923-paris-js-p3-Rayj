@@ -3,10 +3,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { AnnonceProvider } from "./context/AnnonceContext";
 import { AuthProvider } from "./context/AuthContext";
-
 import App from "./App";
 import HomePage from "./pages/HomePage/HomePage";
-
 import Following from "./pages/Following/Following";
 import Post from "./pages/Posts/Post";
 import Profil from "./pages/Profil/Profil";
