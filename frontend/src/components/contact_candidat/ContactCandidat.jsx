@@ -1,15 +1,8 @@
 import React from "react";
-
-import { format } from "date-fns";
-
 import "./contactcandidat.css";
-
 import ListeSkills from "../listskills/ListeSkills";
 
 function ContactCandidat({ user, onCloseModal }) {
-  const softSkills = user.id_SoftSkills?.Name || [];
-
-  const hardSkills = [];
   return (
     <section className="candidat-card">
       {user ? (
@@ -24,20 +17,18 @@ function ContactCandidat({ user, onCloseModal }) {
               &#x2715;
             </button>
             <ul>
-              <li>Nom : {user.Lastname}</li>
-              <li>Prénom : {user.Firstname}</li>
-              <li>Matricule : {user.Matricule}</li>
-              <li>Profession : {user.Profession}</li>
-              <li>
-                Ancienneté : {format(new Date(user.Seniority), "dd/MM/yyyy")}{" "}
-              </li>
+              <li>Nom : {user?.Lastname}</li>
+              <li>Prénom : {user?.Firstname}</li>
+              <li>Matricule : {user?.Matricule}</li>
+              <li>Email : {user?.Email}</li>
             </ul>
           </div>
-          <div>
+          <div style={{ width: "200px", height: "200px", marginTop: "20px" }}>
             <img
+              style={{ width: "100%", height: "100%" }}
               alt={user.Firstname}
-              className="candidate_photo"
-              src={user.Picture}
+              className="candidate_photomodal"
+              src={user?.Picture}
             />
           </div>
         </div>
@@ -50,13 +41,13 @@ function ContactCandidat({ user, onCloseModal }) {
           type="button"
           onClick={() => {
             const emailSubject = encodeURIComponent(
-              `Candidat - ${user.Firstname} ${user.Lastname}`
+              `Candidat - ${user?.Firstname} ${user?.Lastname}`
             );
             const emailBody = encodeURIComponent(
               "Votre candidature n'a pas été retenue. Nous vous invitons à continuer votre recherche d'emploi. "
             );
 
-            const mailtoURL = `mailto:${user.email}?subject=${emailSubject}&body=${emailBody}`;
+            const mailtoURL = `mailto:${user?.Email}?subject=${emailSubject}&body=${emailBody}`;
 
             window.location.href = mailtoURL;
           }}
@@ -68,13 +59,13 @@ function ContactCandidat({ user, onCloseModal }) {
           type="button"
           onClick={() => {
             const emailSubject = encodeURIComponent(
-              `Candidat - ${user.Firstname} ${user.Lastname}`
+              `Candidat - ${user?.Firstname} ${user?.Lastname}`
             );
             const emailBody = encodeURIComponent(
               "Votre candidature a été retenue. Je prendrai contact avec vous dans les meilleurs délais afin de fixer un entretien."
             );
 
-            const mailtoURL = `mailto:${user.email}?subject=${emailSubject}&body=${emailBody}`;
+            const mailtoURL = `mailto:${user?.Email}?subject=${emailSubject}&body=${emailBody}`;
 
             window.location.href = mailtoURL;
           }}
@@ -83,8 +74,8 @@ function ContactCandidat({ user, onCloseModal }) {
         </button>
       </div>
       <div className="listingskills">
-        <ListeSkills titre="Softskills :" skills={softSkills} />
-        <ListeSkills titre="Hardskills :" skills={hardSkills} />
+        <ListeSkills titre="Softskill" user={user} />
+        <ListeSkills titre="Hardskill" user={user} />
       </div>
     </section>
   );

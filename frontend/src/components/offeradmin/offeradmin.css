@@ -1,0 +1,21 @@
+.rowrow {
+  display: flex;
+  /* overflow: auto; */
+  width: 100%;
+  background-color: #8d7b64;
+}
+.modalcontactcandidat {
+  margin-left: 10%;
+  margin-top: 10%;
+  width: 80%;
+}
+@media screen and (max-width: 428px) {
+  .totocard {
+    width: 1rem;
+    margin-left: 2rem;
+  }
+
+  .muiGrid-root {
+    width: 15rem;
+  }
+}

@@ -1,4 +1,4 @@
-.form-modification {
+.form_modification {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,10 +10,33 @@
   width: 80%;
   margin-top: 1.5rem;
 }
+
+.btn_profil_dossier_modif {
+  margin-left: 31px;
+}
+.user_name_modif_dossier {
+  margin-left: 35px;
+}
+
+.replacement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .pg_modify {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.La_Photo_Modifier {
+  width: 78px;
+  height: 88px;
+  border: 5px solid #ad9d8b;
+  border-radius: 50%;
+  padding: 7px;
+  margin-top: 5rem;
 }
 .info_input {
   width: 78%;
@@ -56,7 +79,7 @@
   background-color: #ad9d8b;
   padding: 20px;
   border-radius: 10px;
-  width: 88%;
+  width: 80%;
   margin-top: 1.2rem;
   display: flex;
   align-items: center;
@@ -109,4 +132,14 @@
   margin-top: 1.5rem;
 
   text-decoration: none;
+}
+
+.Sauvegarde_bouton_modif {
+  width: 35%;
+  height: 2rem;
+  color: white;
+  background-color: #557cae;
+  border-radius: 1rem;
+  margin: 2.2rem 0 2.1rem 0;
+  font-size: 95%;
 }

@@ -1,46 +1,57 @@
 import React, { useState, useEffect } from "react";
 import "./listeskills.css";
 
-function ListeSkills({ titre }) {
-  const [skills, setSkills] = useState([]);
-
+function ListeSkills({ titre, user }) {
+  const [softskill, setSoftkill] = useState([]);
+  const [hardskill, setHardkill] = useState([]);
   useEffect(() => {
-    const fetchData = async () => {
+    const kills = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/api/softskills`,
-
+          `${import.meta.env.VITE_BACKEND_URL}/api/usersoft/${user.Id_Users}`,
           {
             method: "GET",
+            credentials: "include",
           }
         );
-
         if (response.status === 200) {
-          const data = await response.json();
-          setSkills(data || []);
+          const datasoft = await response.json();
+          setSoftkill(datasoft);
         } else {
-          console.error("Erreur lors de la récupération des données ");
+          console.error("Mauvaise Donnée soft");
+          throw new Error("Bad data");
+        }
+        const upresponse = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/userhard/${user.Id_Users}`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+        if (upresponse.status === 200) {
+          const datahard = await upresponse.json();
+          setHardkill(datahard);
+        } else {
+          console.error("Mauvaise Donnée hard");
+          throw new Error("Bad data");
         }
       } catch (error) {
         console.error(error);
       }
     };
-
-    fetchData();
-  }, [titre]);
-
+    kills();
+  }, []);
   return (
     <div className="hop">
-      <h3 className="titrelistskill">{titre}</h3>
-      <ul className="listskill">
-        {skills.map((skill) => (
-          <li className="hophop" key={skill.id_Softskills}>
-            {skill.Name}
-          </li>
-        ))}
+      <h3 className="titrelistskill">
+        {titre === "Softskill" ? "Softskills" : "Hardskills"}
+      </h3>
+      <ul className="white">
+        {titre === "Softskill"
+          ? softskill.map((s) => <li key={s.Users_idUsers}>{s.softName}</li>)
+          : hardskill.map((h) => <li>{h.hardName}</li>)}
       </ul>
     </div>
   );
 }
-
 export default ListeSkills;

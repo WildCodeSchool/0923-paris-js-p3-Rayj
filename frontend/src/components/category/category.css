@@ -6,9 +6,13 @@
 }
 .categorie {
   display: flex;
-  flex-wrap: nowrap;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
+}
+.Titre_de_categories {
+  margin-bottom: 0.8rem;
+  font-size: 40px;
 }
 .categories img {
   width: 4rem;
@@ -18,4 +22,13 @@
   border-radius: 50%;
   width: 5rem;
   height: 5rem;
+}
+
+@media screen and (min-width: 431px) {
+  .Categories_annonce {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    margin-top: 2rem;
+  }
 }

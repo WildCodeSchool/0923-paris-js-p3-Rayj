@@ -6,14 +6,15 @@ function Popup({ onClose }) {
       <div className="pop_up">
         <button
           type="button"
-          className="closebtn"
+          className="Modal_Btn_Close_M"
           onClick={onClose}
           onKeyDown={onClose}
           aria-label="Close"
         >
           &times;
         </button>
-        <p>
+
+        <p className="Text_Presentation">
           Chez RAYJ, nous sommes à la révolution des reconversions internes au
           sein des entreprises. Notre plateforme innovante est une solution
           offrant une expérience fluide et efficace tant pour les employés que

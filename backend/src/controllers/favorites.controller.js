@@ -3,7 +3,7 @@ const favoriteModel = require("../models/favorites.model");
 const add = async (req, res, next) => {
   try {
     const favorite = req.body;
-    favorite.userID = req.userId;
+    favorite.userID = req.userID;
 
     const [result] = await favoriteModel.insert(favorite);
 
@@ -19,10 +19,9 @@ const add = async (req, res, next) => {
 const remove = async (req, res, next) => {
   try {
     const offerId = req.params.id;
-    const { userId } = req;
+    const userId = req.userID;
 
     const [result] = await favoriteModel.deleteFavs(userId, offerId);
-
     if (result.affectedRows > 0) {
       res.sendStatus(204);
     } else {
@@ -35,7 +34,8 @@ const remove = async (req, res, next) => {
 
 const getAll = async (req, res, next) => {
   try {
-    const [favorites] = await favoriteModel.findAll();
+    const id = req.userID;
+    const [favorites] = await favoriteModel.findById(id);
     res.status(200).json(favorites);
   } catch (error) {
     next(error);

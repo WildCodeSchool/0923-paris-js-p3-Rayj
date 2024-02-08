@@ -38,7 +38,7 @@ function Connection() {
         const user = await response.json();
         auth.setUser(user);
 
-        if (user.Admin === 1) navigate("/profil1");
+        if (user.Admin === 1) navigate("/candidatespage");
         else navigate("/homepage");
       } else {
         console.error("veuillez verifier votre saisie.");
@@ -49,13 +49,14 @@ function Connection() {
   };
 
   return (
-    <div className="connectionya">
+    <div className="Connection_Login">
       {popupVisible && <Popup onClose={closePopup} />}
 
       <img className="logo" src={logorf} alt="logo de la société" />
-      <div className="login-boxya">
-        <div className="user-boxya">
+      <div className="Login-Box">
+        <div className="Login_User_Box">
           <input
+            className="Mdp_Mail_btn"
             type="email"
             name="email"
             id="email"
@@ -64,8 +65,9 @@ function Connection() {
             ref={Email}
           />
         </div>
-        <div className="user-boxya">
+        <div className="Login_User_Box">
           <input
+            className="Mdp_Mail_btn"
             type="password"
             name="password"
             id="password"
@@ -74,19 +76,19 @@ function Connection() {
             ref={Password}
           />
         </div>
-        <div>
+        <div className="La_Connection_Button">
           <button
-            className="btn-connection-ya"
+            className="btn_Connection_Login"
             type="button"
             onClick={handleSubmit}
           >
             Connexion
           </button>
-          <hr className="ligne-btn-connectionya" />
+          <hr className="ligne_btn_Connection_Login" />
         </div>
       </div>
 
-      <div className="inscription-boxya">
+      <div className="Login_inscription_box">
         <h2 className="creationcompteya">Pas encore De Compte ?</h2>
         <div>
           <button
@@ -96,11 +98,11 @@ function Connection() {
           >
             Je souhaite m'inscrire
           </button>
-          <hr className="ligne-inscriptionya" />
+          <hr className="Login_ligne_inscriptionya" />
         </div>
       </div>
 
-      <img className="ray" src={logorayj} alt="logo société" />
+      <img className="Ray_Login" src={logorayj} alt="logo société" />
     </div>
   );
 }

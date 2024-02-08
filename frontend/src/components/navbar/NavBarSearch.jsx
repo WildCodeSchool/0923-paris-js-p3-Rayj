@@ -95,38 +95,54 @@ function NavBarSearch() {
     <div className="search">
       <button className="search_nav_but" type="button" onClick={openModal}>
         <img src={Search} alt="search" className="search_img" />
+        <p className="nav_head">Filtre</p>
       </button>
-      <ReactModal isOpen={modalIsOpen}>
-        <h2>Annonce</h2>
-        <select value={selectedCategory.id} onChange={handleCategoryChange}>
-          <option value="">Domaine</option>
-          {categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-        <select
-          value={selectedSubCategory.id}
-          onChange={handleSubCategoryChange}
+      <ReactModal className="Ajustement" isOpen={modalIsOpen}>
+        <h2 className="Annonce_filtre_Domaine">Annonce</h2>
+        <div className="Menu_Selection_déroulant">
+          <select
+            className="Selection"
+            value={selectedCategory.id}
+            onChange={handleCategoryChange}
+          >
+            <option value="">Domaine</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+          <select
+            className="Selection"
+            value={selectedSubCategory.id}
+            onChange={handleSubCategoryChange}
+          >
+            <option value="">Select a sub-category</option>
+            {selectedCategory[0]?.subCategories?.map((subCategory) => (
+              <option key={subCategory.id} value={subCategory.id}>
+                {subCategory.name}
+              </option>
+            ))}
+          </select>
+          <select
+            className="Selection"
+            value={selectedLocation.id}
+            onChange={handleLocationChange}
+          >
+            <option value="">Localisation</option>
+            {locations.map((location) => (
+              <option key={location.id} value={location.id}>
+                {location.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button
+          className="Affiche_La_Recherche"
+          type="button"
+          onClick={closeModal}
         >
-          <option value="">Select a sub-category</option>
-          {selectedCategory[0]?.subCategories?.map((subCategory) => (
-            <option key={subCategory.id} value={subCategory.id}>
-              {subCategory.name}
-            </option>
-          ))}
-        </select>
-        <select value={selectedLocation.id} onChange={handleLocationChange}>
-          <option value="">Localisation</option>
-          {locations.map((location) => (
-            <option key={location.id} value={location.id}>
-              {location.name}
-            </option>
-          ))}
-        </select>
-        <button type="button" onClick={closeModal}>
-          Close
+          Affiche la recherche
         </button>
       </ReactModal>
     </div>

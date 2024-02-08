@@ -54,7 +54,7 @@ CREATE TABLE `Categories` (
   `id_Categories` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) NOT NULL,
   PRIMARY KEY (`id_Categories`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `Categories` (
 
 LOCK TABLES `Categories` WRITE;
 /*!40000 ALTER TABLE `Categories` DISABLE KEYS */;
-INSERT INTO `Categories` VALUES (1,'Developpement'),(2,'Data'),(3,'Secretariat');
+INSERT INTO `Categories` VALUES (1,'Developpement'),(2,'Data'),(3,'Secretariat'),(4,'SSIAP'),(5,'Agent Sécurité');
 /*!40000 ALTER TABLE `Categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,6 +91,7 @@ CREATE TABLE `Favorites` (
 
 LOCK TABLES `Favorites` WRITE;
 /*!40000 ALTER TABLE `Favorites` DISABLE KEYS */;
+INSERT INTO `Favorites` VALUES (9,10),(9,11);
 /*!40000 ALTER TABLE `Favorites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -105,7 +106,7 @@ CREATE TABLE `Hardskills` (
   `id_Hardskills` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) NOT NULL,
   PRIMARY KEY (`id_Hardskills`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,7 +115,7 @@ CREATE TABLE `Hardskills` (
 
 LOCK TABLES `Hardskills` WRITE;
 /*!40000 ALTER TABLE `Hardskills` DISABLE KEYS */;
-INSERT INTO `Hardskills` VALUES (1,'JS'),(2,'REACT'),(3,'HTML'),(4,'CSS'),(5,'NodeJS'),(6,'MySQL');
+INSERT INTO `Hardskills` VALUES (1,'JS'),(2,'REACT'),(3,'HTML'),(4,'CSS'),(5,'NodeJS'),(6,'MySQL'),(7,'Python'),(8,'Connaissances juridiques '),(9,'Génie logiciel'),(10,'Développement d’APIs'),(11,'ElasticSearch'),(12,'Redis'),(13,'PGSQL'),(14,'VueJS'),(15,'Piloter un projet'),(16,'Établir un diagnostic'),(17,'Sens de l’analyse'),(18,'Qualité rédactionnelle');
 /*!40000 ALTER TABLE `Hardskills` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,6 +143,7 @@ CREATE TABLE `Hardskills_Offers` (
 
 LOCK TABLES `Hardskills_Offers` WRITE;
 /*!40000 ALTER TABLE `Hardskills_Offers` DISABLE KEYS */;
+INSERT INTO `Hardskills_Offers` VALUES (2,10),(3,10),(4,10),(2,11),(4,11),(5,11),(7,11),(15,23),(16,23),(8,24),(15,24),(15,25),(18,25),(1,26),(2,26),(3,26),(4,26),(8,27),(18,27),(8,28),(15,28),(17,28);
 /*!40000 ALTER TABLE `Hardskills_Offers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +168,7 @@ CREATE TABLE `Offers` (
   PRIMARY KEY (`id_Offers`,`Users_idUsers`),
   KEY `fk_Offers_Users1_idx` (`Users_idUsers`),
   CONSTRAINT `fk_Offers_Users1` FOREIGN KEY (`Users_idUsers`) REFERENCES `Users` (`id_Users`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,6 +177,7 @@ CREATE TABLE `Offers` (
 
 LOCK TABLES `Offers` WRITE;
 /*!40000 ALTER TABLE `Offers` DISABLE KEYS */;
+INSERT INTO `Offers` VALUES (10,NULL,'DNE SOCLE 4 Expert(e) en sécurité de systèmes d\'information ','-Vous serez chargé(e) de mettre en place une détection opérationnelle des attaques et de procéder à l’analyse des incidents les plus significatifs touchant les systèmes d’information du ministère. Dans le cadre de vos missions, vous serez amené(e) à organiser le pilotage des retours d’expériences, orienter les équipes de veille et les investigations menées.\r\n\r\n-L’équipe est constituée du responsable du COSSIM, de trois experts en analyse et traitements d’incidents (Forensic) et en analyse de flux afin de mettre en place une détection des attaques. Des stagiaires et apprentis ingénieurs se joignent régulièrement au COSSIM.',0,'1 ans','Technique','Paris',3,'http://localhost:3310/upload/1707320483221.0.8631453823822277.logogouv.png'),(11,NULL,'Ingénieur Logiciel Embarqué (F/H)','• Mission principale : Assurer les activités de rédaction de spécification, de conception, de développement, de tests, de vérification, de validation et de production en lien avec les logiciels embarqués des nanosatellites développés par le CSUM.\r\n\r\n• Activités :\r\n- Définir une architecture logicielle.\r\n- Définir des spécifications logicielles.\r\n- Contribuer à l\'élaboration de plan de développement logiciel.\r\n- Réaliser la conception de logiciels embarqués ainsi que les documents de définition et de justification associés.\r\n- Faire des analyses de fonctionnement logiciel.\r\n- Contribuer à l\'élaboration des plans de vérification logiciels.\r\n- Définir et réaliser des plans de tests logiciels.\r\n- Réaliser des tests logiciels.\r\n- Prendre part au management de la configuration logicielle des satellites.\r\n- Assurer une veille technologique sur le domaine spatial et la filière nanosatellite\r\n- Participer aux actions de promotion du domaine spatial et de la science: salon, congrès, conférences; symposium, workshop …\r\n- Contribuer à l’amélioration continue des processus du CSUM\r\n- Toute activité nécessaire au bon fonctionnement du CSUM\r\n- Former les étudiants du supérieur au spatial au travers des projets nanosatellite',1,'2 ans','Technique','Lille',3,'http://localhost:3310/upload/1707320578771.0.2623608556237651.logogouv.png'),(12,NULL,'Responsable du bureau guichet unique','Sous l’autorité de la responsable de service, le responsable de bureau assure l’encadrement et le pilotage du bureau du guichet unique.\r\n\r\nActivités principales liées à la mission :\r\n\r\nAnimation du bureau, encadrement des 3 gestionnaires, et pilotage des missions du bureau :\r\n\r\n\r\n-Participer avec la responsable de service et son adjointe aux projets de dématérialisation du service en vue de la simplification des démarches\r\n\r\n- Organiser la journée d’accueil des nouveaux personnels, réaliser l’enquête et le bilan annuel auprès des participants',1,'6 mois','Ressources Humaines','Toulouse',3,'http://localhost:3310/upload/1707320714035.0.7350205350504488.logogouv.png'),(13,NULL,'Responsable du bureau guichet unique','Sous l’autorité de la responsable de service, le responsable de bureau assure l’encadrement et le pilotage du bureau du guichet unique.\r\n\r\nActivités principales liées à la mission :\r\n\r\nAnimation du bureau, encadrement des 3 gestionnaires, et pilotage des missions du bureau :\r\n\r\n\r\n-Participer avec la responsable de service et son adjointe aux projets de dématérialisation du service en vue de la simplification des démarches\r\n\r\n- Organiser la journée d’accueil des nouveaux personnels, réaliser l’enquête et le bilan annuel auprès des participants',1,'6 mois','Ressources Humaines','Toulouse',3,'http://localhost:3310/upload/1707320715268.0.491569460761371.logogouv.png'),(23,NULL,'Chef de Service Sécurité et Sureté F/H (réf. DBL)','- Réglementation sécurité incendie (connaissance approfondie) – Formation SSIAP 3 ou équivalente souhaitée\r\n\r\n- Règlementation en termes de sécurité et de sureté (connaissance approfondie)\r\nOrganisation et fonctionnement de la recherche et de l’enseignement supérieur en France\r\n\r\n- Organisation et fonctionnement de Sorbonne Université\r\n\r\n- Techniques d’installation et de maintenance des équipements locaux (connaissance approfondie)\r\n\r\n- Techniques d’optimisation de la conduite des installations (connaissance approfondie)',0,'6 mois','Securite','Bordeaux',3,'http://localhost:3310/upload/1707390071436.0.0864516144187304.logogouv.png'),(24,NULL,'Responsable « sécurité-sûreté » adjoint H/F','Sans que cette liste soit limitative, les missions principales sont : assurer le suivi de la sécurité et de la sureté des personnes, des biens, des locaux et la gestion du contrat de maintenance et des contrôles réglementaires. Participer aux missions du groupe de sécurité du palais de Chaillot, rattaché au service de la conservation du palais.',1,'1 ans','Securite','Nantes',3,'http://localhost:3310/upload/1707390260684.0.8173180884698859.logogouv.png'),(25,NULL,'Conseiller en gestion de crise - H/F','Caractéristiques du service\r\nLe conseiller en gestion de crise sera rattaché à la responsable du pôle pilotage et ressources en charge des ressources humaines du budget de l’informatique de l’immobilier et de la logistique.\r\nCe pôle a également pour mission de préparer la continuité de services sur les missions essentielles de la direction régionale des finances publiques en cas de crise notamment au travers d’un plan de continuité d’activité.',1,'2 ans','Securite','Lille',3,'http://localhost:3310/upload/1707390516036.0.2766006597473576.logogouv.png'),(26,NULL,'Product Manager Mtp','Vous êtes issu(e) d’une école d’ingénieur ou d’un cursus universitaire équivalent niveau Bac + 5 / Master, vous avez au moins 2 ans d’expérience dans le digital.',0,'2 ans','Technique','Nantes',3,'http://localhost:3310/upload/1707390658742.0.60051203440512.logogouv.png'),(27,NULL,'Adjoint(e) au DRH / Responsable du Service Carrière ','Sous l’autorité du directeur des ressources humaines :\r\nLe/la responsable du service carrière, paie et masse salariale encadre une équipe de 9 collaborateurs, comprenant 2 chargés de gestion administrative et collective, 1 responsable paie et 6 gestionnaires carrière-paie.\r\n\r\nSa mission est de mettre en œuvre, de gérer et de contrôler l’ensemble des procédures de gestion administrative et financière du personnel, dans le cadre des règles statutaires et de la politique en matière de ressources humaines définie par l’établissement.',0,'1 ans','Ressources Humaines','Paris',3,'http://localhost:3310/upload/1707390775085.0.9043807056467936.logogouv.png'),(28,NULL,'Gestionnaire des personnels enseignants','Sous l\'autorité de la cheffe de la Division des Personnels Enseignants (DPE), vous aurez la responsabilité d\'un portefeuille d\'enseignants, assurant un suivi personnalisé et efficace de leur carrière et de leurs besoins. Simultanément, vous ferez partie intégrante d\'une équipe soudée, travaillant en étroite collaboration pour garantir une gestion optimale.',1,'6 mois','Ressources Humaines','Nantes',3,'http://localhost:3310/upload/1707390856101.0.2693641459543785.logogouv.png');
 /*!40000 ALTER TABLE `Offers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,6 +205,7 @@ CREATE TABLE `Offers_Categories` (
 
 LOCK TABLES `Offers_Categories` WRITE;
 /*!40000 ALTER TABLE `Offers_Categories` DISABLE KEYS */;
+INSERT INTO `Offers_Categories` VALUES (10,1),(11,1),(26,1),(27,3),(28,3),(23,4),(25,4),(24,5);
 /*!40000 ALTER TABLE `Offers_Categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,7 +220,7 @@ CREATE TABLE `Softskills` (
   `id_Softskills` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(85) NOT NULL,
   PRIMARY KEY (`id_Softskills`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -225,7 +229,7 @@ CREATE TABLE `Softskills` (
 
 LOCK TABLES `Softskills` WRITE;
 /*!40000 ALTER TABLE `Softskills` DISABLE KEYS */;
-INSERT INTO `Softskills` VALUES (1,'Rigeur'),(2,'Autonomie'),(3,'Patience');
+INSERT INTO `Softskills` VALUES (1,'Rigeur'),(2,'Autonomie'),(3,'Patience'),(4,'Autonomie'),(5,'travailler en équipe'),(6,'Sens du service'),(7,'Curiosité'),(8,'ténacité'),(9,'communication'),(10,'Sens critique');
 /*!40000 ALTER TABLE `Softskills` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,6 +257,7 @@ CREATE TABLE `Softskills_Offers` (
 
 LOCK TABLES `Softskills_Offers` WRITE;
 /*!40000 ALTER TABLE `Softskills_Offers` DISABLE KEYS */;
+INSERT INTO `Softskills_Offers` VALUES (1,10),(3,10),(7,10),(8,10),(2,11),(7,11),(10,11),(3,23),(6,23),(9,23),(1,24),(3,24),(2,25),(3,25),(2,26),(3,26),(5,26),(1,27),(3,27),(10,27),(1,28),(3,28),(4,28),(9,28);
 /*!40000 ALTER TABLE `Softskills_Offers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -276,7 +281,7 @@ CREATE TABLE `Users` (
   `Introduction` text,
   `Picture` text NOT NULL,
   PRIMARY KEY (`id_Users`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -285,6 +290,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
+INSERT INTO `Users` VALUES (3,'yannis ','yannis','123','$argon2id$v=19$m=19456,t=2,p=1$BAgdMthAmGfTrywW5BWEmQ$2Pn8z6J3uGp6744uyoKiLU0FZ411GvBEA2lvWMWbHhk','yannis@wcs.fr','06060606','2024-02-28 00:00:00',1,'Bonjour je suis développeur à la wild.','http://localhost:3310/upload/1707318710954.0.2872807026871653.cartoonize_1699457212490.jpg'),(4,'rachid ','rachid ','12293','$argon2id$v=19$m=19456,t=2,p=1$R9e5EYj2ZyqLc4NxAkeeRg$oK1tvsRNiMc+v+hg3gJNq+WsKx3pi14BMF6dGHFwHNQ','rachid@wcs.fr','06060606','2024-02-05 00:00:00',1,'Bonjour,\r\nJe suis dévéloppeur à la wild.','http://localhost:3310/upload/1707318962278.0.25556591767055226.rara.png'),(5,'jean','jean','1269','$argon2id$v=19$m=19456,t=2,p=1$5oEryLBNvCY8DYdUhVOj9Q$u2bwIn5O7idghEcaSl5gT2aLSp1KwxMNpC5uX8yXx+0','jean@inviter.fr','06060606','2024-02-24 00:00:00',0,'Bonjour,\r\nje Sus utilisateur 1','http://localhost:3310/upload/1707319046521.0.3255137632134233.utilisateur1.jpeg'),(6,'clara','clara','1769','$argon2id$v=19$m=19456,t=2,p=1$QxQILylw7TfShtZoMFGvGA$iEBS0OM0o8f6OXGUNIo6h/hx59HFXZm08XasEOvLqLI','clara@inviter.fr','06060606','2024-02-11 00:00:00',0,'Bonjour je suis utilisateur 2','http://localhost:3310/upload/1707319118492.0.786959154207953.utilisatrice2.jpg'),(8,'tom','tom','1890','$argon2id$v=19$m=19456,t=2,p=1$INgZyMRNzlOmhwV8y9HwlQ$nJuPx1woEuZ2L6kGu7JR4JKEYSpDdAxZHB/KZb6f/qc','tom@inviter.fr','06060606','2024-01-02 00:00:00',0,'Bonjour je suis utilisateur 4','http://localhost:3310/upload/1707319318739.0.2535436728647802.utilisateur4.jpg'),(9,'asle','asle','18607','$argon2id$v=19$m=19456,t=2,p=1$efGgDCypoEoIpf8eE36n/A$gT9LjSV5E/qMjeuwhwchLsidkuP/K1dcxYz5fOD4dt4','asle@wcs.fr','06060606','2024-02-10 00:00:00',1,'Bonjour je suis développeuse à la wild','http://localhost:3310/upload/1707319597378.0.3710124399715835.IMG_4834.jpg'),(10,'tara','tara','1890','$argon2id$v=19$m=19456,t=2,p=1$zHkndOX5Ds7w8taZY+KtEQ$J5Fi74aoBsfBYiqI4jU49Sdaw1h+4l1n8jZ8PxP3yac','tara@inviter.fr','06060606','2024-02-19 00:00:00',0,'Bonjour je suis utilisateur 1','http://localhost:3310/upload/1707319682852.0.7521787726369775.utilisateur 6.jpg');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -351,4 +357,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-31 11:06:13
+-- Dump completed on 2024-02-08 12:16:08

@@ -1,4 +1,4 @@
-.page_news_annonces {
+.Page_Annonces_Nouvelles {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,11 +9,12 @@
   border-radius: 10px;
   background-color: #ad9d8b;
   width: 90%;
-  /* height: 100%; */
+  margin: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
+  /* margin-left: 1.3rem; voir avec yannis une fois tout finis*/
 }
 .creation_annonce {
   margin: 0.8rem 0 0.8rem 0;

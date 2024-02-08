@@ -26,7 +26,6 @@ function ButtonCandidate({ offer, offerId }) {
 
       if (response.status === 201) {
         setFollowedOffers([...followedOffers, offer]);
-
         navigate("/following");
       } else {
         console.error("Unable to submit candidacy. Please try again later.");

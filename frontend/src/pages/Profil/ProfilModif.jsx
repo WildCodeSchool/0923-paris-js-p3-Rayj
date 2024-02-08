@@ -3,8 +3,13 @@ import Select from "react-select";
 import { Link, useNavigate } from "react-router-dom";
 import "./profilmodif.css";
 import authContext from "../../context/AuthContext";
-import profilPic from "../../assets/Profil/profil_pic.jpg";
 import modifPen from "../../assets/Profil/modif_pen.svg";
+import NavBar from "../../components/navbar/NavBar";
+import NavBarAd from "../../components/navbar/navbar_ad/NavBarAd";
+/* eslint-disable no-nested-ternary */
+// import Header from "../../components/header/Header";
+// import HeaderDesktop from "../../components/header/headerDesktop/HeaderDesktop";
+// import ProfilHeader from "../../components/header/ProfilHeader";
 // import uploadIcon from "../../assets/Profil/upload_icon.svg";
 
 function ProfilModif() {
@@ -152,6 +157,7 @@ function ProfilModif() {
           for (const h of datahard) {
             hardSkillsOptions.push({ value: h.id_Hardskills, label: h.Name });
           }
+
           setHard(hardSkillsOptions);
         } else {
           console.error("Mauvaise Donnée");
@@ -162,16 +168,21 @@ function ProfilModif() {
     };
     data();
   }, []);
+  const isMobile = window.innerWidth <= 780;
   return (
     <div className="pg_modify">
-      <div className="img_btn">
-        <img className="profilpic" src={profilPic} alt="profilpic" />
-        <p className="user_name">{user?.Lastname}</p>
-        <Link to="/profil" className="btn_profil">
-          Profil
-        </Link>
+      <div className="replacement">
+        <div className="img_btn">
+          <img className="La_Photo_Modifier" src={user?.Picture} alt="" />
+          <p className="user_name_modif_dossier">{user?.Lastname}</p>
+          <Link to="/profil" className="btn_profil_dossier_modif">
+            Profil
+          </Link>
+          {/* {isMobile ? <Header /> : <HeaderDesktop />}
+      <ProfilHeader /> */}
+        </div>
       </div>
-      <form className="form-modification">
+      <form className="form_modification">
         <label>
           <p className="info"> Adresse Mail</p>
           <input
@@ -243,15 +254,15 @@ function ProfilModif() {
           options={hard}
           isMulti
           placeholder=""
-          filterOption={(option, input) => {
-            const inputLength = input ? input.length : 0;
-            const maxSelectedOptionns = 4;
-            const selectedOptionnsLength = selectedOptionn.length;
-            return (
-              option.label.toLowerCase().includes(input.toLowerCase()) &&
-              selectedOptionnsLength < maxSelectedOptionns - inputLength
-            );
-          }}
+          // filterOption={(option, input) => {
+          //   const inputLength = input ? input.length : 0;
+          //   const maxSelectedOptionns = 4;
+          //   const selectedOptionnsLength = selectedOptionn.length;
+          //   return (
+          //     option.label.toLowerCase().includes(input.toLowerCase()) &&
+          //     selectedOptionnsLength < maxSelectedOptionns - inputLength
+          //   );
+          // }}
         />
         <h1 className="motivation_modif_heading">Motivation</h1>
 
@@ -266,9 +277,16 @@ function ProfilModif() {
           onChange={(e) => setIntroduction(e.target.value)}
         />
       </div>
-      <button type="button" onClick={handleSubmit}>
+      <button
+        type="button"
+        onClick={handleSubmit}
+        className="Sauvegarde_bouton_modif"
+      >
         SAUVEGARDER
       </button>
+      <section className="footer">
+        {isMobile ? user && user.Admin ? <NavBarAd /> : <NavBar /> : null}
+      </section>
     </div>
   );
 }

@@ -11,6 +11,9 @@
   height: 4rem;
   width: 4rem;
   border-radius: 1rem;
+  background-color: transparent;
+  border: none;
+  margin-top: 0.5rem;
 }
 
 .administration {
@@ -19,5 +22,5 @@
   justify-content: space-around;
   border: black;
   background-color: #8d7b64;
-  width: 430px;
+  width: 100%;
 }
