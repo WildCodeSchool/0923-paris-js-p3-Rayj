@@ -52,7 +52,7 @@ function Profil() {
   }, [user]);
   const isMobile = window.innerWidth <= 780;
   return (
-    <div className="profil">
+    <div className="profil_Page">
       {isMobile ? <Header /> : <HeaderDesktop />}
       <ProfilHeader />
       <button
@@ -93,7 +93,7 @@ function Profil() {
           value={user?.Seniority}
         />
         <Link to="/" className="logout_btn">
-          <p>Log out</p>
+          <p>Déconnection</p>
         </Link>
       </div>
 

@@ -170,7 +170,7 @@ function ProfilModif() {
   return (
     <div className="pg_modify">
       <div className="img_btn">
-        <img className="profilpic" src={user?.Picture} alt="" />
+        <img className="La_Photo_Modifier" src={user?.Picture} alt="" />
         <p className="user_name">{user?.Lastname}</p>
         <Link to="/profil" className="btn_profil">
           Profil
