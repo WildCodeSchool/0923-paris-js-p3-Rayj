@@ -24,9 +24,9 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   line-height: 8px;
   width: 76%;
-  align-items: flex-start;
   margin: 7%;
 }
 .info_display_input {
@@ -49,7 +49,7 @@ input::placeholder {
 .logout_btn {
   color: #0f0f0f;
   margin-top: 1rem;
-  margin-left: 38%;
+  margin-left: 47%;
 }
 
 .bloc_motiv {

@@ -93,7 +93,7 @@ function Profil() {
           value={user?.Seniority}
         />
         <Link to="/" className="logout_btn">
-          <p>Log out</p>
+          <p>Déconnection</p>
         </Link>
       </div>
 
