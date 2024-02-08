@@ -109,7 +109,7 @@ function OfferDescription() {
             </table>
           </div>
         </div>
-        <ButtonCandidate offer={offre} offerId={parseInt(offer, 2)} />
+        <ButtonCandidate offer={offre} offerId={parseInt(offer)} />
       </section>
     </>
   );
