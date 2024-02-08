@@ -5,6 +5,8 @@ import "./profilmodif.css";
 import authContext from "../../context/AuthContext";
 import modifPen from "../../assets/Profil/modif_pen.svg";
 import NavBar from "../../components/navbar/NavBar";
+import NavBarAd from "../../components/navbar/navbar_ad/NavBarAd";
+/* eslint-disable no-nested-ternary */
 // import Header from "../../components/header/Header";
 // import HeaderDesktop from "../../components/header/headerDesktop/HeaderDesktop";
 // import ProfilHeader from "../../components/header/ProfilHeader";
@@ -170,7 +172,7 @@ function ProfilModif() {
   return (
     <div className="pg_modify">
       <div className="img_btn">
-        <img className="profilpic" src={user?.Picture} alt="" />
+        <img className="La_Photo_Modifier" src={user?.Picture} alt="" />
         <p className="user_name">{user?.Lastname}</p>
         <Link to="/profil" className="btn_profil">
           Profil
@@ -276,7 +278,9 @@ function ProfilModif() {
       <button type="button" onClick={handleSubmit}>
         SAUVEGARDER
       </button>
-      {isMobile && <NavBar />}
+      <section className="footer">
+        {isMobile ? user && user.Admin ? <NavBarAd /> : <NavBar /> : null}
+      </section>
     </div>
   );
 }

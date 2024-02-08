@@ -38,7 +38,7 @@ function Connection() {
         const user = await response.json();
         auth.setUser(user);
 
-        if (user.Admin === 1) navigate("/profil1");
+        if (user.Admin === 1) navigate("/candidatespage");
         else navigate("/homepage");
       } else {
         console.error("veuillez verifier votre saisie.");
@@ -76,7 +76,7 @@ function Connection() {
             ref={Password}
           />
         </div>
-        <div>
+        <div className="La_Connection_Button">
           <button
             className="btn_Connection_Login"
             type="button"

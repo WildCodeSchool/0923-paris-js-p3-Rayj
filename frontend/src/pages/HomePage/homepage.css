@@ -1,13 +1,13 @@
-.homepage {
+/* .homepage {
   max-height: 932px;
-}
-.category {
+} */
+/* .category {
   margin-bottom: 2rem;
-}
-.catfilter {
+} */
+/* .catfilter {
   width: 400px;
   margin-top: 10rem;
-}
+} */
 .footer {
   width: 100%;
   position: fixed;
@@ -16,7 +16,8 @@
 }
 .row {
   display: flex;
-  overflow: scroll;
+  overflow-y: visible;
+  overflow-x: visible;
   width: 100%;
   height: 450px;
   margin-top: 1rem;
@@ -27,7 +28,9 @@
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 50px;
   grid-row-gap: 50px;
-  overflow-y: visible;
+
+  overflow-x: visible;
+  overflow-x: auto;
 }
 
 @media (min-width: 500px) {

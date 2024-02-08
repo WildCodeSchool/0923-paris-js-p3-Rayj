@@ -10,16 +10,16 @@ function NavBarAd() {
   return (
     <div className="administration">
       <div className="home">
-        <button type="button" onClick={() => navigate("/Profil1")}>
+        <button type="button" onClick={() => navigate("/candidatespage")}>
           <img src={Home} alt="home" />
-          <p className="nav_head">Acceuil</p>
+          <p className="nav_head">Accueil</p>
         </button>
       </div>
 
       <div className="filter">
-        <button type="button" onClick={() => navigate("/post")}>
+        <button type="button" onClick={() => navigate("/annonce")}>
           <img src={Following} alt="filter" />
-          <p className="nav_head">Filtre</p>
+          <p className="nav_head">Annonce</p>
         </button>
       </div>
 
