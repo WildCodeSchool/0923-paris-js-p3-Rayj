@@ -391,12 +391,21 @@ function Post() {
         </div>
       </div>
 
-      <button type="button" className="recapt" onClick={handleoffre}>
-        Validation
-        {/* <Modal open={recap} onClose={onCloseRecap} center>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <button type="button" className="recapt" onClick={handleoffre}>
+          Validation
+          {/* <Modal open={recap} onClose={onCloseRecap} center>
           <RecaPopup titi={hardSkills} />
         </Modal> */}
-      </button>
+        </button>
+      </div>
       <section className="footer">
         {isMobile ? user && user.Admin ? <NavBarAd /> : <NavBar /> : null}
       </section>

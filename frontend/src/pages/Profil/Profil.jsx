@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./profil.css";
 import Header from "../../components/header/Header";
 import AdHeader from "../../components/header/AdHeader/AdHeader";
@@ -12,7 +12,6 @@ import authContext from "../../context/AuthContext";
 
 function Profil() {
   const { user } = useContext(authContext);
-  const navigate = useNavigate();
   const [softkill, setSoftkill] = useState([]);
   const [hardkill, setHardkill] = useState([]);
   useEffect(() => {
@@ -66,13 +65,6 @@ function Profil() {
         <Header />
       )}
       <ProfilHeader />
-      <button
-        className="btn_modif"
-        type="button"
-        onClick={() => navigate(`/ProfilModif/${user?.id_Users}`)}
-      >
-        Modifier
-      </button>
       <div className="modify">
         <p className="info_display_heading">{user?.Firstname}</p>
         <p className="info_display_heading">Matricule</p>

@@ -9,7 +9,7 @@
   border-radius: 10px;
   background-color: #ad9d8b;
   width: 90%;
-  /* height: 100%; */
+  margin: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;

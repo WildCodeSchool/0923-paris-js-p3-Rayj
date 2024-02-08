@@ -3,6 +3,8 @@ body {
   background-color: #eae0d5;
   padding-bottom: 60px;
   width: 100%;
+  overflow-x: hidden;
+  margin-bottom: 50px;
 }
 
 /* code {

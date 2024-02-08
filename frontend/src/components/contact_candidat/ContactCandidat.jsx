@@ -23,11 +23,12 @@ function ContactCandidat({ user, onCloseModal }) {
               <li>Email : {user?.Email}</li>
             </ul>
           </div>
-          <div>
+          <div style={{ width: "200px", height: "200px", marginTop: "20px" }}>
             <img
+              style={{ width: "100%", height: "100%" }}
               alt={user.Firstname}
               className="candidate_photomodal"
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src={user?.Picture}
             />
           </div>
         </div>
@@ -46,7 +47,7 @@ function ContactCandidat({ user, onCloseModal }) {
               "Votre candidature n'a pas été retenue. Nous vous invitons à continuer votre recherche d'emploi. "
             );
 
-            const mailtoURL = `mailto:${user?.email}?subject=${emailSubject}&body=${emailBody}`;
+            const mailtoURL = `mailto:${user?.Email}?subject=${emailSubject}&body=${emailBody}`;
 
             window.location.href = mailtoURL;
           }}
@@ -64,7 +65,7 @@ function ContactCandidat({ user, onCloseModal }) {
               "Votre candidature a été retenue. Je prendrai contact avec vous dans les meilleurs délais afin de fixer un entretien."
             );
 
-            const mailtoURL = `mailto:${user?.email}?subject=${emailSubject}&body=${emailBody}`;
+            const mailtoURL = `mailto:${user?.Email}?subject=${emailSubject}&body=${emailBody}`;
 
             window.location.href = mailtoURL;
           }}
