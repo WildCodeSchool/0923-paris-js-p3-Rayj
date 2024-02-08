@@ -119,22 +119,21 @@ function Profil() {
               ))}
             </ul>
           </div>
-         </section>
-          <h2 className="motivation_heading">Motivation</h2>
-          <textarea
-            className="motivation_input"
-            rows="15"
-            name="message"
-            required
-            placeholder="Motivation"
-            value={user?.Introduction}
-          />
-        </div>
-
-        <section className="footer">
-          {isMobile ? user && user.Admin ? <NavBarAd /> : <NavBar /> : null}
         </section>
+        <h2 className="motivation_heading">Motivation</h2>
+        <textarea
+          className="motivation_input"
+          rows="15"
+          name="message"
+          required
+          placeholder="Motivation"
+          value={user?.Introduction}
+        />
       </div>
+
+      <section className="footer">
+        {isMobile ? user && user.Admin ? <NavBarAd /> : <NavBar /> : null}
+      </section>
     </div>
   );
 }
