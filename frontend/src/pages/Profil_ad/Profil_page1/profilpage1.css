@@ -8,7 +8,12 @@
 .bloc_card {
   display: block;
   width: 100%;
-  margin-top: 10rem;
+  margin-top: 70px;
+  /* padding-left: 3rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .affichagepageprofil1 {
   display: flex;
@@ -18,4 +23,7 @@
 .htwopageprofil1 {
   text-align: left;
   padding-left: 1rem;
+}
+.css-5mc4xn-JoyGrid-root {
+  justify-content: center !important;
 }

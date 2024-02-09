@@ -1,10 +1,16 @@
 /* eslint-disable radix */
+/* eslint-disable no-nested-ternary */
 import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import AnnonceContext from "../../context/AnnonceContext";
 import ButtonCandidate from "../buttoncandidate/ButtonCandidate";
 import "./offerdescription.css";
 import Header from "../header/Header";
+import AdHeader from "../header/AdHeader/AdHeader";
+import NavBarAd from "../navbar/navbar_ad/NavBarAd";
+import HeaderDesktop from "../header/headerDesktop/HeaderDesktop";
+import authContext from "../../context/AuthContext";
+import NavBar from "../navbar/NavBar";
 
 function OfferDescription() {
   const { offre } = useContext(AnnonceContext);
@@ -14,6 +20,8 @@ function OfferDescription() {
   });
   const [soft, setSoft] = useState([]);
   const [hard, setHard] = useState([]);
+  const { user } = useContext(authContext);
+  const isMobile = window.innerWidth <= 780;
 
   useEffect(() => {
     const fetchComphard = async () => {
@@ -63,7 +71,15 @@ function OfferDescription() {
 
   return (
     <>
-      <Header />
+      {!isMobile ? (
+        user && user.Admin ? (
+          <AdHeader />
+        ) : (
+          <HeaderDesktop />
+        )
+      ) : (
+        <Header />
+      )}
       <section className="offer">
         <img src={filterAnnonce?.Logo} alt="logo" />
 
@@ -110,6 +126,10 @@ function OfferDescription() {
           </div>
         </div>
         <ButtonCandidate offer={offre} offerId={parseInt(offer)} />
+      </section>
+      <section className="footer">
+        {" "}
+        {isMobile ? user && user.Admin ? <NavBarAd /> : <NavBar /> : null}
       </section>
     </>
   );

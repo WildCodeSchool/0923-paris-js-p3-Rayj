@@ -1,16 +1,17 @@
+/* eslint-disable no-nested-ternary */
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./profil.css";
 import Header from "../../components/header/Header";
+import AdHeader from "../../components/header/AdHeader/AdHeader";
 import HeaderDesktop from "../../components/header/headerDesktop/HeaderDesktop";
 import ProfilHeader from "../../components/header/ProfilHeader";
 import NavBar from "../../components/navbar/NavBar";
+import NavBarAd from "../../components/navbar/navbar_ad/NavBarAd";
 import authContext from "../../context/AuthContext";
 
 function Profil() {
   const { user } = useContext(authContext);
-  console.info(user);
-  const navigate = useNavigate();
   const [softkill, setSoftkill] = useState([]);
   const [hardkill, setHardkill] = useState([]);
   useEffect(() => {
@@ -51,17 +52,19 @@ function Profil() {
     kills();
   }, [user]);
   const isMobile = window.innerWidth <= 780;
+
   return (
     <div className="profil">
-      {isMobile ? <Header /> : <HeaderDesktop />}
+      {!isMobile ? (
+        user && user.Admin ? (
+          <AdHeader />
+        ) : (
+          <HeaderDesktop />
+        )
+      ) : (
+        <Header />
+      )}
       <ProfilHeader />
-      <button
-        className="btn_modif"
-        type="button"
-        onClick={() => navigate(`/ProfilModif/${user?.id_Users}`)}
-      >
-        Modifier
-      </button>
       <div className="modify">
         <p className="info_display_heading">{user?.Firstname}</p>
         <p className="info_display_heading">Matricule</p>
@@ -93,10 +96,9 @@ function Profil() {
           value={user?.Seniority}
         />
         <Link to="/" className="logout_btn">
-          <p>Log out</p>
+          <p>Déconnection</p>
         </Link>
       </div>
-
       <div className="bloc_motiv">
         <section>
           <div>
@@ -128,7 +130,10 @@ function Profil() {
           value={user?.Introduction}
         />
       </div>
-      <section className="footer">{isMobile && <NavBar />}</section>
+
+      <section className="footer">
+        {isMobile ? user && user.Admin ? <NavBarAd /> : <NavBar /> : null}
+      </section>
     </div>
   );
 }

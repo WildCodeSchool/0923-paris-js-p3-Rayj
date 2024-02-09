@@ -11,7 +11,7 @@ function InformationEmploye({ user, onOpenModal }) {
       <button type="button" className="card_user" onClick={handleOpenModal}>
         <img
           className="candidate_photo"
-          src={user?.image}
+          src={user?.Picture}
           alt={user.Firstname}
         />
         <div className="identity">

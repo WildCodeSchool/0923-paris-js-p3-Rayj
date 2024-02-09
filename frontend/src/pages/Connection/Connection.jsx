@@ -76,7 +76,7 @@ function Connection() {
             ref={Password}
           />
         </div>
-        <div>
+        <div className="La_Connection_Button">
           <button
             className="btn_Connection_Login"
             type="button"

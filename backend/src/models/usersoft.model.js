@@ -2,32 +2,32 @@ const db = require("../../database/client");
 
 const insert = (usersoft) => {
   return db.query(
-    "INSERT INTO Users_softskills(Users_idUsers, Softskills_id_Softskills) VALUES ?",
+    "INSERT INTO Users_Softskills(Users_idUsers, Softskills_id_Softskills) VALUES ?",
     [usersoft]
   );
 };
 
 const findSoftAll = () => {
-  return db.query("SELECT * FROM Users_softskills");
+  return db.query("SELECT * FROM Users_Softskills");
 };
 
 const findSoftById = (id) => {
   return db.query(
-    "SELECT Softskills.Name as softName FROM Users_softskills JOIN Softskills on softskills.id_Softskills = users_softskills.Softskills_id_Softskills WHERE users_softskills.Users_idUsers = ?",
+    "SELECT Softskills.Name as softName FROM Users_Softskills JOIN Softskills on Softskills.id_Softskills = Users_Softskills.Softskills_id_Softskills WHERE Users_Softskills.Users_idUsers = ?",
     [id]
   );
 };
 
 const deleteSoftAll = (id) => {
   return db.query(
-    "DELETE FROM Users_softskills WHERE Users_hardskills.Users_idUsers = ?",
+    "DELETE FROM Users_softskills WHERE Users_Hardskills.Users_idUsers = ?",
     [id]
   );
 };
 
 const deleteSoftById = (id) => {
   return db.query(
-    "DELETE FROM Users_softskills WHERE Users_softskills.Users_idUsers =?",
+    "DELETE FROM Users_Softskills WHERE Users_Softskills.Users_idUsers =?",
     [id]
   );
 };

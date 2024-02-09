@@ -5,6 +5,8 @@ import "./profilmodif.css";
 import authContext from "../../context/AuthContext";
 import modifPen from "../../assets/Profil/modif_pen.svg";
 import NavBar from "../../components/navbar/NavBar";
+import NavBarAd from "../../components/navbar/navbar_ad/NavBarAd";
+/* eslint-disable no-nested-ternary */
 // import Header from "../../components/header/Header";
 // import HeaderDesktop from "../../components/header/headerDesktop/HeaderDesktop";
 // import ProfilHeader from "../../components/header/ProfilHeader";
@@ -169,16 +171,18 @@ function ProfilModif() {
   const isMobile = window.innerWidth <= 780;
   return (
     <div className="pg_modify">
-      <div className="img_btn">
-        <img className="La_Photo_Modifier" src={user?.Picture} alt="" />
-        <p className="user_name">{user?.Lastname}</p>
-        <Link to="/profil" className="btn_profil">
-          Profil
-        </Link>
-        {/* {isMobile ? <Header /> : <HeaderDesktop />}
+      <div className="replacement">
+        <div className="img_btn">
+          <img className="La_Photo_Modifier" src={user?.Picture} alt="" />
+          <p className="user_name_modif_dossier">{user?.Lastname}</p>
+          <Link to="/profil" className="btn_profil_dossier_modif">
+            Profil
+          </Link>
+          {/* {isMobile ? <Header /> : <HeaderDesktop />}
       <ProfilHeader /> */}
+        </div>
       </div>
-      <form className="form-modification">
+      <form className="form_modification">
         <label>
           <p className="info"> Adresse Mail</p>
           <input
@@ -273,10 +277,16 @@ function ProfilModif() {
           onChange={(e) => setIntroduction(e.target.value)}
         />
       </div>
-      <button type="button" onClick={handleSubmit}>
+      <button
+        type="button"
+        onClick={handleSubmit}
+        className="Sauvegarde_bouton_modif"
+      >
         SAUVEGARDER
       </button>
-      <section className="footer">{isMobile && <NavBar />}</section>
+      <section className="footer">
+        {isMobile ? user && user.Admin ? <NavBarAd /> : <NavBar /> : null}
+      </section>
     </div>
   );
 }

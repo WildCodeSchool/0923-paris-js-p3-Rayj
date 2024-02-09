@@ -27,7 +27,7 @@ const getHardAll = async (_, res, next) => {
 
 const getHardById = async (req, res, next) => {
   try {
-    const id = req.userID;
+    const { id } = req.params;
     const [usersofthard] = await userhardModel.findHardById(id);
     if (usersofthard.users_hardkills) res.sendStatus(422);
     else res.status(200).json(usersofthard);
