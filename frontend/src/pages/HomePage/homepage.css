@@ -9,20 +9,20 @@
   width: 100%;
 }
 
-/* .annonce {
+.annonce {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 50px;
   grid-row-gap: 150px;
 
-  overflow: scroll; */
+  overflow: scroll;
 
-/* overflow-y: hidden;
-  overflow-x: hidden; */
-/* padding-top: 2rem;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  padding-top: 2rem;
   padding-bottom: 6rem;
-  margin-left: 2%; 
+  margin-left: 2%;
 }
 
 /* @media (min-width: 500px) {
